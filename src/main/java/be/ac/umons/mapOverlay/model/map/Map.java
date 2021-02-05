@@ -8,4 +8,8 @@ public class Map {
     public void addSegment(Segment segment){
         segments.add(segment);
     }
+
+    public ArrayList<Segment> getSegments() {
+        return segments;
+    }
 }

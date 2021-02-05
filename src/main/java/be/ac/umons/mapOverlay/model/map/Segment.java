@@ -41,4 +41,20 @@ public class Segment {
         return abs(u-v) < 1e-8;
     }
 
+
+    @Override
+    public String toString() {
+        return "Segment{" +
+                "upperPoint=" + upperPoint +
+                ", endPoint=" + lowerPoint +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Segment segment = (Segment) o;
+        return upperPoint.equals(segment.upperPoint) && lowerPoint.equals(segment.lowerPoint);
+    }
 }

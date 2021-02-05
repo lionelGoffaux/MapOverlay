@@ -1,6 +1,8 @@
 package be.ac.umons.mapOverlay.model.map;
 import static java.lang.Math.sqrt;
 
+import java.util.Objects;
+
 public class Point {
     private double x, y;
 
@@ -27,5 +29,13 @@ public class Point {
 
     public double scalarProduct(Point other){
         return this.x * other.x + this.y * other.y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
     }
 }
