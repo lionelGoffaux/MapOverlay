@@ -11,4 +11,20 @@ public class Segment {
         upperPoint = p1;
         endPoint = p2;
     }
+
+    @Override
+    public String toString() {
+        return "Segment{" +
+                "upperPoint=" + upperPoint +
+                ", endPoint=" + endPoint +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Segment segment = (Segment) o;
+        return upperPoint.equals(segment.upperPoint) && endPoint.equals(segment.endPoint);
+    }
 }

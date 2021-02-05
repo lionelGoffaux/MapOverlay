@@ -1,6 +1,5 @@
 package be.ac.umons.mapOverlay;
 
-import be.ac.umons.mapOverlay.model.map.MapInputStream;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,9 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 
 public class Main extends Application {
 

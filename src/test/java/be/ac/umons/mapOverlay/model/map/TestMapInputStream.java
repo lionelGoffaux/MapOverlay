@@ -1,24 +1,21 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import org.junit.jupiter.api.Test;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.*;
+import java.util.ArrayList;
 
 public class TestMapInputStream {
 
     @Test
-    public void readMapTest() throws FileNotFoundException, IOException {
-        MapInputStream mis = new MapInputStream("cartes/test.txt");
-        Map result = mis.readMap();
-    }
+    public void readMapTest() throws  IOException {
+        ArrayList<Segment> expected = new ArrayList<>();
+        expected.add(new Segment(1, 2, 3, 4));
+        expected.add(new Segment(4, 3, 2, 1));
 
-    @Test
-    public void FileNotExistTest(){
-        assertThrows(FileNotFoundException.class, () -> {
-            new MapInputStream("randomname42.dat");
-        });
+        MapInputStream mis = new MapInputStream("cartes/test.txt");
+        Map map = mis.readMap();
+        assertEquals(expected, map.getSegments());
     }
 }
