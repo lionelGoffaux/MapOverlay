@@ -1,5 +1,6 @@
 package be.ac.umons.mapOverlay;
 
+import be.ac.umons.mapOverlay.controller.ButtonController;
 import be.ac.umons.mapOverlay.view.IntersectionsFinderView;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -17,22 +18,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        ButtonController buttonController = new ButtonController(primaryStage);
+
         primaryStage.setTitle("Hello World!");
-        /*Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));*/
-
-        primaryStage.setScene(new Scene(new IntersectionsFinderView()));
+        primaryStage.setScene(new Scene(new IntersectionsFinderView(buttonController)));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }

@@ -8,7 +8,7 @@ public class SegmentView extends Canvas {
 
     public SegmentView(double width, double height) {
         super(width, height);
-        GraphicsContext graphics_context = this.getGraphicsContext2D();
+        GraphicsContext graphics_context = getGraphicsContext2D();
 
         // set fill for rectangle
         graphics_context.setFill(Color.RED);
