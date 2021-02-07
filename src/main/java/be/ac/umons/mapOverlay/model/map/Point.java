@@ -1,4 +1,5 @@
 package be.ac.umons.mapOverlay.model.map;
+import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 import java.util.Objects;
@@ -20,10 +21,10 @@ public class Point {
     }
 
     public boolean isUpperThan(Point p){
-        return y > p.y || (y == p.y && x == p.x);
+        return y > p.y || (y == p.y && x <= p.x);
     }
 
-    public double norm(){
+    public double getNorm(){
         return sqrt(x * x + y * y);
     }
 
@@ -38,4 +39,22 @@ public class Point {
         Point point = (Point) o;
         return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
     }
+
+    public boolean isOriented(Point other){
+        if(this.equals(new Point(0,0)) || other.equals(new Point(0,0)))
+            return true;
+        return almostEqual((this.scalarProduct(other))/(this.getNorm()*other.getNorm()), 1.0);
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
+    private static boolean almostEqual(double u, double v){
+        return abs(u-v) < 1e-5;
+    } //TODO code redundancy
 }

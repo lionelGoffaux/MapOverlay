@@ -14,31 +14,55 @@ public class Segment {
         lowerPoint = p1.isUpperThan(p2) ? p2: p1;
     }
 
-    public Point isIntersecting(Segment other){
-        double m1 = (this.upperPoint.getY() - this.lowerPoint.getY()) / (this.upperPoint.getX() - this.lowerPoint.getX());
-        double m2 = (other.upperPoint.getY() - other.lowerPoint.getY()) / (other.upperPoint.getX() - other.lowerPoint.getX());
+    public Point getIntersectionPoint(Segment other){
+        if(this.upperPoint.equals(other.upperPoint) || this.upperPoint.equals(other.lowerPoint)){
+            return new Point(this.upperPoint.getX(), this.upperPoint.getY());
+        }
+        if(this.lowerPoint.equals(other.upperPoint) || this.lowerPoint.equals(other.lowerPoint)){
+            return new Point(this.lowerPoint.getX(), this.lowerPoint.getY());
+        }
+        double m1 = this.getGradient();
+        double m2 = other.getGradient();
         double p1 = this.upperPoint.getY() - m1 * this.upperPoint.getX();
         double p2 = other.upperPoint.getY() - m2 * other.upperPoint.getX();
-        if(almostEqual(m2-m1, 0))
+        if(almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
             return null;
-        double commonX = (p1 - p2) / (m2 - m1);
-        double commonY = (m1 * commonX + p1);
+        double commonX;
+        double commonY;
+        if(m1==Double.POSITIVE_INFINITY){
+            commonX = this.lowerPoint.getX();
+            commonY = (m2 * commonX + p2);
+        }
+        else if(m2==Double.POSITIVE_INFINITY){
+            commonX = other.lowerPoint.getX();
+            commonY = (m1 * commonX + p1);
+        }
+        else{
+            commonX = (p1 - p2) / (m2 - m1);
+            commonY = (m1 * commonX + p1);
+        }
         Point intersection = new Point(commonX, commonY);
         Point u1 = this.getVector();
-        Point v1 = new Segment(this.upperPoint, intersection).getVector();
+        Point v1 = new Segment(this.lowerPoint, intersection).getVector();
         Point u2 = other.getVector();
-        Point v2 = new Segment(other.upperPoint, intersection).getVector();
-        return  almostEqual((u1.scalarProduct(v1))/(u1.norm()*v1.norm()), 1.0)
-                && almostEqual((u2.scalarProduct(v2))/(u2.norm()*v2.norm()), 1.0)
-                && u1.norm() > v1.norm() && u2.norm() > v2.norm() ? intersection : null;
+        Point v2 = new Segment(other.lowerPoint, intersection).getVector();
+        return  u1.isOriented(v1)
+                && u2.isOriented(v2)
+                && u1.getNorm() >= v1.getNorm()
+                && u2.getNorm() >= v2.getNorm() ? intersection : null;
     }
 
     private Point getVector(){
         return new Point(upperPoint.getX() - lowerPoint.getX(), upperPoint.getY() - lowerPoint.getY());
     }
 
+    private double getGradient(){
+        if (this.upperPoint.getX() - this.lowerPoint.getX()==0) return Double.POSITIVE_INFINITY;
+        return (this.upperPoint.getY() - this.lowerPoint.getY()) / (this.upperPoint.getX() - this.lowerPoint.getX());
+    }
+
     private static boolean almostEqual(double u, double v){
-        return abs(u-v) < 1e-8;
+        return abs(u-v) < 1e-5;
     }
 
 
