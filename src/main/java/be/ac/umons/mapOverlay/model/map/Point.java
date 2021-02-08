@@ -2,8 +2,6 @@ package be.ac.umons.mapOverlay.model.map;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
-import java.util.Objects;
-
 public class Point {
     private double x, y;
 

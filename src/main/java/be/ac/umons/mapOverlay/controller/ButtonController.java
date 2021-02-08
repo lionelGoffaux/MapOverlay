@@ -13,8 +13,8 @@ public class ButtonController implements EventHandler<ActionEvent> {
     Stage primaryStage;
     FileChooser fileChooser = new FileChooser();
 
-    public ButtonController(Stage prymaryStage){
-        this.primaryStage = prymaryStage;
+    public ButtonController(Stage primaryStage){
+        this.primaryStage = primaryStage;
         fileChooser.setInitialDirectory(new File("cartes"));
     }
 
