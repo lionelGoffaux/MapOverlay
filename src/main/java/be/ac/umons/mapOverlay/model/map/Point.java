@@ -2,7 +2,7 @@ package be.ac.umons.mapOverlay.model.map;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
-public class Point {
+public class Point implements Comparable<Point> {
     private double x, y;
 
     public double getX() {
@@ -36,6 +36,12 @@ public class Point {
         if (o == null || getClass() != o.getClass()) return false;
         Point point = (Point) o;
         return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
+    }
+
+    @Override
+    public int compareTo(Point o) {
+        if (equals(o)) return 0;
+        else return isUpperThan(o)? 1: -1;
     }
 
     public boolean isOriented(Point other){
