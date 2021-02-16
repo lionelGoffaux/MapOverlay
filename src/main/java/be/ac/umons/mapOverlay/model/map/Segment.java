@@ -3,6 +3,7 @@ package be.ac.umons.mapOverlay.model.map;
 import be.ac.umons.mapOverlay.Main;
 
 import static java.lang.Math.abs;
+import be.ac.umons.mapOverlay.Utils;
 
 public class Segment implements Comparable<Segment>{
     private Point upperPoint, lowerPoint;
@@ -27,7 +28,7 @@ public class Segment implements Comparable<Segment>{
         double m2 = other.getSlope();
         double p1 = this.upperPoint.getY() - m1 * this.upperPoint.getX();
         double p2 = other.upperPoint.getY() - m2 * other.upperPoint.getX();
-        if(almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
+        if(Utils.almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
             return null;
         double commonX;
         double commonY;
@@ -69,9 +70,6 @@ public class Segment implements Comparable<Segment>{
         return (this.upperPoint.getY() - this.lowerPoint.getY()) / (this.upperPoint.getX() - this.lowerPoint.getX());
     }
 
-    private static boolean almostEqual(double u, double v){
-        return abs(u-v) < 1e-5;
-    }
 
 
     @Override
