@@ -1,13 +1,24 @@
 package be.ac.umons.mapOverlay.view;
 
 import be.ac.umons.mapOverlay.controller.ButtonController;
+import be.ac.umons.mapOverlay.model.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.map.Segment;
+import be.ac.umons.mapOverlay.utils.observer.Subscriber;
 import javafx.scene.layout.BorderPane;
 
-public class IntersectionsFinderView extends BorderPane {
+public class IntersectionsFinderView extends BorderPane implements Subscriber {
 
-    public IntersectionsFinderView(ButtonController buttonController) {
+    private final SegmentView segmentView;
+
+    public IntersectionsFinderView(ButtonController buttonController, IntersectionsFinder intersectionsFinder) {
         super();
-        setCenter(new SegmentView(600, 600));
+        this.segmentView = new SegmentView(600, 600, intersectionsFinder);
+        setCenter(segmentView);
         setRight(new ControlView(buttonController));
+    }
+
+    @Override
+    public void update() {
+        //TODO
     }
 }

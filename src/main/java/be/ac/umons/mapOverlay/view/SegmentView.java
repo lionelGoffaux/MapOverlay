@@ -1,13 +1,17 @@
 package be.ac.umons.mapOverlay.view;
 
+import be.ac.umons.mapOverlay.model.IntersectionsFinder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class SegmentView extends Canvas {
 
-    public SegmentView(double width, double height) {
+    private final IntersectionsFinder intersectionsFinder;
+
+    public SegmentView(double width, double height, IntersectionsFinder intersectionsFinder) {
         super(width, height);
+        this.intersectionsFinder = intersectionsFinder;
         GraphicsContext graphics_context = getGraphicsContext2D();
 
         // set fill for rectangle
