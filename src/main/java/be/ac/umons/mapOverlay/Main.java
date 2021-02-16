@@ -11,7 +11,7 @@ public class Main extends Application {
 
     private static Main app;
 
-    private IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+    private final IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
 
     public static void main(String[] args) {
         launch(args);
@@ -20,11 +20,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
         app = this;
-        ButtonController buttonController = new ButtonController(primaryStage);
+        ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
+        IntersectionsFinderView intersectionsFinderView = new IntersectionsFinderView(buttonController, intersectionsFinder);
 
         primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(new Scene(new IntersectionsFinderView(buttonController)));
+        primaryStage.setScene(new Scene(intersectionsFinderView));
         primaryStage.setResizable(false);
+
+        intersectionsFinder.subscribe(intersectionsFinderView);
+
         primaryStage.show();
     }
 
@@ -35,7 +39,6 @@ public class Main extends Application {
     public double getSweepLineY(){
         return intersectionsFinder.getSweepLineY();
     }
-
     public IntersectionsFinder getIntersectionsFinder() {
         return intersectionsFinder;
     }

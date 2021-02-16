@@ -9,7 +9,15 @@ public class MapInputStream {
     private Scanner scanner;
 
     public MapInputStream(String path) throws FileNotFoundException {
-        scanner = new Scanner(new FileReader(path));
+        this(new FileReader(path));
+    }
+
+    public MapInputStream(File file) throws  FileNotFoundException {
+        this(new FileReader(file));
+    }
+
+    public MapInputStream(FileReader fileReader){
+        scanner = new Scanner(fileReader);
         scanner.useLocale(Locale.US);
     }
 
