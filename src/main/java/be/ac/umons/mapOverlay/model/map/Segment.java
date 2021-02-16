@@ -95,7 +95,7 @@ public class Segment implements Comparable<Segment>{
         Segment sweepLine = new Segment(0, sweepLineY, 1, sweepLineY);
 
         Point a = getIntersectionOfLine(sweepLine);
-        Point b = getIntersectionOfLine(sweepLine);
+        Point b = o.getIntersectionOfLine(sweepLine);
         // TODO: a ou b null?
 
         return a.compareTo(b);

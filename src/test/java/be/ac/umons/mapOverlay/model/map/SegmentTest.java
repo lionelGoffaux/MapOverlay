@@ -1,6 +1,10 @@
 package be.ac.umons.mapOverlay.model.map;
 
+import be.ac.umons.mapOverlay.Main;
+import be.ac.umons.mapOverlay.model.IntersectionsFinder;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,6 +66,22 @@ class SegmentTest {
         Segment segment1 = new Segment(0, 0, 2, 2);
         Segment segment2 = new Segment(1, 1, 3, 3);
         assertNull(segment1.getIntersectionPoint(segment2));
+    }
+
+    @Test
+    public void comparisonTest(){
+        Main main = Mockito.mock(Main.class);
+        MockedStatic<Main> theMock = Mockito.mockStatic(Main.class);
+        theMock.when(Main::getApp).thenReturn(main);
+        IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
+        Mockito.when(main.getIntersectionsFinder()).thenReturn(intersectionsFinder);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(1.5);
+
+
+        Segment segment1 = new Segment(1, 2, 3, 0);
+        Segment segment2 = new Segment(1, 0, 3, 2);
+        assertEquals(-1, segment1.compareTo(segment2));
+        assertEquals(1, segment2.compareTo(segment1));
     }
 
 
