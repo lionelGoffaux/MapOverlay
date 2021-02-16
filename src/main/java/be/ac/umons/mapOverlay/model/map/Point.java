@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model.map;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
+import be.ac.umons.mapOverlay.Utils;
 
 public class Point implements Comparable<Point> {
     private double x, y;
@@ -47,7 +48,7 @@ public class Point implements Comparable<Point> {
     public boolean isOriented(Point other){
         if(this.equals(new Point(0,0)) || other.equals(new Point(0,0)))
             return true;
-        return almostEqual((this.scalarProduct(other))/(this.getNorm()*other.getNorm()), 1.0);
+        return Utils.almostEqual((this.scalarProduct(other))/(this.getNorm()*other.getNorm()), 1.0);
     }
 
     @Override
@@ -58,7 +59,5 @@ public class Point implements Comparable<Point> {
                 '}';
     }
 
-    private static boolean almostEqual(double u, double v){
-        return abs(u-v) < 1e-5;
-    } //TODO code redundancy
+     //TODO code redundancy
 }

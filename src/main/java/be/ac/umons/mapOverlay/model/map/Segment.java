@@ -1,8 +1,9 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import static java.lang.Math.abs;
+import be.ac.umons.mapOverlay.Utils;
 
-public class Segment {
+public class Segment implements Comparable<Segment>{
     private Point upperPoint, lowerPoint;
 
     public Segment(double x1, double y1, double x2, double y2){
@@ -25,7 +26,7 @@ public class Segment {
         double m2 = other.getGradient();
         double p1 = this.upperPoint.getY() - m1 * this.upperPoint.getX();
         double p2 = other.upperPoint.getY() - m2 * other.upperPoint.getX();
-        if(almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
+        if(Utils.almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
             return null;
         double commonX;
         double commonY;
@@ -61,9 +62,6 @@ public class Segment {
         return (this.upperPoint.getY() - this.lowerPoint.getY()) / (this.upperPoint.getX() - this.lowerPoint.getX());
     }
 
-    private static boolean almostEqual(double u, double v){
-        return abs(u-v) < 1e-5;
-    }
 
 
     @Override
@@ -80,5 +78,10 @@ public class Segment {
         if (o == null || getClass() != o.getClass()) return false;
         Segment segment = (Segment) o;
         return upperPoint.equals(segment.upperPoint) && lowerPoint.equals(segment.lowerPoint);
+    }
+
+    @Override
+    public int compareTo(Segment o) {
+        return 0;
     }
 }
