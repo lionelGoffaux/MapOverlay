@@ -1,8 +1,10 @@
 package be.ac.umons.mapOverlay.model.map;
 
+import be.ac.umons.mapOverlay.Main;
+
 import static java.lang.Math.abs;
 
-public class Segment {
+public class Segment implements Comparable<Segment>{
     private Point upperPoint, lowerPoint;
 
     public Segment(double x1, double y1, double x2, double y2){
@@ -14,15 +16,15 @@ public class Segment {
         lowerPoint = p1.isUpperThan(p2) ? p2: p1;
     }
 
-    public Point getIntersectionPoint(Segment other){
+    public Point getIntersectionOfLine(Segment other){
         if(this.upperPoint.equals(other.upperPoint) || this.upperPoint.equals(other.lowerPoint)){
             return new Point(this.upperPoint.getX(), this.upperPoint.getY());
         }
         if(this.lowerPoint.equals(other.upperPoint) || this.lowerPoint.equals(other.lowerPoint)){
             return new Point(this.lowerPoint.getX(), this.lowerPoint.getY());
         }
-        double m1 = this.getGradient();
-        double m2 = other.getGradient();
+        double m1 = this.getSlope();
+        double m2 = other.getSlope();
         double p1 = this.upperPoint.getY() - m1 * this.upperPoint.getX();
         double p2 = other.upperPoint.getY() - m2 * other.upperPoint.getX();
         if(almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
@@ -41,7 +43,13 @@ public class Segment {
             commonX = (p1 - p2) / (m2 - m1);
             commonY = (m1 * commonX + p1);
         }
-        Point intersection = new Point(commonX, commonY);
+
+        return new  Point(commonX, commonY);
+    }
+
+    public Point getIntersectionPoint(Segment other){
+        Point intersection = getIntersectionOfLine(other);
+        if (intersection == null) return null;
         Point u1 = this.getVector();
         Point v1 = new Segment(this.lowerPoint, intersection).getVector();
         Point u2 = other.getVector();
@@ -56,7 +64,7 @@ public class Segment {
         return new Point(upperPoint.getX() - lowerPoint.getX(), upperPoint.getY() - lowerPoint.getY());
     }
 
-    private double getGradient(){
+    private double getSlope(){
         if (this.upperPoint.getX() - this.lowerPoint.getX()==0) return Double.POSITIVE_INFINITY;
         return (this.upperPoint.getY() - this.lowerPoint.getY()) / (this.upperPoint.getX() - this.lowerPoint.getX());
     }
@@ -80,5 +88,18 @@ public class Segment {
         if (o == null || getClass() != o.getClass()) return false;
         Segment segment = (Segment) o;
         return upperPoint.equals(segment.upperPoint) && lowerPoint.equals(segment.lowerPoint);
+    }
+
+    @Override
+    public int compareTo(Segment o) {
+
+        double sweepLineY =  Main.getApp().getSweepLineY();
+        Segment sweepLine = new Segment(0, sweepLineY, 1, sweepLineY);
+
+        Point a = getIntersectionOfLine(sweepLine);
+        Point b = getIntersectionOfLine(sweepLine);
+        // TODO: a ou b null?
+
+        return a.compareTo(b);
     }
 }
