@@ -19,6 +19,6 @@ public class IntersectionsFinderView extends BorderPane implements Subscriber {
 
     @Override
     public void update() {
-        //TODO
+        segmentView.draw();
     }
 }

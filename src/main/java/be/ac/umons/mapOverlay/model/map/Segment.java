@@ -100,4 +100,12 @@ public class Segment implements Comparable<Segment>{
 
         return a.compareTo(b);
     }
+
+    public Point getUpperPoint() {
+        return upperPoint;
+    }
+
+    public Point getLowerPoint() {
+        return lowerPoint;
+    }
 }
