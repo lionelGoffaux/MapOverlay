@@ -2,8 +2,7 @@ package be.ac.umons.mapOverlay.view;
 
 import be.ac.umons.mapOverlay.controller.ButtonController;
 import be.ac.umons.mapOverlay.model.IntersectionsFinder;
-import be.ac.umons.mapOverlay.model.map.Segment;
-import be.ac.umons.mapOverlay.utils.observer.Subscriber;
+import be.ac.umons.utils.observer.Subscriber;
 import javafx.scene.layout.BorderPane;
 
 public class IntersectionsFinderView extends BorderPane implements Subscriber {

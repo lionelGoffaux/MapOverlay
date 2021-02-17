@@ -3,7 +3,7 @@ package be.ac.umons.mapOverlay.model;
 import be.ac.umons.mapOverlay.model.map.Map;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
-import be.ac.umons.mapOverlay.utils.observer.Publisher;
+import be.ac.umons.utils.observer.Publisher;
 import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;

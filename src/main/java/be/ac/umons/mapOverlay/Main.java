@@ -23,9 +23,9 @@ public class Main extends Application {
         ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
         IntersectionsFinderView intersectionsFinderView = new IntersectionsFinderView(buttonController, intersectionsFinder);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Map Overlay");
         primaryStage.setScene(new Scene(intersectionsFinderView));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
 
         intersectionsFinder.subscribe(intersectionsFinderView);
 
@@ -38,8 +38,5 @@ public class Main extends Application {
 
     public double getSweepLineY(){
         return intersectionsFinder.getSweepLineY();
-    }
-    public IntersectionsFinder getIntersectionsFinder() {
-        return intersectionsFinder;
     }
 }

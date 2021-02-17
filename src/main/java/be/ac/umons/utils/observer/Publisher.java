@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.utils.observer;
+package be.ac.umons.utils.observer;
 
 import java.util.ArrayList;
 
