@@ -16,8 +16,12 @@ public class IntersectionsFinderView extends BorderPane implements Subscriber {
         setRight(new ControlView(buttonController));
     }
 
+    public SegmentView getSegmentView() {
+        return segmentView;
+    }
+
     @Override
     public void update() {
-        segmentView.draw();
+        segmentView.redraw();
     }
 }
