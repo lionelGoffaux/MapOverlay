@@ -2,6 +2,7 @@ package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.Main;
 import be.ac.umons.mapOverlay.model.map.Segment;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -19,6 +20,10 @@ class SweepLineStatusTest {
         Mockito.when(main.getSweepLineY()).thenReturn(.75);
     }
 
+    @AfterEach
+    public void finish(){
+        theMock.close();
+    }
 
     @Test
     public void insertLeafTest(){
@@ -75,7 +80,7 @@ class SweepLineStatusTest {
         assertEquals(segment2, tree.getRight().getData());
         assertEquals(segment4, tree.getRight().getRight().getData());
         assertEquals(segment2, tree.getRight().getLeft().getData());
-        assertEquals(segment3, tree.getLeft().getLeft().getData());
+        assertEquals(segment1, tree.getLeft().getLeft().getData());
         assertEquals(segment3, tree.getLeft().getRight().getData());
     }
 

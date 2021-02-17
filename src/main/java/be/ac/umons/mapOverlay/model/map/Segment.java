@@ -2,7 +2,6 @@ package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.Main;
 
-import static java.lang.Math.abs;
 import be.ac.umons.mapOverlay.Utils;
 
 public class Segment implements Comparable<Segment>{
@@ -98,6 +97,6 @@ public class Segment implements Comparable<Segment>{
         Point b = o.getIntersectionOfLine(sweepLine);
         // TODO: a ou b null?
 
-        return a.compareTo(b);
+        return -a.compareTo(b);
     }
 }

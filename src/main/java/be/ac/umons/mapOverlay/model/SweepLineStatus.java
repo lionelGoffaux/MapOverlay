@@ -20,7 +20,7 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         else	{
             if (getHeight() == 1)
                 insertLeaf(d);
-            else if (getData().compareTo(d) > 0)
+            else if (getData().compareTo(d) < 0)
                 getRight().insert(d);
             else
                 getLeft().insert(d);
@@ -29,7 +29,7 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
     }
 
     public void insertLeaf(D d){
-        if(this.getData().compareTo(d) > 0){
+        if(this.getData().compareTo(d) < 0){
             this.setLeft(new SweepLineStatus<>(this.getData()));
             this.setRight(new SweepLineStatus<>(d));
         }

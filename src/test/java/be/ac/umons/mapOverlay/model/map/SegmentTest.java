@@ -1,7 +1,8 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.Main;
-import be.ac.umons.mapOverlay.model.IntersectionsFinder;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -9,6 +10,20 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SegmentTest {
+
+    public Main main = Mockito.mock(Main.class);
+    public MockedStatic<Main> theMock = Mockito.mockStatic(Main.class);
+
+    @BeforeEach
+    public void setup(){
+        theMock.when(Main::getApp).thenReturn(main);
+        Mockito.when(main.getSweepLineY()).thenReturn(.75);
+    }
+
+    @AfterEach
+    public void finish(){
+        theMock.close();
+    }
 
     @Test
     public void parallelIntersectTest(){
@@ -70,13 +85,7 @@ class SegmentTest {
 
     @Test
     public void comparisonTest(){
-        Main main = Mockito.mock(Main.class);
-        MockedStatic<Main> theMock = Mockito.mockStatic(Main.class);
-        theMock.when(Main::getApp).thenReturn(main);
-        IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
-        Mockito.when(main.getIntersectionsFinder()).thenReturn(intersectionsFinder);
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(1.5);
-
+        Mockito.when(main.getSweepLineY()).thenReturn(1.75);
 
         Segment segment1 = new Segment(1, 2, 3, 0);
         Segment segment2 = new Segment(1, 0, 3, 2);

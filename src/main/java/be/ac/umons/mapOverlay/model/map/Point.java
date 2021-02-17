@@ -1,5 +1,4 @@
 package be.ac.umons.mapOverlay.model.map;
-import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 import be.ac.umons.mapOverlay.Utils;
 
@@ -59,5 +58,4 @@ public class Point implements Comparable<Point> {
                 '}';
     }
 
-     //TODO code redundancy
 }
