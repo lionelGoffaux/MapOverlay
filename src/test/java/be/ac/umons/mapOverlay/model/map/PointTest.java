@@ -57,6 +57,17 @@ class PointTest {
         assertFalse(point1.isOriented(point2));
     }
 
+    @Test
+    public void comparisonTest(){
+        Point point1 = new Point(1, 1);
+        Point point2 = new Point(0, 0);
+        Point point3 = new Point(1, 1);
+        Point point4 = new Point(0, 1);
+        assertEquals(1, point1.compareTo(point2));
+        assertEquals(0, point1.compareTo(point3));
+        assertEquals(1, point4.compareTo(point1));
+    }
+
 
 
 }
