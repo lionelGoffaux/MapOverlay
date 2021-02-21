@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay;
+package be.ac.umons.utils;
 
 import static java.lang.Math.abs;
 

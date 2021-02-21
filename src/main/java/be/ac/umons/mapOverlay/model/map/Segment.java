@@ -2,7 +2,7 @@ package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.Main;
 
-import be.ac.umons.mapOverlay.Utils;
+import be.ac.umons.utils.Utils;
 
 public class Segment implements Comparable<Segment>{
     private Point upperPoint, lowerPoint;
