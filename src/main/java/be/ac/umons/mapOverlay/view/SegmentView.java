@@ -1,24 +1,28 @@
 package be.ac.umons.mapOverlay.view;
 
-import be.ac.umons.mapOverlay.Main;
-import be.ac.umons.mapOverlay.controller.SegmentController;
+import be.ac.umons.mapOverlay.controller.SegmentMousePressedController;
+import be.ac.umons.mapOverlay.controller.SegmentMouseReleasedController;
 import be.ac.umons.mapOverlay.model.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
-import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class SegmentView extends Canvas {
 
     private final IntersectionsFinder intersectionsFinder;
     private double scale = 1;
 
-    public SegmentView(double width, double height, IntersectionsFinder intersectionsFinder) {
+    public SegmentView(double width, double height, IntersectionsFinder intersectionsFinder,
+                       SegmentMousePressedController smpc, SegmentMouseReleasedController smrc) {
         super(width, height);
         this.intersectionsFinder = intersectionsFinder;
+        setOnMousePressed(smpc);
+        setOnMouseReleased(smrc);
+    }
+
+    public double getScale() {
+        return scale;
     }
 
     private void rescale(){

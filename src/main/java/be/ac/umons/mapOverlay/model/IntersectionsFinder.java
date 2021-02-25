@@ -13,6 +13,7 @@ public class IntersectionsFinder extends Publisher {
     private AVLTree<Point> qTree = new AVLTree<Point>();
     private double sweepLineY = 0;
     private Map map = new Map();
+    private Point newSegmentStart;
 
     public Map getMap() {
         return map;
@@ -29,5 +30,19 @@ public class IntersectionsFinder extends Publisher {
 
     public double getSweepLineY() {
         return sweepLineY;
+    }
+
+    public void setNewSegmentStart(double x, double y){
+        this.newSegmentStart = new Point(x, y);
+    }
+
+    public void setNewSegmentEnd(double x, double y) {
+        map.addSegment(new Segment(newSegmentStart, new Point(x, y)));
+        notifySubscribers();
+    }
+
+    public void createNewMap() {
+        map = new Map();
+        notifySubscribers();
     }
 }
