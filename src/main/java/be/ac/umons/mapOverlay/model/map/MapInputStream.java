@@ -6,7 +6,9 @@ import java.util.Locale;
 
 public class MapInputStream {
 
-    private Scanner scanner;
+    private final Scanner scanner;
+    private final FileReader fileReader;
+
 
     public MapInputStream(String path) throws FileNotFoundException {
         this(new FileReader(path));
@@ -17,6 +19,7 @@ public class MapInputStream {
     }
 
     public MapInputStream(FileReader fileReader){
+        this.fileReader = fileReader;
         scanner = new Scanner(fileReader);
         scanner.useLocale(Locale.US);
     }
@@ -34,5 +37,9 @@ public class MapInputStream {
             map.addSegment(readSegment());
         }
         return map;
+    }
+
+    public void close() throws IOException {
+        this.fileReader.close();
     }
 }
