@@ -40,6 +40,9 @@ public class ButtonController implements EventHandler<ActionEvent> {
                     }catch (FileNotFoundException e) {return;}
                 }
                 break;
+            case "new":
+                intersectionsFinder.createNewMap();
+                break;
             default:
                 System.out.println("ko");
                 break;

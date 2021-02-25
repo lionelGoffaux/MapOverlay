@@ -40,4 +40,9 @@ public class IntersectionsFinder extends Publisher {
         map.addSegment(new Segment(newSegmentStart, new Point(x, y)));
         notifySubscribers();
     }
+
+    public void createNewMap() {
+        map = new Map();
+        notifySubscribers();
+    }
 }
