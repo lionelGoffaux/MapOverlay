@@ -2,8 +2,11 @@ package be.ac.umons.mapOverlay;
 
 import be.ac.umons.mapOverlay.controller.ButtonController;
 import be.ac.umons.mapOverlay.controller.SegmentController;
+import be.ac.umons.mapOverlay.controller.SegmentMousePressedController;
+import be.ac.umons.mapOverlay.controller.SegmentMouseReleasedController;
 import be.ac.umons.mapOverlay.model.IntersectionsFinder;
 import be.ac.umons.mapOverlay.view.IntersectionsFinderView;
+import be.ac.umons.mapOverlay.view.SegmentView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,6 +18,7 @@ public class Main extends Application {
     private final IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
     private Stage primaryStage;
     private SegmentController segmentController;
+    private IntersectionsFinderView intersectionsFinderView;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,8 +28,11 @@ public class Main extends Application {
     public void start(Stage primaryStage){
         app = this;
         this.primaryStage = primaryStage;
+        SegmentMousePressedController smpc = new SegmentMousePressedController(intersectionsFinder);
+        SegmentMouseReleasedController smrc = new SegmentMouseReleasedController(intersectionsFinder);
         ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
-        IntersectionsFinderView intersectionsFinderView = new IntersectionsFinderView(buttonController, intersectionsFinder);
+        intersectionsFinderView = new IntersectionsFinderView(buttonController,
+                intersectionsFinder, smpc, smrc);
 
         primaryStage.setTitle("Map Overlay");
         primaryStage.setScene(new Scene(intersectionsFinderView));
@@ -55,5 +62,9 @@ public class Main extends Application {
 
     public SegmentController getSegmentController() {
         return segmentController;
+    }
+
+    public IntersectionsFinderView getIntersectionsFinderView() {
+        return intersectionsFinderView;
     }
 }

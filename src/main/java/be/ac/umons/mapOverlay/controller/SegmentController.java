@@ -5,10 +5,12 @@ import be.ac.umons.mapOverlay.view.SegmentView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
 
-public class SegmentController implements ChangeListener<Number>, EventHandler<ScrollEvent> {
+public class SegmentController implements ChangeListener<Number>, EventHandler<ScrollEvent>{
 
     private final SegmentView segmentView;
 
