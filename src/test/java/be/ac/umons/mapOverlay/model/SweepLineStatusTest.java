@@ -84,4 +84,49 @@ class SweepLineStatusTest {
         assertEquals(segment3, tree.getLeft().getRight().getData());
     }
 
+    @Test
+    public void suppressionTest(){
+        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        Segment segment1 = new Segment(1, 3, 2, 1);
+        Segment segment2 = new Segment(1, 1, 3, 3);
+        Segment segment3 = new Segment(2, 4, 3, 1);
+        Segment segment4 = new Segment(4, 3, 5, 1);
+        tree.insert(segment1);
+        tree.insert(segment2);
+        tree.insert(segment3);
+        tree.insert(segment4);
+        tree.suppress(segment4);
+        assertEquals(segment3, tree.getData());
+        assertEquals(segment1, tree.getLeft().getData());
+        assertEquals(segment1, tree.getLeft().getLeft().getData());
+        assertEquals(segment3, tree.getLeft().getRight().getData());
+        assertEquals(segment2, tree.getRight().getData());
+        tree.suppress(segment2);
+        assertEquals(segment1, tree.getData());
+        assertEquals(segment1, tree.getLeft().getData());
+        assertEquals(segment3, tree.getRight().getData());
+        tree.suppress(segment1);
+        tree.suppress(segment3);
+    }
+
+    @Test
+    public void isLeafTest(){
+        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        Segment segment1 = new Segment(1, 3, 2, 1);
+        Segment segment2 = new Segment(1, 1, 3, 3);
+        Segment segment3 = new Segment(2, 4, 3, 1);
+        Segment segment4 = new Segment(4, 3, 5, 1);
+        tree.insert(segment1);
+        assertTrue(tree.isLeaf());
+        tree.insert(segment2);
+        assertTrue(tree.getRight().isLeaf());
+        tree.insert(segment3);
+        tree.insert(segment4);
+        assertTrue(tree.getRight().getRight().isLeaf());
+        assertFalse(tree.isLeaf());
+        assertFalse(tree.getRight().isLeaf());
+    }
+
 }

@@ -37,8 +37,8 @@ public class AVLTree<D extends Comparable> extends BSTree<D> {
 //le type AVLTree au lieu de BSTree
 	public void insertEmpty(D d) {
 		setData(d);
-		setLeft(new AVLTree());
-		setRight(new AVLTree());
+		setLeft(new AVLTree<>());
+		setRight(new AVLTree<>());
 		height = 1;
 	}
 	
