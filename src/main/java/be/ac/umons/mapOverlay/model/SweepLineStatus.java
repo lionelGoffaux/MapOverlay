@@ -1,6 +1,10 @@
 package be.ac.umons.mapOverlay.model;
 
+import be.ac.umons.mapOverlay.model.map.Point;
+import be.ac.umons.mapOverlay.model.map.Segment;
 import be.ac.umons.sdd2.AVLTree;
+
+import java.util.ArrayList;
 
 public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
 
@@ -13,6 +17,7 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         setHeight(1);
     }
 
+    //TODO: (idée) égalité -> comparer x lowerPoint
     @Override
     public void insert(D d) {
         if (isEmpty())
@@ -28,6 +33,12 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         }
     }
 
+    public void insertAll(ArrayList<D> segments){
+        for(D s: segments){
+            insert(s);
+        }
+    }
+
     public void insertLeaf(D d){
         if(this.getData().compareTo(d) < 0){
             this.setLeft(new SweepLineStatus<>(this.getData()));
@@ -40,7 +51,16 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         }
     }
 
-    // TODO : suppression
+    @Override
+    public void suppress(D d) {
+        //TODO
+    }
+
+    public void suppressAll(ArrayList<D> segments){
+        for (D s: segments) {
+            suppress(s);
+        }
+    }
 
     @Override
     public String toString() {
@@ -48,5 +68,30 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
                 "Data : " + getData() +
                 ", Height :" + getHeight() +
                 "}";
+    }
+
+    public ArrayList<D>  getL() {
+        //TODO
+        return null;
+    }
+
+    public ArrayList<D>  getC() {
+        //TODO
+        return null;
+    }
+
+    public D getLeftNeighbour(Point point) {
+        //TODO
+        return null;
+    }
+
+    public D getRightNeighbour(Point point) {
+        //TODO
+        return null;
+    }
+
+    public D getLeftNeighbour(D sp) {
+        //TODO
+        return null;
     }
 }

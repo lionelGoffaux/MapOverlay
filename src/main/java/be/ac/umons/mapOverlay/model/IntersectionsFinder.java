@@ -1,19 +1,97 @@
 package be.ac.umons.mapOverlay.model;
 
-import be.ac.umons.mapOverlay.model.map.Map;
-import be.ac.umons.mapOverlay.model.map.Point;
-import be.ac.umons.mapOverlay.model.map.Segment;
+import be.ac.umons.mapOverlay.model.map.*;
 import be.ac.umons.utils.observer.Publisher;
-import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;
 
 public class IntersectionsFinder extends Publisher {
 
-    private AVLTree<Point> qTree = new AVLTree<Point>();
-    private double sweepLineY = 0;
     private Map map = new Map();
+    private EventQueue qTree;
+    private SweepLineStatus<Segment> status;
+    private ArrayList<Point> intersection;
+
+    private double sweepLineY = 0;
+    private boolean fidingInProgress = false;
     private Point newSegmentStart;
+
+    public void stepForward(){
+        if(!fidingInProgress)
+            initFinding();
+
+        if(!qTree.isEmpty()){
+            nextEvent();
+        }
+    }
+
+    private void initFinding(){
+        fidingInProgress = true;
+        status = new SweepLineStatus<Segment>();
+        qTree = new EventQueue();
+        intersection = new ArrayList<Point>();
+
+        for (Segment s: map.getSegments()) {
+            qTree.insert(new Event(s.getUpperPoint(), s));
+            qTree.insert(new Event(s.getLowerPoint()));
+        }
+    }
+
+    private void handleEventPoint(Event e){
+        ArrayList<Segment>  u = e.getU();
+        ArrayList<Segment>  l = status.getL();
+        ArrayList<Segment>  c = status.getC();
+
+        if (u.size() + l.size() + c.size() > 1){
+            intersection.add(e.getPoint());
+        }
+
+        status.suppressAll(l);
+        status.suppressAll(c);
+
+        status.insertAll(u);
+        status.insertAll(c);
+
+        if(u.isEmpty() && c.isEmpty()){
+            Segment sl = status.getLeftNeighbour(e.getPoint());
+            Segment sr = status.getRightNeighbour(e.getPoint());
+            if (sr != null && sl != null) findNewEvent(sl, sr, e.getPoint());
+        } else {
+            Segment sp = getLeft(u, c);
+            Segment sl = status.getLeftNeighbour(sp);
+            if (sl != null) findNewEvent(sl, sp, e.getPoint());
+            Segment spp = getRight(u, c);
+            Segment sr = status.getLeftNeighbour(spp);
+            if (sr != null) findNewEvent(sr, spp, e.getPoint());
+        }
+    }
+
+    private Segment getLeft(ArrayList<Segment> u, ArrayList<Segment> c) {
+        //TODO voire ordre status
+        return null;
+    }
+
+    private Segment getRight(ArrayList<Segment> u, ArrayList<Segment> c) {
+        //TODO idem
+        return null;
+    }
+
+    private void findNewEvent(Segment sl, Segment sr, Point point) {
+        Point p = sl.getIntersectionOfLine(sr);
+        if (p.compareTo(point) > 0) qTree.insert(new Event(p));
+    }
+
+    private void nextEvent(){
+        handleEventPoint(qTree.getNextEvent());
+    }
+
+    private void findAll(){
+        if(!fidingInProgress)
+            initFinding();
+
+        while (!qTree.isEmpty())
+            nextEvent();
+    }
 
     public Map getMap() {
         return map;
@@ -37,12 +115,16 @@ public class IntersectionsFinder extends Publisher {
     }
 
     public void setNewSegmentEnd(double x, double y) {
-        map.addSegment(new Segment(newSegmentStart, new Point(x, y)));
-        notifySubscribers();
+        if(!fidingInProgress){
+            map.addSegment(new Segment(newSegmentStart, new Point(x, y)));
+            notifySubscribers();
+        }
     }
 
     public void createNewMap() {
-        map = new Map();
-        notifySubscribers();
+        if(!fidingInProgress){
+            map = new Map();
+            notifySubscribers();
+        }
     }
 }
