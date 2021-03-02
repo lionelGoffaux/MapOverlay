@@ -144,7 +144,12 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         return null;
     }
 
-    public D getLeftNeighbour(D sp) {
+    public D getLeftNeighbour(D seg) {
+        //TODO
+        return null;
+    }
+
+    public D getRightNeighbour(D seg) {
         //TODO
         return null;
     }

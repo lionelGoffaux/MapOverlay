@@ -13,11 +13,11 @@ public class IntersectionsFinder extends Publisher {
     private ArrayList<Point> intersection;
 
     private double sweepLineY = 0;
-    private boolean fidingInProgress = false;
+    private boolean findingInProgress = false;
     private Point newSegmentStart;
 
     public void stepForward(){
-        if(!fidingInProgress)
+        if(!findingInProgress)
             initFinding();
 
         if(!qTree.isEmpty()){
@@ -26,7 +26,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     private void initFinding(){
-        fidingInProgress = true;
+        findingInProgress = true;
         status = new SweepLineStatus<Segment>();
         qTree = new EventQueue();
         intersection = new ArrayList<Point>();
@@ -61,7 +61,7 @@ public class IntersectionsFinder extends Publisher {
             Segment sl = status.getLeftNeighbour(sp);
             if (sl != null) findNewEvent(sl, sp, e.getPoint());
             Segment spp = getRight(u, c);
-            Segment sr = status.getLeftNeighbour(spp);
+            Segment sr = status.getRightNeighbour(spp);
             if (sr != null) findNewEvent(sr, spp, e.getPoint());
         }
     }
@@ -86,7 +86,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     private void findAll(){
-        if(!fidingInProgress)
+        if(!findingInProgress)
             initFinding();
 
         while (!qTree.isEmpty())
@@ -115,14 +115,14 @@ public class IntersectionsFinder extends Publisher {
     }
 
     public void setNewSegmentEnd(double x, double y) {
-        if(!fidingInProgress){
+        if(!findingInProgress){
             map.addSegment(new Segment(newSegmentStart, new Point(x, y)));
             notifySubscribers();
         }
     }
 
     public void createNewMap() {
-        if(!fidingInProgress){
+        if(!findingInProgress){
             map = new Map();
             notifySubscribers();
         }
