@@ -91,6 +91,9 @@ class SegmentTest {
         Segment segment2 = new Segment(1, 0, 3, 2);
         assertEquals(-1, segment1.compareTo(segment2));
         assertEquals(1, segment2.compareTo(segment1));
+        segment1 = new Segment(1, 2, 3, 0);
+        segment2 = new Segment(2, 3, 4, 5);
+        assertEquals(-1, segment2.compareTo(segment1));
     }
 
 

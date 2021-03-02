@@ -1,7 +1,6 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.map.Point;
-import be.ac.umons.mapOverlay.model.map.Segment;
 import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;
@@ -67,8 +66,7 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
 
     @Override
     public void suppress(D d){
-        // TODO : suprresion noeud unique
-        if (!isEmpty()){
+        if (!isEmpty() && !(getHeight()==1 && !getData().equals(d))){
             if (getData().equals(d) && getHeight()==1){
                 setData(null);
                 setLeft(null);
