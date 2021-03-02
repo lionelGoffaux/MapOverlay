@@ -129,4 +129,18 @@ class SweepLineStatusTest {
         assertFalse(tree.getRight().isLeaf());
     }
 
+    @Test
+    public void suppressionOneNodeTest(){
+        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        Segment segment1 = new Segment(1, 3, 2, 1);
+        Segment segment2 = new Segment(1, 1, 3, 3);
+        tree.insert(segment1);
+        tree.suppress(segment2); // suppression when there is one node in the tree and we try to suppress a node which is not in the tree
+        tree.suppress(segment1);
+        assertNull(tree.getData());
+        assertNull(tree.getLeft());
+        assertNull(tree.getRight());
+    }
+
 }
