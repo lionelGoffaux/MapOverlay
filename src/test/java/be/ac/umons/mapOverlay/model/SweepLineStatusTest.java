@@ -27,7 +27,7 @@ class SweepLineStatusTest {
 
     @Test
     public void insertLeafTest(){
-        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(0,0 ,1,1);
         Segment segment2 = new Segment(1,0 ,0,1);
         tree.insert(segment1);
@@ -37,7 +37,7 @@ class SweepLineStatusTest {
         assertEquals(segment1, tree.getRight().getData());
 
         Mockito.when(main.getSweepLineY()).thenReturn(.1);
-        tree = new SweepLineStatus<>();
+        tree = new SweepLineStatus();
         tree.insert(segment1);
         tree.insert(segment2);
         assertEquals(segment1, tree.getData());
@@ -48,7 +48,7 @@ class SweepLineStatusTest {
     @Test
     public void insertTest(){
         Mockito.when(main.getSweepLineY()).thenReturn(2.75);
-        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
         Segment segment3 = new Segment(2, 4, 3, 1);
@@ -66,7 +66,7 @@ class SweepLineStatusTest {
     @Test
     public void insertWithRotationTest(){
         Mockito.when(main.getSweepLineY()).thenReturn(2.75);
-        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
         Segment segment3 = new Segment(2, 4, 3, 1);
@@ -87,7 +87,7 @@ class SweepLineStatusTest {
     @Test
     public void suppressionTest(){
         Mockito.when(main.getSweepLineY()).thenReturn(2.75);
-        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
         Segment segment3 = new Segment(2, 4, 3, 1);
@@ -113,7 +113,7 @@ class SweepLineStatusTest {
     @Test
     public void isLeafTest(){
         Mockito.when(main.getSweepLineY()).thenReturn(2.75);
-        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
         Segment segment3 = new Segment(2, 4, 3, 1);
@@ -132,7 +132,7 @@ class SweepLineStatusTest {
     @Test
     public void suppressionOneNodeTest(){
         Mockito.when(main.getSweepLineY()).thenReturn(2.75);
-        SweepLineStatus<Segment> tree = new SweepLineStatus<>();
+        SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
         tree.insert(segment1);

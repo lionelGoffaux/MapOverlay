@@ -9,7 +9,7 @@ public class IntersectionsFinder extends Publisher {
 
     private Map map = new Map();
     private EventQueue qTree;
-    private SweepLineStatus<Segment> status;
+    private SweepLineStatus status;
     private ArrayList<Point> intersection;
 
     private double sweepLineY = 0;
@@ -27,7 +27,7 @@ public class IntersectionsFinder extends Publisher {
 
     private void initFinding(){
         findingInProgress = true;
-        status = new SweepLineStatus<Segment>();
+        status = new SweepLineStatus();
         qTree = new EventQueue();
         intersection = new ArrayList<Point>();
 
