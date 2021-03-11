@@ -1,16 +1,17 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.map.Point;
+import be.ac.umons.mapOverlay.model.map.Segment;
 import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;
 
-public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
+public class SweepLineStatus extends AVLTree<Segment> {
 
     public SweepLineStatus(){
         super();
     }
-    public SweepLineStatus(D d, SweepLineStatus<D> l, SweepLineStatus<D> r){
+    public SweepLineStatus(Segment d, SweepLineStatus l, SweepLineStatus r){
         this();
         setData(d);
         setLeft(l);
@@ -20,7 +21,7 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
 
     //TODO: (idée) égalité -> comparer x lowerPoint
     @Override
-    public void insert(D d) {
+    public void insert(Segment d) {
         if (isEmpty())
             insertEmpty(d);
         else {
@@ -34,29 +35,29 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         }
     }
 
-    public void insertAll(ArrayList<D> segments){
-        for(D s: segments){
+    public void insertAll(ArrayList<Segment> segments){
+        for(Segment s: segments){
             insert(s);
         }
     }
 
-    public void insertLeaf(D d){
+    public void insertLeaf(Segment d){
         if(this.getData().compareTo(d) < 0){
-            this.setLeft(new SweepLineStatus<>(this.getData(), new SweepLineStatus<D>(), new SweepLineStatus<D>()));
-            this.setRight(new SweepLineStatus<>(d, new SweepLineStatus<D>(), new SweepLineStatus<D>()));
+            this.setLeft(new SweepLineStatus(this.getData(), new SweepLineStatus(), new SweepLineStatus()));
+            this.setRight(new SweepLineStatus(d, new SweepLineStatus(), new SweepLineStatus()));
         }
         else{
-            this.setRight(new SweepLineStatus<>(this.getData(), new SweepLineStatus<D>(), new SweepLineStatus<D>()));
+            this.setRight(new SweepLineStatus(this.getData(), new SweepLineStatus(), new SweepLineStatus()));
             this.setData(d);
-            this.setLeft(new SweepLineStatus<>(d, new SweepLineStatus<D>(), new SweepLineStatus<D>()));
+            this.setLeft(new SweepLineStatus(d, new SweepLineStatus(), new SweepLineStatus()));
         }
     }
 
     @Override
-    public void insertEmpty(D d) {
+    public void insertEmpty(Segment d) {
         setData(d);
-        setRight(new SweepLineStatus<>());
-        setLeft(new SweepLineStatus<>());
+        setRight(new SweepLineStatus());
+        setLeft(new SweepLineStatus());
         setHeight(1);
     }
 
@@ -65,7 +66,7 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
     }
 
     @Override
-    public void suppress(D d){
+    public void suppress(Segment d){
         if (!isEmpty() && !(getHeight()==1 && !getData().equals(d))){
             if (getData().equals(d) && getHeight()==1){
                 setData(null);
@@ -93,25 +94,25 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
     @Override
     public void suppressRoot(){
         if (balance()==0){
-            setLeft(new SweepLineStatus<>());
-            setRight(new SweepLineStatus<>());
+            setLeft(new SweepLineStatus());
+            setRight(new SweepLineStatus());
         }
     }
 
 
-    public void suppressAll(ArrayList<D> segments){
-        for (D s: segments) {
+    public void suppressAll(ArrayList<Segment> segments){
+        for (Segment s: segments) {
             suppress(s);
         }
     }
     @Override
-    public SweepLineStatus<D> getLeft() {
-        return (SweepLineStatus<D>) super.getLeft();
+    public SweepLineStatus getLeft() {
+        return (SweepLineStatus) super.getLeft();
     }
 
     @Override
-    public SweepLineStatus<D> getRight() {
-        return (SweepLineStatus<D>) super.getRight();
+    public SweepLineStatus getRight() {
+        return (SweepLineStatus) super.getRight();
     }
 
     @Override
@@ -122,32 +123,45 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
                 "}";
     }
 
-    public ArrayList<D>  getL() {
+    public ArrayList<Segment>  getL() {
         //TODO
         return null;
     }
 
-    public ArrayList<D>  getC() {
+    public ArrayList<Segment>  getC() {
         //TODO
         return null;
     }
 
-    public D getLeftNeighbour(Point point) {
+    public Segment getLeftNeighbour(Point point) {
+        //TODO
+        return getLeftNeighbour(point, null);
+    }
+
+    private Segment getLeftNeighbour(Point point, Segment segment){
+        if(isLeaf()){
+            return segment;
+        }
+        Segment s = new Segment(0, point.getY(), 1, point.getY());
+        Point p = getData().getIntersectionOfLine(s);
+        if(point.compareTo(p) <= -1) { // La droite
+
+        }
+
+        return null;
+    }
+
+    public Segment getRightNeighbour(Point point) {
         //TODO
         return null;
     }
 
-    public D getRightNeighbour(Point point) {
+    public Segment getLeftNeighbour(Segment seg) {
         //TODO
         return null;
     }
 
-    public D getLeftNeighbour(D seg) {
-        //TODO
-        return null;
-    }
-
-    public D getRightNeighbour(D seg) {
+    public Segment getRightNeighbour(Segment seg) {
         //TODO
         return null;
     }
