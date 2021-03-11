@@ -95,9 +95,22 @@ public class Segment implements Comparable<Segment>{
 
         Point a = getIntersectionOfLine(sweepLine);
         Point b = o.getIntersectionOfLine(sweepLine);
-        // TODO: a ou b null?
 
-        return -a.compareTo(b);
+        if (a == null && b == null){
+            return lowerPoint.compareTo(o.getLowerPoint());
+        } else if (a == null){
+            return 1;
+        } else if (b == null){
+            return -1;
+        }
+
+        //TODO: tester
+        int res = -a.compareTo(b);
+        if(res == 0){
+            res = lowerPoint.getX() <= o.getLowerPoint().getX()? -1: 1;
+        }
+
+        return res;
     }
 
     public Point getUpperPoint() {

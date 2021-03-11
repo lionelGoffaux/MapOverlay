@@ -18,7 +18,6 @@ public class SweepLineStatus<D extends Comparable<D>> extends AVLTree<D> {
         setHeight(1);
     }
 
-    //TODO: (idée) égalité -> comparer x lowerPoint
     @Override
     public void insert(D d) {
         if (isEmpty())

@@ -11,7 +11,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ButtonController implements EventHandler<ActionEvent> {
@@ -32,24 +31,24 @@ public class ButtonController implements EventHandler<ActionEvent> {
             case "save":
                 File saveFile = fileChooser.showSaveDialog(primaryStage);
                 if (saveFile != null){
-                    System.out.println(saveFile.getName());
                     try {
                         MapOutputStream mos = new MapOutputStream(saveFile);
                         mos.writeMap(intersectionsFinder.getMap());
                         mos.close();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        e.printStackTrace();//TODO: error message
                     }
                 }
                 break;
             case "open":
                 File openedFile = fileChooser.showOpenDialog(primaryStage);
                 if (openedFile != null){
-                    System.out.println(openedFile.getName());
                     try {
-                        Map map = new MapInputStream(openedFile).readMap(); // TODO: close
+                        MapInputStream mis = new MapInputStream(openedFile);
+                        Map map = mis.readMap();
                         intersectionsFinder.setMap(map);
-                    }catch (FileNotFoundException e) {return;}
+                        mis.close();
+                    }catch (IOException e) {return;} //TODO: error message
                 }
                 break;
             case "new":

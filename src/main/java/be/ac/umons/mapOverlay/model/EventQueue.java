@@ -5,10 +5,9 @@ import be.ac.umons.sdd2.AVLTree;
 
 public class EventQueue extends AVLTree<Event> {
 
-    //TODO egalité
-
     public Event getNextEvent() {
-        //TODO
-        return null;
+        Event min =  searchMin();
+        suppress(min);
+        return min;
     }
 }

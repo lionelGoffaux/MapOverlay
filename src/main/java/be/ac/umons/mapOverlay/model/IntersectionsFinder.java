@@ -67,13 +67,25 @@ public class IntersectionsFinder extends Publisher {
     }
 
     private Segment getLeft(ArrayList<Segment> u, ArrayList<Segment> c) {
-        //TODO voire ordre status
-        return null;
+        Segment l = null;
+        for(Segment s: u)
+            if(l == null || l.compareTo(s) >= 0) l = s;
+
+        for(Segment s: c)
+            if(l == null || l.compareTo(s) >= 0) l = s;
+
+        return l;
     }
 
     private Segment getRight(ArrayList<Segment> u, ArrayList<Segment> c) {
-        //TODO idem
-        return null;
+        Segment r = null;
+        for(Segment s: u)
+            if(r == null || r.compareTo(s) <= 0) r = s;
+
+        for(Segment s: c)
+            if(r == null || r.compareTo(s) <= 0) r = s;
+
+        return r;
     }
 
     private void findNewEvent(Segment sl, Segment sr, Point point) {
