@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.Main;
+import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -143,4 +144,114 @@ class SweepLineStatusTest {
         assertNull(tree.getRight());
     }
 
+    @Test
+    public void getLeftNeighbourTest() {
+        SweepLineStatus tree = new SweepLineStatus();
+        // point 0
+        Segment segment1 = new Segment(1,6,2,2);
+        //  point 1
+        Segment segment2 = new Segment(4,6,3,1);
+        // point 2
+        Segment segment3 = new Segment(5,5,6,1);
+        // point 3
+        tree.insert(segment1);
+        tree.insert(segment2);
+        tree.insert(segment3);
+        Point p0 = new Point(0,3);
+        Point p1 = new Point(3,3);
+        Point p2 = new Point(5, 3);
+        Point p3 = new Point(7, 3);
+//        System.out.println("======Point 0========");
+//        System.out.println(tree.getLeftNeighbour(p0));
+//        System.out.println("======Point 1========");
+//        System.out.println(tree.getLeftNeighbour(p1));
+//        System.out.println("======Point 2========");
+//        System.out.println(tree.getLeftNeighbour(p2));
+//        System.out.println("======Point 3========");
+//        System.out.println(tree.getLeftNeighbour(p3));
+        assertNull(tree.getLeftNeighbour(p0));
+        assertEquals(segment1, tree.getLeftNeighbour(p1));
+        assertEquals(segment2, tree.getLeftNeighbour(p2));
+        assertEquals(segment3, tree.getLeftNeighbour(p3));
+
+    }
+
+    @Test
+    public void getRightNeighbourTest(){
+        SweepLineStatus tree = new SweepLineStatus();
+        // point 0
+        Segment segment1 = new Segment(1,6,2,2);
+        //  point 1
+        Segment segment2 = new Segment(4,6,3,1);
+        // point 2
+        Segment segment3 = new Segment(5,5,6,1);
+        // point 3
+        tree.insert(segment3);
+        tree.insert(segment2);
+        tree.insert(segment1);
+        Point p0 = new Point(0,3);
+        Point p1 = new Point(3,3);
+        Point p2 = new Point(5, 3);
+        Point p3 = new Point(7, 3);
+//        System.out.println("======Point 0========");
+//        System.out.println(tree.getRightNeighbour(p0));
+//        System.out.println("======Point 1========");
+//        System.out.println(tree.getRightNeighbour(p1));
+//        System.out.println("======Point 2========");
+//        System.out.println(tree.getRightNeighbour(p2));
+//        System.out.println("======Point 3========");
+//        System.out.println(tree.getRightNeighbour(p3));
+        assertEquals(segment1, tree.getRightNeighbour(p0));
+        assertEquals(segment2, tree.getRightNeighbour(p1));
+        assertEquals(segment3, tree.getRightNeighbour(p2));
+        assertNull(tree.getRightNeighbour(p3));
+    }
+
+    @Test
+    public void getRightSegmentNeighbourTest() {
+        Mockito.when(main.getSweepLineY()).thenReturn(3.);
+        SweepLineStatus tree = new SweepLineStatus();
+        // point 0
+        Segment segment1 = new Segment(1,6,2,2);
+        //  point 1
+        Segment segment2 = new Segment(4,6,3,1);
+        // point 2
+        Segment segment3 = new Segment(5,5,6,1);
+        // point 3
+        tree.insert(segment3);
+        tree.insert(segment2);
+        tree.insert(segment1);
+        Segment s0 = new Segment(0, 6, 1, 2);
+        Segment s1 = new Segment(2, 6, 3, 2);
+        Segment s2 = new Segment(5, 6, 4, 2);
+        Segment s3 = new Segment(7, 5, 7, 1);
+        assertEquals(segment1, tree.getRightNeighbour(s0));
+        assertEquals(segment2, tree.getRightNeighbour(s1));
+        assertEquals(segment3, tree.getRightNeighbour(s2));
+        assertNull(tree.getRightNeighbour(s3));
+    }
+
+    @Test
+    public void getLeftSegmentNeighbourTest() {
+        Mockito.when(main.getSweepLineY()).thenReturn(3.);
+        SweepLineStatus tree = new SweepLineStatus();
+        // point 0
+        Segment segment1 = new Segment(1,6,2,2);
+        //  point 1
+        Segment segment2 = new Segment(4,6,3,1);
+        // point 2
+        Segment segment3 = new Segment(5,5,6,1);
+        // point 3
+        tree.insert(segment1);
+        tree.insert(segment2);
+        tree.insert(segment3);
+        Segment s0 = new Segment(0, 6, 1, 2);
+        Segment s1 = new Segment(2, 6, 3, 2);
+        Segment s2 = new Segment(5, 6, 4, 2);
+        Segment s3 = new Segment(7, 5, 7, 1);
+        assertNull(tree.getLeftNeighbour(s0));
+        assertEquals(segment1, tree.getLeftNeighbour(s1));
+        assertEquals(segment2, tree.getLeftNeighbour(s2));
+        assertEquals(segment3, tree.getLeftNeighbour(s3));
+    }
 }
