@@ -123,9 +123,14 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 "}";
     }
 
-    public ArrayList<Segment>  getL() {
-        //TODO
-        return null;
+    public ArrayList<Segment> getL(Point point) {
+        ArrayList<Segment> res = new ArrayList<>();
+        for (Segment seg : getLeaves()){
+            if(seg.getLowerPoint().equals(point)){
+                res.add(seg);
+            }
+        }
+        return res;
     }
 
     public ArrayList<Segment>  getC() {
@@ -186,4 +191,18 @@ public class SweepLineStatus extends AVLTree<Segment> {
         Point p = seg.getIntersectionOfLine(s);
         return getRightNeighbour(p, null);
     }
+
+    public ArrayList<Segment> getLeaves() {
+        ArrayList<Segment> list = new ArrayList<>();
+        if(isEmpty()){
+            return list;
+        } else if(isLeaf()){
+            list.add(getData());
+        } else{
+            list.addAll(getLeft().getLeaves());
+            list.addAll(getRight().getLeaves());
+        }
+        return list;
+    }
+
 }

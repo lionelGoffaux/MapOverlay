@@ -39,7 +39,7 @@ public class IntersectionsFinder extends Publisher {
 
     private void handleEventPoint(Event e){
         ArrayList<Segment>  u = e.getU();
-        ArrayList<Segment>  l = status.getL();
+        ArrayList<Segment>  l = status.getL(e.getPoint());
         ArrayList<Segment>  c = status.getC();
 
         if (u.size() + l.size() + c.size() > 1){
