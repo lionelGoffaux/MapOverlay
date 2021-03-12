@@ -24,15 +24,13 @@ public class SweepLineStatus extends AVLTree<Segment> {
     public void insert(Segment d) {
         if (isEmpty())
             insertEmpty(d);
-        else {
-            if (getHeight() == 1)
-                insertLeaf(d);
-            else if (getData().compareTo(d) < 0)
-                getRight().insert(d);
-            else
-                getLeft().insert(d);
-            equilibrate();
-        }
+        else if (getHeight() == 1)
+            insertLeaf(d);
+        else if (getData().compareTo(d) < 0)
+            getRight().insert(d);
+        else
+            getLeft().insert(d);
+        equilibrate();
     }
 
     public void insertAll(ArrayList<Segment> segments){
