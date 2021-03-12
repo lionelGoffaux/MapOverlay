@@ -38,6 +38,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     private void handleEventPoint(Event e){
+        sweepLineY = e.getPoint().getY();
         ArrayList<Segment>  u = e.getU();
         ArrayList<Segment>  l = status.getL();
         ArrayList<Segment>  c = status.getC();
