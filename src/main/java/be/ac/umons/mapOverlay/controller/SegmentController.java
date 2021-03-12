@@ -5,8 +5,6 @@ import be.ac.umons.mapOverlay.view.SegmentView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
 
@@ -28,7 +26,7 @@ public class SegmentController implements ChangeListener<Number>, EventHandler<S
 
     @Override
     public void handle(ScrollEvent event) {
-        segmentView.changeScale(event.getDeltaY()*0.01);
+        segmentView.changeScale(event.getDeltaY()*0.014);
         segmentView.draw();
     }
 }

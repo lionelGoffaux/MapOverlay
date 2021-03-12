@@ -97,6 +97,32 @@ class SegmentTest {
     }
 
     @Test
+    public void orderReversedTest(){
+        Segment s1 = new Segment(0,0,1,1);
+        Segment s2 = new Segment(1, 0, 0, 1);
+
+        Mockito.when(main.getSweepLineY()).thenReturn(0.25);
+        assertEquals(-1, s1.compareTo(s2));
+
+        Mockito.when(main.getSweepLineY()).thenReturn(0.5);
+        assertEquals(1, s1.compareTo(s2));
+
+        Mockito.when(main.getSweepLineY()).thenReturn(0.75);
+        assertEquals(1, s1.compareTo(s2));
+    }
+
+    @Test
+    public void horizontalSegmentOrder(){
+        Segment s1 = new Segment(0,0,1,1);
+        Segment s2 = new Segment(0.5, 0.5, 1, 0.5);
+        Segment s3 = new Segment(0.5, 0.5, 1.1, 0.5);;
+
+        Mockito.when(main.getSweepLineY()).thenReturn(0.5);
+        assertEquals(-1, s1.compareTo(s2));
+        assertEquals(1, s3.compareTo(s2));
+    }
+
+    @Test
     public void containsTest() {
         Segment seg = new Segment(0,0,2,2);
         Point p1 = new Point(1,1);

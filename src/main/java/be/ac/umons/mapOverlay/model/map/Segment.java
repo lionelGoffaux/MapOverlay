@@ -110,10 +110,9 @@ public class Segment implements Comparable<Segment>{
             return -1;
         }
 
-        //TODO: tester
         int res = -a.compareTo(b);
         if(res == 0){
-            res = lowerPoint.getX() <= o.getLowerPoint().getX()? -1: 1;
+            res = lowerPoint.getX() <= o.getLowerPoint().getX()? 1: -1;
         }
 
         return res;
