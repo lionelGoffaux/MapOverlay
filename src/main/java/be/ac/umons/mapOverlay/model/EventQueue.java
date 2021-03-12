@@ -5,9 +5,14 @@ import be.ac.umons.sdd2.AVLTree;
 
 public class EventQueue extends AVLTree<Event> {
 
+    @Override
+    public void insert(Event event) {
+        Event current = getData();
+        if(current.equals(event)) current.updateSegments(event.getU());
+        else super.insert(event);
+    }
+
     public Event getNextEvent() {
-        Event min =  searchMin();
-        suppress(min);
-        return min;
+        return suppressMin();
     }
 }
