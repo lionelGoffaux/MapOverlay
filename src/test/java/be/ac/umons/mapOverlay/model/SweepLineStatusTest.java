@@ -298,4 +298,21 @@ class SweepLineStatusTest {
         assertTrue(tree.getL(p2).contains(segment3));
         assertTrue(tree.getL(p3).contains(segment4));
     }
+
+    @Test
+    public void getCTest() {
+        SweepLineStatus tree = new SweepLineStatus();
+        Segment segment0 = new Segment(0, 0, 2, 2);
+        Segment segment1 = new Segment(0, 2, 2, 0);
+        tree.insert(segment0);
+        tree.insert(segment1);
+        Point p1 = new Point(1,1);
+        Point p2 = new Point(1.75, 1.75);
+        ArrayList<Segment> list = tree.getC(p1);
+        assertTrue(list.contains(segment0));
+        assertTrue(list.contains(segment1));
+        list = tree.getC(p2);
+        assertTrue(list.contains(segment0));
+        assertFalse(list.contains(segment1));
+    }
 }

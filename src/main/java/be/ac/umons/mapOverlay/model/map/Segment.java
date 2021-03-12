@@ -60,6 +60,12 @@ public class Segment implements Comparable<Segment>{
                 && u2.getNorm() >= v2.getNorm() ? intersection : null;
     }
 
+    public boolean contains(Point point){
+        Point u1 = this.getVector();
+        Point v1 = new Segment(this.lowerPoint, point).getVector();
+        return u1.isOriented(v1) && u1.getNorm() >= v1.getNorm();
+    }
+
     private Point getVector(){
         return new Point(upperPoint.getX() - lowerPoint.getX(), upperPoint.getY() - lowerPoint.getY());
     }

@@ -133,9 +133,14 @@ public class SweepLineStatus extends AVLTree<Segment> {
         return res;
     }
 
-    public ArrayList<Segment>  getC() {
-        //TODO
-        return null;
+    public ArrayList<Segment> getC(Point point) {
+        ArrayList<Segment> res = new ArrayList<>();
+        for (Segment seg : getLeaves()){
+            if(seg.contains(point)){
+                res.add(seg);
+            }
+        }
+        return res;
     }
 
     public Segment getLeftNeighbour(Point point) {
