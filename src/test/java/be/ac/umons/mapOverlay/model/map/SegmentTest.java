@@ -96,6 +96,19 @@ class SegmentTest {
         assertEquals(-1, segment2.compareTo(segment1));
     }
 
-
+    @Test
+    public void containsTest() {
+        Segment seg = new Segment(0,0,2,2);
+        Point p1 = new Point(1,1);
+        Point p2 = new Point(0,0);
+        Point p3 = new Point(2,2);
+        Point p4 = new Point(3,3);
+        Point p5 = new Point(100, 8);
+        assertTrue(seg.contains(p1));
+        assertTrue(seg.contains(p2));
+        assertTrue(seg.contains(p3));
+        assertFalse(seg.contains(p4));
+        assertFalse(seg.contains(p5));
+    }
 
 }

@@ -1,5 +1,6 @@
 package be.ac.umons.mapOverlay.model;
 
+import be.ac.umons.mapOverlay.Main;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
 import be.ac.umons.sdd2.AVLTree;
@@ -122,46 +123,91 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 "}";
     }
 
-    public ArrayList<Segment>  getL() {
-        //TODO
-        return null;
+    public ArrayList<Segment> getL(Point point) {
+        ArrayList<Segment> res = new ArrayList<>();
+        for (Segment seg : getLeaves()){
+            if(seg.getLowerPoint().equals(point)){
+                res.add(seg);
+            }
+        }
+        return res;
     }
 
-    public ArrayList<Segment>  getC() {
-        //TODO
-        return null;
+    public ArrayList<Segment> getC(Point point) {
+        ArrayList<Segment> res = new ArrayList<>();
+        for (Segment seg : getLeaves()){
+            if(seg.contains(point)){
+                res.add(seg);
+            }
+        }
+        return res;
     }
 
     public Segment getLeftNeighbour(Point point) {
-        //TODO
         return getLeftNeighbour(point, null);
     }
 
     private Segment getLeftNeighbour(Point point, Segment segment){
-        if(isLeaf()){
-            return segment;
-        }
         Segment s = new Segment(0, point.getY(), 1, point.getY());
         Point p = getData().getIntersectionOfLine(s);
-        if(point.compareTo(p) <= -1) { // La droite
-
+        if(point.compareTo(p) > 0) { // Le segment est à droite du point
+            if( isLeaf()){
+                return segment;
+            }
+            return getLeft().getLeftNeighbour(point, segment);
+        } else { // Le segment est à gauche du point
+            if(isLeaf()){
+                return getData();
+            }
+            return getRight().getLeftNeighbour(point, getData());
         }
-
-        return null;
     }
 
     public Segment getRightNeighbour(Point point) {
-        //TODO
-        return null;
+        return getRightNeighbour(point, null);
+    }
+
+    private Segment getRightNeighbour(Point point, Segment segment){
+        Segment s = new Segment(0, point.getY(), 1, point.getY());
+        Point p = getData().getIntersectionOfLine(s);
+        if(point.compareTo(p) > 0) { // Le segment est à droite du point
+            if( isLeaf()){
+                return getData();
+            }
+            return getLeft().getRightNeighbour(point, getData());
+        } else { // Le segment est à gauche du point
+            if(isLeaf()){
+                return segment;
+            }
+            return getRight().getRightNeighbour(point, segment);
+        }
     }
 
     public Segment getLeftNeighbour(Segment seg) {
-        //TODO
-        return null;
+        double sweepLineY =  Main.getApp().getSweepLineY();
+        Segment s = new Segment(0, sweepLineY, 1, sweepLineY);
+        Point p = seg.getIntersectionOfLine(s);
+        return getLeftNeighbour(p, null);
     }
 
     public Segment getRightNeighbour(Segment seg) {
-        //TODO
-        return null;
+        double sweepLineY =  Main.getApp().getSweepLineY();
+        Segment s = new Segment(0, sweepLineY, 1, sweepLineY);
+        Point p = seg.getIntersectionOfLine(s);
+        return getRightNeighbour(p, null);
     }
+
+    public ArrayList<Segment> getLeaves() {
+        ArrayList<Segment> list = new ArrayList<>();
+        if(isEmpty()){
+            return list;
+        } else if(isLeaf()){
+            list.add(getData());
+        } else{
+            list.addAll(getLeft().getLeaves());
+            list.addAll(getRight().getLeaves());
+        }
+        return list;
+    }
+
 }

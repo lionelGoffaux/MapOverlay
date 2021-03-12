@@ -40,8 +40,8 @@ public class IntersectionsFinder extends Publisher {
     private void handleEventPoint(Event e){
         sweepLineY = e.getPoint().getY();
         ArrayList<Segment>  u = e.getU();
-        ArrayList<Segment>  l = status.getL();
-        ArrayList<Segment>  c = status.getC();
+        ArrayList<Segment>  l = status.getL(e.getPoint());
+        ArrayList<Segment>  c = status.getC(e.getPoint());
 
         if (u.size() + l.size() + c.size() > 1){
             intersection.add(e.getPoint());
