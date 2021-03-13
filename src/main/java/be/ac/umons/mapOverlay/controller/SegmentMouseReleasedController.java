@@ -1,7 +1,6 @@
 package be.ac.umons.mapOverlay.controller;
 
-import be.ac.umons.mapOverlay.Main;
-import be.ac.umons.mapOverlay.model.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +14,7 @@ public class SegmentMouseReleasedController extends SegmentMouseController imple
     public void handle(MouseEvent event) {
         if (event.getButton() == MouseButton.PRIMARY){
             double x = event.getX(), y = event.getY();
-            intersectionsFinder.setNewSegmentEnd(scale(x), scale(y));
+            intersectionsFinder.endNewSegment(scale(x), scale(y));
         }
     }
 }

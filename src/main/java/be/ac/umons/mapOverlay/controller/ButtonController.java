@@ -1,6 +1,6 @@
 package be.ac.umons.mapOverlay.controller;
 
-import be.ac.umons.mapOverlay.model.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Map;
 import be.ac.umons.mapOverlay.model.map.MapInputStream;
 import be.ac.umons.mapOverlay.model.map.MapOutputStream;

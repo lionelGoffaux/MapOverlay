@@ -2,7 +2,7 @@ package be.ac.umons.mapOverlay.view;
 
 import be.ac.umons.mapOverlay.controller.SegmentMousePressedController;
 import be.ac.umons.mapOverlay.controller.SegmentMouseReleasedController;
-import be.ac.umons.mapOverlay.model.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
 import javafx.scene.canvas.Canvas;
