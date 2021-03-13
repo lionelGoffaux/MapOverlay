@@ -4,6 +4,8 @@ import be.ac.umons.mapOverlay.Main;
 
 import be.ac.umons.utils.Utils;
 
+import java.util.ArrayList;
+
 public class Segment implements Comparable<Segment>{
     private Point upperPoint, lowerPoint;
 
@@ -124,5 +126,20 @@ public class Segment implements Comparable<Segment>{
 
     public Point getLowerPoint() {
         return lowerPoint;
+    }
+
+    public static Segment getLeftest(ArrayList<Segment> segments){
+        Segment l = null;
+        for(Segment s: segments)
+            if(l == null || l.compareTo(s) >= 0) l = s;
+
+        return l;
+    }
+
+    public static Segment getRightest(ArrayList<Segment> segments){
+        Segment r = null;
+        for(Segment s: segments)
+            if(r == null || r.compareTo(s) <= 0) r = s;
+        return r;
     }
 }

@@ -53,40 +53,21 @@ public class IntersectionsFinder extends Publisher {
         status.insertAll(u);
         status.insertAll(c);
 
-        if(u.isEmpty() && c.isEmpty()){
+        ArrayList<Segment> uc = new ArrayList<Segment>(u);
+        uc.addAll(c);
+
+        if(uc.isEmpty()){
             Segment sl = status.getLeftNeighbour(e.getPoint());
             Segment sr = status.getRightNeighbour(e.getPoint());
             if (sr != null && sl != null) findNewEvent(sl, sr, e.getPoint());
         } else {
-            Segment sp = getLeft(u, c);
+            Segment sp = Segment.getLeftest(uc);
             Segment sl = status.getLeftNeighbour(sp);
             if (sl != null) findNewEvent(sl, sp, e.getPoint());
-            Segment spp = getRight(u, c);
+            Segment spp = Segment.getRightest(uc);
             Segment sr = status.getRightNeighbour(spp);
             if (sr != null) findNewEvent(sr, spp, e.getPoint());
         }
-    }
-
-    private Segment getLeft(ArrayList<Segment> u, ArrayList<Segment> c) {
-        Segment l = null;
-        for(Segment s: u)
-            if(l == null || l.compareTo(s) >= 0) l = s;
-
-        for(Segment s: c)
-            if(l == null || l.compareTo(s) >= 0) l = s;
-
-        return l;
-    }
-
-    private Segment getRight(ArrayList<Segment> u, ArrayList<Segment> c) {
-        Segment r = null;
-        for(Segment s: u)
-            if(r == null || r.compareTo(s) <= 0) r = s;
-
-        for(Segment s: c)
-            if(r == null || r.compareTo(s) <= 0) r = s;
-
-        return r;
     }
 
     private void findNewEvent(Segment sl, Segment sr, Point point) {
@@ -98,7 +79,7 @@ public class IntersectionsFinder extends Publisher {
         handleEventPoint(qTree.getNextEvent());
     }
 
-    private void findAll(){
+    public void findAll(){
         if(!findingInProgress)
             initFinding();
 
