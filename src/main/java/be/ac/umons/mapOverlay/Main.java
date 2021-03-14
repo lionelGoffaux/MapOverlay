@@ -13,7 +13,6 @@ public class Main extends Application {
 
     private final IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
     private Stage primaryStage;
-    private SegmentController segmentController;
     private IntersectionsFinderView intersectionsFinderView;
 
     public static void main(String[] args) {
@@ -24,19 +23,23 @@ public class Main extends Application {
     public void start(Stage primaryStage){
         app = this;
         this.primaryStage = primaryStage;
-        SegmentMouseController segmentMouseController = new SegmentMouseController(intersectionsFinder);
-        ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
-        intersectionsFinderView = new IntersectionsFinderView(buttonController,
-                intersectionsFinder, segmentMouseController);
+
+
+        intersectionsFinderView = new IntersectionsFinderView(intersectionsFinder);
 
         primaryStage.setTitle("Map Overlay");
         primaryStage.setScene(new Scene(intersectionsFinderView));
         primaryStage.setResizable(true);
 
-        segmentController = new SegmentController(intersectionsFinderView.getSegmentView());
-        primaryStage.widthProperty().addListener(segmentController);
-        primaryStage.heightProperty().addListener(segmentController);
-        intersectionsFinderView.setOnScroll(segmentController);
+        ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
+        ScrollController scrollController = new ScrollController(intersectionsFinderView.getSegmentView(), intersectionsFinder);
+        SegmentMouseController segmentMouseController = new SegmentMouseController(intersectionsFinder);
+
+        primaryStage.widthProperty().addListener(scrollController);
+        primaryStage.heightProperty().addListener(scrollController);
+        intersectionsFinderView.setOnScroll(scrollController);
+        intersectionsFinderView.setMouseController(segmentMouseController);
+        intersectionsFinderView.setButtonController(buttonController);
 
         intersectionsFinder.subscribe(intersectionsFinderView);
 

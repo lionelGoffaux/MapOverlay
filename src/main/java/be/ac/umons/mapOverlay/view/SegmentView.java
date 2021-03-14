@@ -12,12 +12,9 @@ public class SegmentView extends Canvas {
     private final IntersectionsFinder intersectionsFinder;
     private double scale = 1;
 
-    public SegmentView(double width, double height, IntersectionsFinder intersectionsFinder,
-                       SegmentMouseController smc) {
+    public SegmentView(double width, double height, IntersectionsFinder intersectionsFinder) {
         super(width, height);
         this.intersectionsFinder = intersectionsFinder;
-        setOnMousePressed(smc);
-        setOnMouseReleased(smc);
     }
 
     public double getScale() {

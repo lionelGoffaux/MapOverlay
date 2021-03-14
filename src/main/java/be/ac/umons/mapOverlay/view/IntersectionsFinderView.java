@@ -9,13 +9,23 @@ import javafx.scene.layout.BorderPane;
 public class IntersectionsFinderView extends BorderPane implements Subscriber {
 
     private final SegmentView segmentView;
+    private final ControlView controlView;
 
-    public IntersectionsFinderView(ButtonController buttonController, IntersectionsFinder intersectionsFinder,
-                                   SegmentMouseController smc) {
+    public IntersectionsFinderView(IntersectionsFinder intersectionsFinder) {
         super();
-        this.segmentView = new SegmentView(600, 600, intersectionsFinder, smc);
+        segmentView = new SegmentView(600, 600, intersectionsFinder);
+        controlView = new ControlView();
         setCenter(segmentView);
-        setRight(new ControlView(buttonController));
+        setRight(controlView);
+    }
+
+    public void setMouseController(SegmentMouseController segmentMouseController){
+        segmentView.setOnMousePressed(segmentMouseController);
+        segmentView.setOnMouseReleased(segmentMouseController);
+    }
+
+    public void setButtonController(ButtonController buttonController){
+        controlView.setButtonController(buttonController);
     }
 
     public SegmentView getSegmentView() {
