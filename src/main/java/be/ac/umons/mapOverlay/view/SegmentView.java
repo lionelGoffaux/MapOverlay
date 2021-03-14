@@ -1,7 +1,6 @@
 package be.ac.umons.mapOverlay.view;
 
-import be.ac.umons.mapOverlay.controller.SegmentMousePressedController;
-import be.ac.umons.mapOverlay.controller.SegmentMouseReleasedController;
+import be.ac.umons.mapOverlay.controller.SegmentMouseController;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
@@ -14,11 +13,11 @@ public class SegmentView extends Canvas {
     private double scale = 1;
 
     public SegmentView(double width, double height, IntersectionsFinder intersectionsFinder,
-                       SegmentMousePressedController smpc, SegmentMouseReleasedController smrc) {
+                       SegmentMouseController smc) {
         super(width, height);
         this.intersectionsFinder = intersectionsFinder;
-        setOnMousePressed(smpc);
-        setOnMouseReleased(smrc);
+        setOnMousePressed(smc);
+        setOnMouseReleased(smc);
     }
 
     public double getScale() {

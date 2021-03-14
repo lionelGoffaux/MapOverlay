@@ -1,9 +1,6 @@
 package be.ac.umons.mapOverlay;
 
-import be.ac.umons.mapOverlay.controller.ButtonController;
-import be.ac.umons.mapOverlay.controller.SegmentController;
-import be.ac.umons.mapOverlay.controller.SegmentMousePressedController;
-import be.ac.umons.mapOverlay.controller.SegmentMouseReleasedController;
+import be.ac.umons.mapOverlay.controller.*;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.view.IntersectionsFinderView;
 import javafx.application.Application;
@@ -27,11 +24,10 @@ public class Main extends Application {
     public void start(Stage primaryStage){
         app = this;
         this.primaryStage = primaryStage;
-        SegmentMousePressedController smpc = new SegmentMousePressedController(intersectionsFinder);
-        SegmentMouseReleasedController smrc = new SegmentMouseReleasedController(intersectionsFinder);
+        SegmentMouseController segmentMouseController = new SegmentMouseController(intersectionsFinder);
         ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
         intersectionsFinderView = new IntersectionsFinderView(buttonController,
-                intersectionsFinder, smpc, smrc);
+                intersectionsFinder, segmentMouseController);
 
         primaryStage.setTitle("Map Overlay");
         primaryStage.setScene(new Scene(intersectionsFinderView));
@@ -57,10 +53,6 @@ public class Main extends Application {
 
     public Stage getPrimaryStage() {
         return primaryStage;
-    }
-
-    public SegmentController getSegmentController() {
-        return segmentController;
     }
 
     public IntersectionsFinderView getIntersectionsFinderView() {
