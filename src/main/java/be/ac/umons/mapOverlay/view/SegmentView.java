@@ -3,6 +3,7 @@ package be.ac.umons.mapOverlay.view;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
+import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -58,5 +59,24 @@ public class SegmentView extends Canvas { //TODO: refactor scale system and upda
 
     public void draw(){
         drawMap();
+    }
+
+    public void update(IntersectionsFinderEvent e){
+        switch (e){
+            case START:
+                break;
+            case STEP_FORWARD:
+                break;
+            case FIND_ALL:
+                break;
+            case SET_MAP:
+                break;
+            case START_NEW_SEGMENT:
+                break;
+            case END_NEW_MAP:
+                break;
+            case CREATE_NEW_MAP:
+                break;
+        }
     }
 }

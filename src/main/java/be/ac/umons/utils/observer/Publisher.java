@@ -9,9 +9,9 @@ public abstract class Publisher {
         subscribers.add(sub);
     }
 
-    protected void notifySubscribers(){
+    protected void notifySubscribers(IntersectionsFinderEvent e){
         for (Subscriber sub: subscribers) {
-            sub.update();
+            sub.update(e);
         }
     }
 }
