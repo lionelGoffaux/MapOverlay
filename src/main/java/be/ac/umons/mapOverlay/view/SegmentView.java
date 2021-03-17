@@ -7,7 +7,7 @@ import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-public class SegmentView extends Canvas { //TODO: refactor scale system and update
+public class SegmentView extends Canvas { //TODO: refactor scale system
 
     private final IntersectionsFinder intersectionsFinder;
     private double scale = 1;
@@ -29,16 +29,12 @@ public class SegmentView extends Canvas { //TODO: refactor scale system and upda
         scale = getHeight()/(max*1.2);
     }
 
-    public void redraw(){
-        rescale();
-        draw();
-    }
 
 
-    private void drawMap(){
+    public void drawMap(){
         GraphicsContext context = getGraphicsContext2D();
         context.setLineWidth(3.0);
-
+        // TODO : drawsweepline DORIANO
 
         context.clearRect(0, 0, getWidth(), getHeight());
 
@@ -57,25 +53,18 @@ public class SegmentView extends Canvas { //TODO: refactor scale system and upda
         scale+=delta;
     }
 
-    public void draw(){
-        drawMap();
-    }
 
     public void update(IntersectionsFinderEvent e){
         switch (e){
-            case START:
-                break;
-            case STEP_FORWARD:
-                break;
-            case FIND_ALL:
-                break;
+            case END_NEW_SEGMENT:
             case SET_MAP:
-                break;
-            case START_NEW_SEGMENT:
-                break;
-            case END_NEW_MAP:
-                break;
             case CREATE_NEW_MAP:
+                rescale();
+
+            case START:
+            case STEP_FORWARD:
+            case FIND_ALL:
+                drawMap();
                 break;
         }
     }

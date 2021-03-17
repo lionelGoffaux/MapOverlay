@@ -28,9 +28,9 @@ public class MapOutputFile { // TODO: tests
 
     private void writeSegment(Segment s) throws IOException {
         Point upperPoint = s.getUpperPoint();
-        fileWriter.write(Double.toString(upperPoint.getX()) + " " + Double.toString(upperPoint.getY()) + " ");
+        fileWriter.write(upperPoint.getX() + " " + upperPoint.getY() + " ");
         Point lowerPoint = s.getLowerPoint();
-        fileWriter.write(Double.toString(lowerPoint.getX()) + " " + Double.toString(lowerPoint.getY()) + "\n");
+        fileWriter.write(lowerPoint.getX() + " " + lowerPoint.getY() + "\n");
     }
 
     public void close() throws IOException{

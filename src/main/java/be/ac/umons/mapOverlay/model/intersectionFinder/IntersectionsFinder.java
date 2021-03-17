@@ -63,7 +63,7 @@ public class IntersectionsFinder extends Publisher {
 
     public void endNewSegment(double x, double y) {
         state.endNewSegment(this, x, y);
-        notifySubscribers(IntersectionsFinderEvent.END_NEW_MAP);
+        notifySubscribers(IntersectionsFinderEvent.END_NEW_SEGMENT);
     }
 
     public void createNewMap() {

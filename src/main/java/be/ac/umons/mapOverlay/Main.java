@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     // TODO: refactor model package
-    // TODO: refactor tests
+    // TODO: refactor tests package
+    // TODO: tests EventQueue
     // TODO: doc
 
 

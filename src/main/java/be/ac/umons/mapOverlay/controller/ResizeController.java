@@ -20,6 +20,6 @@ public class ResizeController implements ChangeListener<Number> {
     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
         segmentView.setHeight(primaryStage.getHeight());
         segmentView.setWidth(primaryStage.getWidth()-100);
-        segmentView.draw();
+        segmentView.drawMap();
     }
 }
