@@ -12,9 +12,8 @@ public class Main extends Application {
     // TODO: refactor tests
     // TODO: doc
 
-    private static Main app; // TODO: remove singleton
 
-    private final IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+    private final IntersectionsFinder intersectionsFinder = IntersectionsFinder.getInstance();
     private Stage primaryStage;
     private IntersectionsFinderView intersectionsFinderView;
 
@@ -24,7 +23,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage){ // TODO: clean controllers
-        app = this;
         this.primaryStage = primaryStage;
 
 
@@ -36,8 +34,8 @@ public class Main extends Application {
 
         ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
         ScrollController scrollController = new ScrollController(intersectionsFinderView);
-        ResizeController resizeController = new ResizeController(intersectionsFinderView);
-        MouseClickController mouseClickController = new MouseClickController(intersectionsFinder);
+        ResizeController resizeController = new ResizeController(intersectionsFinderView, this);
+        MouseClickController mouseClickController = new MouseClickController(intersectionsFinder, this);
 
         primaryStage.widthProperty().addListener(resizeController);
         primaryStage.heightProperty().addListener(resizeController);
@@ -48,10 +46,6 @@ public class Main extends Application {
         intersectionsFinder.subscribe(intersectionsFinderView);
 
         primaryStage.show();
-    }
-
-    public static Main getApp() {
-        return app;
     }
 
     public double getSweepLineY(){

@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.Main;
+import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SegmentTest {
 
-    public Main main = Mockito.mock(Main.class);
-    public MockedStatic<Main> theMock = Mockito.mockStatic(Main.class);
+    public IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
+    public MockedStatic<IntersectionsFinder> theMock = Mockito.mockStatic(IntersectionsFinder.class);
 
     @BeforeEach
     public void setup(){
-        theMock.when(Main::getApp).thenReturn(main);
-        Mockito.when(main.getSweepLineY()).thenReturn(.75);
+        theMock.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(.75);
     }
 
     @AfterEach
@@ -85,7 +86,7 @@ class SegmentTest {
 
     @Test
     public void comparisonTest(){
-        Mockito.when(main.getSweepLineY()).thenReturn(1.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(1.75);
 
         Segment segment1 = new Segment(1, 2, 3, 0);
         Segment segment2 = new Segment(1, 0, 3, 2);
@@ -101,13 +102,13 @@ class SegmentTest {
         Segment s1 = new Segment(0,0,1,1);
         Segment s2 = new Segment(1, 0, 0, 1);
 
-        Mockito.when(main.getSweepLineY()).thenReturn(0.25);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.25);
         assertEquals(-1, s1.compareTo(s2));
 
-        Mockito.when(main.getSweepLineY()).thenReturn(0.5);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.5);
         assertEquals(1, s1.compareTo(s2));
 
-        Mockito.when(main.getSweepLineY()).thenReturn(0.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.75);
         assertEquals(1, s1.compareTo(s2));
     }
 
@@ -117,7 +118,7 @@ class SegmentTest {
         Segment s2 = new Segment(0.5, 0.5, 1, 0.5);
         Segment s3 = new Segment(0.5, 0.5, 1.1, 0.5);;
 
-        Mockito.when(main.getSweepLineY()).thenReturn(0.5);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.5);
         assertEquals(-1, s1.compareTo(s2));
         assertEquals(1, s3.compareTo(s2));
     }

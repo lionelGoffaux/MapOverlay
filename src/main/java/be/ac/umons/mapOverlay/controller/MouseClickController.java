@@ -10,13 +10,14 @@ import javafx.scene.input.MouseEvent;
 public class MouseClickController implements EventHandler<MouseEvent> {
 
     protected final IntersectionsFinder intersectionsFinder;
+    private final Main app;
 
-    public MouseClickController(IntersectionsFinder intersectionsFinder){
+    public MouseClickController(IntersectionsFinder intersectionsFinder, Main app){
         this.intersectionsFinder =  intersectionsFinder;
+        this.app = app;
     }
 
     private double scale(double x){ // TODO: move to view
-        Main app = Main.getApp();
         SegmentView segmentView = app.getIntersectionsFinderView().getSegmentView();
         return x/segmentView.getScale();
     }

@@ -2,6 +2,7 @@ package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.Main;
 
+import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.utils.Utils;
 
 import java.util.ArrayList;
@@ -98,7 +99,7 @@ public class Segment implements Comparable<Segment>{
     @Override
     public int compareTo(Segment o) {
 
-        double sweepLineY =  Main.getApp().getSweepLineY();
+        double sweepLineY =  IntersectionsFinder.getInstance().getSweepLineY();
         Segment sweepLine = new Segment(0, sweepLineY, 1, sweepLineY);
 
         Point a = getIntersectionOfLine(sweepLine);

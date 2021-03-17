@@ -10,14 +10,16 @@ import javafx.stage.Stage;
 public class ResizeController implements ChangeListener<Number> {
 
     private final SegmentView segmentView;
+    private final Main app;
 
-    public ResizeController(IntersectionsFinderView intersectionsFinderView) {
+    public ResizeController(IntersectionsFinderView intersectionsFinderView, Main app) {
         this.segmentView = intersectionsFinderView.getSegmentView();
+        this.app = app;
     }
 
     @Override
     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-        Stage primaryStage = Main.getApp().getPrimaryStage();
+        Stage primaryStage = app.getPrimaryStage();
         segmentView.setHeight(primaryStage.getHeight());
         segmentView.setWidth(primaryStage.getWidth()-100);
         segmentView.draw();

@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.Main;
+import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Point;
 import be.ac.umons.mapOverlay.model.map.Segment;
 import org.junit.jupiter.api.AfterEach;
@@ -14,13 +15,13 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SweepLineStatusTest {
-    public Main main = Mockito.mock(Main.class);
-    public MockedStatic<Main> theMock = Mockito.mockStatic(Main.class);
+    public IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
+    public MockedStatic<IntersectionsFinder> theMock = Mockito.mockStatic(IntersectionsFinder.class);
 
     @BeforeEach
     public void setup(){
-        theMock.when(Main::getApp).thenReturn(main);
-        Mockito.when(main.getSweepLineY()).thenReturn(.75);
+        theMock.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(.75);
     }
 
     @AfterEach
@@ -39,7 +40,7 @@ class SweepLineStatusTest {
         assertEquals(segment2, tree.getLeft().getData());
         assertEquals(segment1, tree.getRight().getData());
 
-        Mockito.when(main.getSweepLineY()).thenReturn(.1);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(.1);
         tree = new SweepLineStatus();
         tree.insert(segment1);
         tree.insert(segment2);
@@ -50,7 +51,7 @@ class SweepLineStatusTest {
 
     @Test
     public void insertTest(){
-        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -68,7 +69,7 @@ class SweepLineStatusTest {
 
     @Test
     public void insertWithRotationTest(){
-        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -89,7 +90,7 @@ class SweepLineStatusTest {
 
     @Test
     public void suppressionTest(){
-        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -115,7 +116,7 @@ class SweepLineStatusTest {
 
     @Test
     public void isLeafTest(){
-        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -134,7 +135,7 @@ class SweepLineStatusTest {
 
     @Test
     public void suppressionOneNodeTest(){
-        Mockito.when(main.getSweepLineY()).thenReturn(2.75);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -211,7 +212,7 @@ class SweepLineStatusTest {
 
     @Test
     public void getRightSegmentNeighbourTest() {
-        Mockito.when(main.getSweepLineY()).thenReturn(3.);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(3.);
         SweepLineStatus tree = new SweepLineStatus();
         // point 0
         Segment segment1 = new Segment(1,6,2,2);
@@ -235,7 +236,7 @@ class SweepLineStatusTest {
 
     @Test
     public void getLeftSegmentNeighbourTest() {
-        Mockito.when(main.getSweepLineY()).thenReturn(3.);
+        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(3.);
         SweepLineStatus tree = new SweepLineStatus();
         // point 0
         Segment segment1 = new Segment(1,6,2,2);
