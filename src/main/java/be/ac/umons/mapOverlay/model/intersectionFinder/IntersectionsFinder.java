@@ -3,6 +3,7 @@ package be.ac.umons.mapOverlay.model.intersectionFinder;
 import be.ac.umons.mapOverlay.model.EventQueue;
 import be.ac.umons.mapOverlay.model.SweepLineStatus;
 import be.ac.umons.mapOverlay.model.map.*;
+import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import be.ac.umons.utils.observer.Publisher;
 
 import java.util.ArrayList;
@@ -37,37 +38,37 @@ public class IntersectionsFinder extends Publisher {
 
     public void start(){
         state.start(this);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.START);
     }
 
     public void stepForward(){
         state.stepForward(this);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.STEP_FORWARD);
     }
 
     public void findAll(){
         state.findAll(this);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.FIND_ALL);
     }
 
     public void setMap(Map map) {
         state.setMap(this, map);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.SET_MAP);
     }
 
     public void startNewSegment(double x, double y){
         state.startNewSegment(this, x, y);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.START_NEW_SEGMENT);
     }
 
     public void endNewSegment(double x, double y) {
         state.endNewSegment(this, x, y);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.END_NEW_SEGMENT);
     }
 
     public void createNewMap() {
         state.newMap(this);
-        notifySubscribers();
+        notifySubscribers(IntersectionsFinderEvent.CREATE_NEW_MAP);
     }
 
     public double getSweepLineY() {
