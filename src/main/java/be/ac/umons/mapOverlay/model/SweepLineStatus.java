@@ -121,7 +121,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 "}";
     }
 
-    public ArrayList<Segment> getL(Point point) {
+    public ArrayList<Segment> getL(Point point) { // TODO: better solution?
         ArrayList<Segment> res = new ArrayList<>();
         for (Segment seg : getLeaves()){
             if(seg.getLowerPoint().equals(point)){
@@ -131,7 +131,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
         return res;
     }
 
-    public ArrayList<Segment> getC(Point point) {
+    public ArrayList<Segment> getC(Point point) { // TODO: better solution?
         ArrayList<Segment> res = new ArrayList<>();
         for (Segment seg : getLeaves()){
             if(seg.contains(point)){

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class TestMapInputStream {
+public class TestMapInputFile {
 
     @Test
     public void readMapTest() throws  IOException {
@@ -14,7 +14,7 @@ public class TestMapInputStream {
         expected.add(new Segment(1, 2, 3, 4));
         expected.add(new Segment(4, 3, 2, 1));
 
-        MapInputStream mis = new MapInputStream("cartes/test.txt");
+        MapInputFile mis = new MapInputFile("cartes/test.txt");
         Map map = mis.readMap();
         assertEquals(expected, map.getSegments());
     }

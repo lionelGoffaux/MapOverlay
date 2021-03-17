@@ -4,21 +4,21 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.Locale;
 
-public class MapInputStream {
+public class MapInputFile {
 
     private final Scanner scanner;
     private final FileReader fileReader;
 
 
-    public MapInputStream(String path) throws FileNotFoundException {
+    public MapInputFile(String path) throws FileNotFoundException {
         this(new FileReader(path));
     }
 
-    public MapInputStream(File file) throws  FileNotFoundException {
+    public MapInputFile(File file) throws  FileNotFoundException {
         this(new FileReader(file));
     }
 
-    public MapInputStream(FileReader fileReader){
+    public MapInputFile(FileReader fileReader){
         this.fileReader = fileReader;
         scanner = new Scanner(fileReader);
         scanner.useLocale(Locale.US);

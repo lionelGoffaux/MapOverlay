@@ -18,7 +18,7 @@ public class Segment implements Comparable<Segment>{
         lowerPoint = p1.isUpperThan(p2) ? p2: p1;
     }
 
-    public Point getIntersectionOfLine(Segment other){
+    public Point getIntersectionOfLine(Segment other){ //TODO:refactor
         if(this.upperPoint.equals(other.upperPoint) || this.upperPoint.equals(other.lowerPoint)){
             return new Point(this.upperPoint.getX(), this.upperPoint.getY());
         }
@@ -49,7 +49,7 @@ public class Segment implements Comparable<Segment>{
         return new  Point(commonX, commonY);
     }
 
-    public Point getIntersectionPoint(Segment other){
+    public Point getIntersectionPoint(Segment other){ // TODO: refactor
         Point intersection = getIntersectionOfLine(other);
         if (intersection == null) return null;
         Point u1 = this.getVector();
@@ -62,7 +62,7 @@ public class Segment implements Comparable<Segment>{
                 && u2.getNorm() >= v2.getNorm() ? intersection : null;
     }
 
-    public boolean contains(Point point){
+    public boolean contains(Point point){ // TODO: refactor
         Point u1 = this.getVector();
         Point v1 = new Segment(this.lowerPoint, point).getVector();
         return u1.isOriented(v1) && u1.getNorm() >= v1.getNorm();

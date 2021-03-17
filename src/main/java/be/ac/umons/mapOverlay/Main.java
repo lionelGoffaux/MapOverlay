@@ -8,8 +8,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    // TODO: refactor model package
+    // TODO: refactor tests
+    // TODO: doc
 
-    private static Main app;
+    private static Main app; // TODO: remove singleton
 
     private final IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
     private Stage primaryStage;
@@ -20,7 +23,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage){ // TODO: clean controllers
         app = this;
         this.primaryStage = primaryStage;
 
@@ -32,13 +35,14 @@ public class Main extends Application {
         primaryStage.setResizable(true);
 
         ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
-        ScrollController scrollController = new ScrollController(intersectionsFinderView.getSegmentView(), intersectionsFinder);
-        SegmentMouseController segmentMouseController = new SegmentMouseController(intersectionsFinder);
+        ScrollController scrollController = new ScrollController(intersectionsFinderView);
+        ResizeController resizeController = new ResizeController(intersectionsFinderView);
+        MouseClickController mouseClickController = new MouseClickController(intersectionsFinder);
 
-        primaryStage.widthProperty().addListener(scrollController);
-        primaryStage.heightProperty().addListener(scrollController);
+        primaryStage.widthProperty().addListener(resizeController);
+        primaryStage.heightProperty().addListener(resizeController);
         intersectionsFinderView.setOnScroll(scrollController);
-        intersectionsFinderView.setMouseController(segmentMouseController);
+        intersectionsFinderView.setMouseController(mouseClickController);
         intersectionsFinderView.setButtonController(buttonController);
 
         intersectionsFinder.subscribe(intersectionsFinderView);

@@ -4,19 +4,19 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class MapOutputStream { // TODO: tester
+public class MapOutputFile { // TODO: tests
 
     private final FileWriter fileWriter;
 
-    public MapOutputStream(String path) throws IOException {
+    public MapOutputFile(String path) throws IOException {
         this(new FileWriter("path"));
     }
 
-    public MapOutputStream(File file) throws IOException {
+    public MapOutputFile(File file) throws IOException {
         this(new FileWriter(file));
     }
 
-    public MapOutputStream(FileWriter fileWriter){
+    public MapOutputFile(FileWriter fileWriter){
         this.fileWriter = fileWriter;
     }
 

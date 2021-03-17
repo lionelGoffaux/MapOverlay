@@ -2,8 +2,8 @@ package be.ac.umons.mapOverlay.controller;
 
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Map;
-import be.ac.umons.mapOverlay.model.map.MapInputStream;
-import be.ac.umons.mapOverlay.model.map.MapOutputStream;
+import be.ac.umons.mapOverlay.model.map.MapInputFile;
+import be.ac.umons.mapOverlay.model.map.MapOutputFile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -32,7 +32,7 @@ public class ButtonController implements EventHandler<ActionEvent> {
                 File saveFile = fileChooser.showSaveDialog(primaryStage);
                 if (saveFile != null){
                     try {
-                        MapOutputStream mos = new MapOutputStream(saveFile);
+                        MapOutputFile mos = new MapOutputFile(saveFile);
                         mos.writeMap(intersectionsFinder.getMap());
                         mos.close();
                     } catch (IOException e) {
@@ -44,7 +44,7 @@ public class ButtonController implements EventHandler<ActionEvent> {
                 File openedFile = fileChooser.showOpenDialog(primaryStage);
                 if (openedFile != null){
                     try {
-                        MapInputStream mis = new MapInputStream(openedFile);
+                        MapInputFile mis = new MapInputFile(openedFile);
                         Map map = mis.readMap();
                         intersectionsFinder.setMap(map);
                         mis.close();
