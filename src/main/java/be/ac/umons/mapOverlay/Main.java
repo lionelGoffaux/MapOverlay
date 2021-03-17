@@ -34,8 +34,9 @@ public class Main extends Application {
 
         ButtonController buttonController = new ButtonController(primaryStage, intersectionsFinder);
         ScrollController scrollController = new ScrollController(intersectionsFinderView);
-        ResizeController resizeController = new ResizeController(intersectionsFinderView, this);
-        MouseClickController mouseClickController = new MouseClickController(intersectionsFinder, this);
+        ResizeController resizeController = new ResizeController(primaryStage, intersectionsFinderView);
+        MouseClickController mouseClickController = new MouseClickController(intersectionsFinder,
+                intersectionsFinderView);
 
         primaryStage.widthProperty().addListener(resizeController);
         primaryStage.heightProperty().addListener(resizeController);
@@ -46,10 +47,6 @@ public class Main extends Application {
         intersectionsFinder.subscribe(intersectionsFinderView);
 
         primaryStage.show();
-    }
-
-    public double getSweepLineY(){
-        return intersectionsFinder.getSweepLineY();
     }
 
     public Stage getPrimaryStage() {

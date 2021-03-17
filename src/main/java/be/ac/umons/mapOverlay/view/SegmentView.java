@@ -16,8 +16,8 @@ public class SegmentView extends Canvas { //TODO: refactor scale system and upda
         this.intersectionsFinder = intersectionsFinder;
     }
 
-    public double getScale() {
-        return scale;
+    public double scale(double x){
+        return x/scale;
     }
 
     private void rescale(){
