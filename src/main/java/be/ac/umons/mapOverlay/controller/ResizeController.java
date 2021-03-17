@@ -1,6 +1,5 @@
 package be.ac.umons.mapOverlay.controller;
 
-import be.ac.umons.mapOverlay.Main;
 import be.ac.umons.mapOverlay.view.IntersectionsFinderView;
 import be.ac.umons.mapOverlay.view.SegmentView;
 import javafx.beans.value.ChangeListener;
@@ -10,16 +9,15 @@ import javafx.stage.Stage;
 public class ResizeController implements ChangeListener<Number> {
 
     private final SegmentView segmentView;
-    private final Main app;
+    private final Stage primaryStage;
 
-    public ResizeController(IntersectionsFinderView intersectionsFinderView, Main app) {
+    public ResizeController(Stage primaryStage, IntersectionsFinderView intersectionsFinderView) {
         this.segmentView = intersectionsFinderView.getSegmentView();
-        this.app = app;
+        this.primaryStage = primaryStage;
     }
 
     @Override
     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-        Stage primaryStage = app.getPrimaryStage();
         segmentView.setHeight(primaryStage.getHeight());
         segmentView.setWidth(primaryStage.getWidth()-100);
         segmentView.draw();
