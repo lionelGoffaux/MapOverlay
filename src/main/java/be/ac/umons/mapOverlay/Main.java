@@ -12,21 +12,14 @@ public class Main extends Application {
     // TODO: refactor tests
     // TODO: doc
 
-
-    private final IntersectionsFinder intersectionsFinder = IntersectionsFinder.getInstance();
-    private Stage primaryStage;
-    private IntersectionsFinderView intersectionsFinderView;
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage){ // TODO: clean controllers
-        this.primaryStage = primaryStage;
-
-
-        intersectionsFinderView = new IntersectionsFinderView(intersectionsFinder);
+        IntersectionsFinder intersectionsFinder = IntersectionsFinder.getInstance();
+        IntersectionsFinderView intersectionsFinderView = new IntersectionsFinderView(intersectionsFinder);
 
         primaryStage.setTitle("Map Overlay");
         primaryStage.setScene(new Scene(intersectionsFinderView));
@@ -47,13 +40,5 @@ public class Main extends Application {
         intersectionsFinder.subscribe(intersectionsFinderView);
 
         primaryStage.show();
-    }
-
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    public IntersectionsFinderView getIntersectionsFinderView() {
-        return intersectionsFinderView;
     }
 }
