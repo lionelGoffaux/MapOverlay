@@ -10,14 +10,14 @@ import javafx.scene.layout.BorderPane;
 public class IntersectionsFinderView extends BorderPane implements Subscriber {
 
     private final SegmentView segmentView;
-    private final ControlView controlView;
+    private final ButtonView buttonView;
 
     public IntersectionsFinderView(IntersectionsFinder intersectionsFinder) {
         super();
         segmentView = new SegmentView(600, 600, intersectionsFinder);
-        controlView = new ControlView();
+        buttonView = new ButtonView();
         setCenter(segmentView);
-        setRight(controlView);
+        setRight(buttonView);
     }
 
     public void setMouseController(MouseClickController mouseClickController){
@@ -26,7 +26,7 @@ public class IntersectionsFinderView extends BorderPane implements Subscriber {
     }
 
     public void setButtonController(ButtonController buttonController){
-        controlView.setButtonController(buttonController);
+        buttonView.setButtonController(buttonController);
     }
 
     public SegmentView getSegmentView() {
