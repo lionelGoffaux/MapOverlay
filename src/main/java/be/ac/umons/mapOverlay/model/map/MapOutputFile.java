@@ -1,5 +1,8 @@
 package be.ac.umons.mapOverlay.model.map;
 
+import be.ac.umons.mapOverlay.model.geometry.Point;
+import be.ac.umons.mapOverlay.model.geometry.Segment;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

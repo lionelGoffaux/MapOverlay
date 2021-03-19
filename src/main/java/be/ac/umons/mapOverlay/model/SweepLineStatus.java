@@ -1,8 +1,8 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
-import be.ac.umons.mapOverlay.model.map.Point;
-import be.ac.umons.mapOverlay.model.map.Segment;
+import be.ac.umons.mapOverlay.model.geometry.Point;
+import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;

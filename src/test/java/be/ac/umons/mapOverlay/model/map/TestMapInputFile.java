@@ -1,5 +1,6 @@
 package be.ac.umons.mapOverlay.model.map;
 
+import be.ac.umons.mapOverlay.model.geometry.Segment;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

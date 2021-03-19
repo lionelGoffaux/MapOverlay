@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model.map;
 
-import be.ac.umons.mapOverlay.Main;
+import be.ac.umons.mapOverlay.model.geometry.Point;
+import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

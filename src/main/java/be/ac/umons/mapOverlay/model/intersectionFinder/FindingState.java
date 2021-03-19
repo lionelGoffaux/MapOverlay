@@ -2,10 +2,10 @@ package be.ac.umons.mapOverlay.model.intersectionFinder;
 
 import be.ac.umons.mapOverlay.model.EventQueue;
 import be.ac.umons.mapOverlay.model.SweepLineStatus;
-import be.ac.umons.mapOverlay.model.map.Event;
+import be.ac.umons.mapOverlay.model.Event;
 import be.ac.umons.mapOverlay.model.map.Map;
-import be.ac.umons.mapOverlay.model.map.Point;
-import be.ac.umons.mapOverlay.model.map.Segment;
+import be.ac.umons.mapOverlay.model.geometry.Point;
+import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
 

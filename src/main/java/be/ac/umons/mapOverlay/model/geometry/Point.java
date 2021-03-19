@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model.map;
+package be.ac.umons.mapOverlay.model.geometry;
 import static java.lang.Math.sqrt;
 import be.ac.umons.utils.Utils;
 

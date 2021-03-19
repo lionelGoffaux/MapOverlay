@@ -1,6 +1,4 @@
-package be.ac.umons.mapOverlay.model.map;
-
-import be.ac.umons.mapOverlay.Main;
+package be.ac.umons.mapOverlay.model.geometry;
 
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.utils.Utils;
