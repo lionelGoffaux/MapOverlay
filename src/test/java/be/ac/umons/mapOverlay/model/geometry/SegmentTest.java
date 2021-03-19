@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model.map;
+package be.ac.umons.mapOverlay.model.geometry;
 
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
