@@ -7,8 +7,10 @@ public class EventQueue extends AVLTree<Event> {
 
     @Override
     public void insert(Event event) {
-        Event current = getData();
-        if(current.equals(event)) current.updateSegments(event.getU());
+        if (!isEmpty()) {
+            Event current = getData();
+            if (current.equals(event)) current.updateSegments(event.getU());
+        }
         else super.insert(event);
     }
 

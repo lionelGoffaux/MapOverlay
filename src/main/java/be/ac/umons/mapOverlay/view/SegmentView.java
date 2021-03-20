@@ -6,6 +6,7 @@ import be.ac.umons.mapOverlay.model.map.Segment;
 import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class SegmentView extends Canvas { //TODO: refactor scale system
 
@@ -38,7 +39,10 @@ public class SegmentView extends Canvas { //TODO: refactor scale system
 
         context.clearRect(0, 0, getWidth(), getHeight());
 
-
+        double sweepLineY = IntersectionsFinder.getInstance().getSweepLineY()*scale;
+        context.setStroke(Color.RED);
+        context.strokeLine(0, sweepLineY, getWidth(), sweepLineY);
+        context.setStroke(Color.BLACK);
 
         for(Segment segment: intersectionsFinder.getSegments()){
             Point upper = segment.getUpperPoint(), lower = segment.getLowerPoint();

@@ -54,6 +54,12 @@ public class ButtonController implements EventHandler<ActionEvent> {
             case "new":
                 intersectionsFinder.createNewMap();
                 break;
+            case "step":
+                intersectionsFinder.stepForward();
+                break;
+            case "start":
+                intersectionsFinder.start();
+                break;
             default:
                 System.out.println("ko");
                 break;
