@@ -1,7 +1,5 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
-import be.ac.umons.mapOverlay.model.geometry.Point;
-import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +33,7 @@ class SegmentTest {
     }
 
     @Test
-    public void notIntersectionTest(){
+    public void noIntersectionTest(){
         Segment segment1 = new Segment(1, 1, 2, 2);
         Segment segment2 = new Segment(4, 2 ,5, 1);
         assertNull(segment1.getIntersectionPoint(segment2));
@@ -71,6 +69,7 @@ class SegmentTest {
         segment2 = new Segment(1, 1, 3, 7);
         assertEquals(new Point(1, 1), segment1.getIntersectionPoint(segment2));
     }
+
     @Test
     public void prolongationIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 1, 1);
@@ -137,6 +136,9 @@ class SegmentTest {
         assertTrue(seg.contains(p3));
         assertFalse(seg.contains(p4));
         assertFalse(seg.contains(p5));
+
+        Segment s1 = new Segment(2, 0,0, 2);
+        assertFalse(s1.contains(new Point(1.75, 1.75)));
     }
 
 }

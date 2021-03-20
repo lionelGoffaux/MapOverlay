@@ -1,4 +1,5 @@
 package be.ac.umons.mapOverlay.model.geometry;
+
 import static java.lang.Math.sqrt;
 import be.ac.umons.utils.Utils;
 
@@ -19,7 +20,8 @@ public class Point implements Comparable<Point> {
     }
 
     public boolean isUpperThan(Point p){
-        return y > p.y || (y == p.y && x <= p.x);
+        return compareTo(p) <= 0;
+        //return y < p.y || (y == p.y && x <= p.x); TODO: clean
     }
 
     public double getNorm(){
@@ -38,10 +40,24 @@ public class Point implements Comparable<Point> {
         return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
     }
 
+    public int compareX(Point o){
+        if (x==o.x) return 0;
+        return x > o.x ? 1: -1;
+    }
+
+    public int compareY(Point o){
+        if (y==o.y) return 0;
+        return y > o.y ? 1: -1;
+    }
+
     @Override
     public int compareTo(Point o) {
-        if (equals(o)) return 0;
-        else return isUpperThan(o)? 1: -1;
+        /*if (equals(o)) return 0; // TODO: refaire codition
+        else return isUpperThan(o)? 1: -1;*/
+
+        if(equals(o)) return 0;
+        if(compareY(o) != 0) return compareY(o);
+        return compareX(o);
     }
 
     public boolean isOriented(Point other){

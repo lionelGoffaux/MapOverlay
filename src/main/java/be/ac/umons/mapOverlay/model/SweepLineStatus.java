@@ -148,7 +148,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
     private Segment getLeftNeighbour(Point point, Segment segment){
         Segment s = new Segment(0, point.getY(), 1, point.getY());
         Point p = getData().getIntersectionOfLine(s);
-        if(point.compareTo(p) > 0) { // Le segment est à droite du point
+        if(point.compareTo(p) < 0) { // Le segment est à droite du point TODO: vérifier
             if( isLeaf()){
                 return segment;
             }
@@ -168,7 +168,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
     private Segment getRightNeighbour(Point point, Segment segment){
         Segment s = new Segment(0, point.getY(), 1, point.getY());
         Point p = getData().getIntersectionOfLine(s);
-        if(point.compareTo(p) > 0) { // Le segment est à droite du point
+        if(point.compareTo(p) < 0) { // Le segment est à droite du point TODO: vérifier
             if( isLeaf()){
                 return getData();
             }

@@ -32,6 +32,8 @@ public class IntersectionsFinder extends Publisher {
         return instance;
     }
 
+    // TODO: get sweep line intersection
+
     protected void setState(IntersectionFinderState state) {
         this.state = state;
         state.entry(this);

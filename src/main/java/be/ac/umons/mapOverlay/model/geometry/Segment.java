@@ -50,21 +50,41 @@ public class Segment implements Comparable<Segment>{
 
     public Point getIntersectionPoint(Segment other){ // TODO: refactor
         Point intersection = getIntersectionOfLine(other);
-        if (intersection == null) return null;
-        Point u1 = this.getVector();
+        if (intersection == null || !contains(intersection) || !other.contains(intersection)) return null;
+        return intersection;
+        /*Point u1 = this.getVector();
         Point v1 = new Segment(this.lowerPoint, intersection).getVector();
         Point u2 = other.getVector();
         Point v2 = new Segment(other.lowerPoint, intersection).getVector();
         return  u1.isOriented(v1)
                 && u2.isOriented(v2)
                 && u1.getNorm() >= v1.getNorm()
-                && u2.getNorm() >= v2.getNorm() ? intersection : null;
+                && u2.getNorm() >= v2.getNorm() ? intersection : null;*/
+
     }
 
     public boolean contains(Point point){ // TODO: refactor
-        Point u1 = this.getVector();
+        /*Point u1 = this.getVector();
         Point v1 = new Segment(this.lowerPoint, point).getVector();
-        return u1.isOriented(v1) && u1.getNorm() >= v1.getNorm();
+        return u1.isOriented(v1) && u1.getNorm() >= v1.getNorm();*/
+
+        return point.compareTo(upperPoint) >= 0 && point.compareTo(lowerPoint) <=0 && lineContains(point);
+    }
+
+    private boolean lineContains(Point point) {
+        return getA() * point.getX() + getB() * point.getY() == getC();
+    }
+
+    private double getA(){
+        return -upperPoint.getY() + lowerPoint.getY();
+    }
+
+    private double getB(){
+        return upperPoint.getX() - lowerPoint.getX();
+    }
+
+    private double getC() {
+        return getA() * upperPoint.getX() + getB() * upperPoint.getY();
     }
 
     private Point getVector(){
@@ -103,20 +123,41 @@ public class Segment implements Comparable<Segment>{
         Point a = getIntersectionOfLine(sweepLine);
         Point b = o.getIntersectionOfLine(sweepLine);
 
-        if (a == null && b == null){
-            return lowerPoint.compareTo(o.getLowerPoint());
-        } else if (a == null){
-            return 1;
-        } else if (b == null){
-            return -1;
+
+        /*if (a == null && b == null){    // les deux ne touchent pas la sweep line
+            return lowerPoint.compareTo(o.getLowerPoint()); // compare leur lower point .
+        } else if (a == null){ // seul b touche la SL
+            return 1;   // a est plus grand que b.
+        } else if (b == null){ // seul a touche la SL
+            return -1;  // b est plus grand que a.
         }
 
         int res = -a.compareTo(b);
         if(res == 0){
-            res = lowerPoint.getX() <= o.getLowerPoint().getX()? 1: -1;
+            res = lowerPoint.getX() <= o.getLowerPoint().getX()? 1: -1; // si les deux sont égaux
+            // on compare les lowers points.
+        }*/ // TODO: clean
+
+        if (a == null) a = getLowerPoint();
+        if (b == null) b = o.getLowerPoint();
+        if (a.equals(b)) {
+            if (getLowerPoint().compareX(a) == 0 && o.getLowerPoint().compareTo(b) == 0){
+                // les deux segments sont horizontaux.
+                return a.compareX(b);
+            }
+            else if (getLowerPoint().compareX(a) == 0){
+                return 1;
+            }
+            else if (o.getLowerPoint().compareTo(b) == 0) {
+                return -1;
+            }
+            else {
+                a = getLowerPoint();
+                b = o.getLowerPoint();
+            }
         }
 
-        return res;
+        return a.compareX(b);
     }
 
     public Point getUpperPoint() {
