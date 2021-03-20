@@ -30,59 +30,45 @@ class SegmentTest {
     public void parallelIntersectTest(){
         Segment segment1 = new Segment(1, 1, 2, 3);
         Segment segment2 = new Segment(2, 2, 3, 4);
-        assertNull(segment1.getIntersectionPoint(segment2));
+        assertNull(segment1.getIntersection(segment2));
     }
 
     @Test
     public void noIntersectionTest(){
         Segment segment1 = new Segment(1, 1, 2, 2);
         Segment segment2 = new Segment(4, 2 ,5, 1);
-        assertNull(segment1.getIntersectionPoint(segment2));
+        assertNull(segment1.getIntersection(segment2));
     }
 
     @Test
     public void intersectionTest(){
         Segment segment1 = new Segment(0, 0 , 1, 1);
         Segment segment2 = new Segment(0, 1, 1, 0);
-        assertEquals(new Point(.5, .5), segment1.getIntersectionPoint(segment2));
-    }
-
-    @Test
-    public void horizontalIntersectionTest(){
-        Segment segment1 = new Segment(2, 0 , 0, 0);
-        Segment segment2 = new Segment(0, -1, 2, 1);
-        assertEquals(new Point(1, 0), segment1.getIntersectionPoint(segment2));
-    }
-
-    @Test
-    public void verticalIntersectionTest(){
-        Segment segment1 = new Segment(0, -1 , 0, 1);
-        Segment segment2 = new Segment(1, 0, -1, 0);
-        assertEquals(new Point(0, 0), segment1.getIntersectionPoint(segment2));
+        assertEquals(new Point(.5, .5), segment1.getIntersection(segment2));
     }
 
     @Test
     public void extremityIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 1, 1);
         Segment segment2 = new Segment(1, 1, 2, 0);
-        assertEquals(new Point(1, 1), segment1.getIntersectionPoint(segment2));
+        assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
         segment1 = new Segment(0, 0, 2, 2);
         segment2 = new Segment(1, 1, 3, 7);
-        assertEquals(new Point(1, 1), segment1.getIntersectionPoint(segment2));
+        assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
     }
 
     @Test
     public void prolongationIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 1, 1);
         Segment segment2 = new Segment(1, 1, 2, 2);
-        assertEquals(new Point(1, 1), segment1.getIntersectionPoint(segment2));
+        assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
     }
 
     @Test
     public void superpositionIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 2, 2);
         Segment segment2 = new Segment(1, 1, 3, 3);
-        assertNull(segment1.getIntersectionPoint(segment2));
+        assertNull(segment1.getIntersection(segment2));
     }
 
     @Test
@@ -123,46 +109,6 @@ class SegmentTest {
 
         Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.75);
         assertEquals(1, s1.compareTo(s2));
-    }
-
-    @Test
-    public void positiveLineContainsTest() {
-        Segment s = new Segment(1, 1, 3, 9);
-
-        // endpoints
-        assertTrue(s.lineContains(new Point(1, 1)));
-        assertTrue(s.lineContains(new Point(3, 9)));
-
-        // between endpoints
-        assertTrue(s.lineContains(new Point(2, 5)));
-
-        // before and after endpoints
-        assertTrue(s.lineContains(new Point(0, -3)));
-        assertTrue(s.lineContains(new Point(4, 13)));
-
-        // below and above
-        assertFalse(s.lineContains(new Point(1.5, 2)));
-        assertFalse(s.lineContains(new Point(2.5, 8)));
-    }
-
-    @Test
-    public void negativeLineContainsTest(){
-        Segment s = new Segment(1, 2, 3, 0);
-
-        // endpoints
-        assertTrue(s.lineContains(new Point(1, 2)));
-        assertTrue(s.lineContains(new Point(3, 0)));
-
-        // between endpoints
-        assertTrue(s.lineContains(new Point(2, 1)));
-
-        // before and after endpoints
-        assertTrue(s.lineContains(new Point(4, -1)));
-        assertTrue(s.lineContains(new Point(-1, 4)));
-
-        // below and above
-        assertFalse(s.lineContains(new Point(0.5, 0.5)));
-        assertFalse(s.lineContains(new Point(2.5, 1.5)));
     }
 
     @Test

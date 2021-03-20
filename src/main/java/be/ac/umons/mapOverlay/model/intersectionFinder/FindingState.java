@@ -107,7 +107,7 @@ public class FindingState implements IntersectionFinderState{
     }
 
     private void findNewEvent(IntersectionsFinder context, Segment sl, Segment sr, Point point) {
-        Point p = sl.getIntersectionOfLine(sr);
+        Point p = sl.getIntersection(sr);
         if (p.compareTo(point) > 0) context.eventQueue.insert(new Event(p));
     }
 }
