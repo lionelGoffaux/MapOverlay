@@ -22,38 +22,28 @@ public class Segment implements Comparable<Segment>{
         c = getC();
     }
 
-    public Point getIntersectionOfLine(Segment other){ //TODO:refactor
+    public Point getIntersectionOfLine(Segment other){
+
+        double det = getDet(this, other);
+        if(det==0) return null;
+
+        double oa = other.getA();
+        double ob = other.getB();
+
+        double commonX = (ob*c - b* other.c)/det;
+        double commonY = (-oa*c + a*other.c)/det;
+
+        return new Point(commonX, commonY);
+    }
+
+    public Point getIntersectionPoint(Segment other){
         if(this.upperPoint.equals(other.upperPoint) || this.upperPoint.equals(other.lowerPoint)){
             return new Point(this.upperPoint.getX(), this.upperPoint.getY());
         }
         if(this.lowerPoint.equals(other.upperPoint) || this.lowerPoint.equals(other.lowerPoint)){
             return new Point(this.lowerPoint.getX(), this.lowerPoint.getY());
         }
-        double m1 = this.getSlope();
-        double m2 = other.getSlope();
-        double p1 = this.upperPoint.getY() - m1 * this.upperPoint.getX();
-        double p2 = other.upperPoint.getY() - m2 * other.upperPoint.getX();
-        if(Utils.almostEqual(m2-m1, 0) || (m1==Double.POSITIVE_INFINITY && m2==Double.POSITIVE_INFINITY))
-            return null;
-        double commonX;
-        double commonY;
-        if(m1==Double.POSITIVE_INFINITY){
-            commonX = this.lowerPoint.getX();
-            commonY = (m2 * commonX + p2);
-        }
-        else if(m2==Double.POSITIVE_INFINITY){
-            commonX = other.lowerPoint.getX();
-            commonY = (m1 * commonX + p1);
-        }
-        else{
-            commonX = (p1 - p2) / (m2 - m1);
-            commonY = (m1 * commonX + p1);
-        }
 
-        return new  Point(commonX, commonY);
-    }
-
-    public Point getIntersectionPoint(Segment other){
         Point intersection = getIntersectionOfLine(other);
         if (intersection == null || !contains(intersection) || !other.contains(intersection)) return null;
         return intersection;

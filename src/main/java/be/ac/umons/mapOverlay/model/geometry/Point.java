@@ -36,7 +36,7 @@ public class Point implements Comparable<Point> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Point point = (Point) o;
-        return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
+        return Utils.almostEqual(point.x, x) && Utils.almostEqual(point.y, y);
     }
 
     public int compareX(Point o){
