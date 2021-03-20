@@ -4,7 +4,7 @@ import static java.lang.Math.sqrt;
 import be.ac.umons.utils.Utils;
 
 public class Point implements Comparable<Point> {
-    private double x, y;
+    private final double x, y;
 
     public double getX() {
         return x;
@@ -21,7 +21,6 @@ public class Point implements Comparable<Point> {
 
     public boolean isUpperThan(Point p){
         return compareTo(p) <= 0;
-        //return y < p.y || (y == p.y && x <= p.x); TODO: clean
     }
 
     public double getNorm(){
