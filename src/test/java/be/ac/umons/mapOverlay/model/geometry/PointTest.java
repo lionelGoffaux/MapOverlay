@@ -1,5 +1,6 @@
-package be.ac.umons.mapOverlay.model.map;
+package be.ac.umons.mapOverlay.model.geometry;
 
+import be.ac.umons.mapOverlay.model.geometry.Point;
 import org.junit.jupiter.api.Test;
 import static java.lang.Math.sqrt;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +19,7 @@ class PointTest {
     public void upperThanTest(){
         Point point1 = new Point(0, 0);
         Point point2 = new Point(1, 1);
-        assertTrue(point2.isUpperThan(point1));
+        assertTrue(point1.isUpperThan(point2));
     }
 
     @Test
@@ -65,9 +66,9 @@ class PointTest {
         Point point4 = new Point(0, 1);
         assertEquals(1, point1.compareTo(point2));
         assertEquals(0, point1.compareTo(point3));
-        assertEquals(1, point4.compareTo(point1));
+        assertEquals(-1, point4.compareTo(point1));
     }
 
-
+    // TODO: compare X and Y
 
 }

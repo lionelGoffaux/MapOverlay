@@ -6,11 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class ControlView extends VBox {
+public class ButtonView extends VBox {
+    // TODO: command pattern ?
     Button[] buttons = {new Button("open"), new Button("new"), new Button("save"), new Button("start"),
             new Button("step"), new Button("detect")};
 
-    public ControlView() {
+    public ButtonView() {
         super();
         setWidth(100);
 

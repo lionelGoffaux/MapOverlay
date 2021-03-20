@@ -1,8 +1,9 @@
 package be.ac.umons.mapOverlay.model;
 
+import be.ac.umons.mapOverlay.model.geometry.Line;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
-import be.ac.umons.mapOverlay.model.map.Point;
-import be.ac.umons.mapOverlay.model.map.Segment;
+import be.ac.umons.mapOverlay.model.geometry.Point;
+import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;
@@ -146,9 +147,9 @@ public class SweepLineStatus extends AVLTree<Segment> {
     }
 
     private Segment getLeftNeighbour(Point point, Segment segment){
-        Segment s = new Segment(0, point.getY(), 1, point.getY());
-        Point p = getData().getIntersectionOfLine(s);
-        if(point.compareTo(p) > 0) { // Le segment est à droite du point
+        Line s = new Line(0, point.getY(), 1, point.getY());
+        Point p = s.getIntersection(getData());
+        if(point.compareTo(p) < 0) { // Le segment est à droite du point TODO: vérifier
             if( isLeaf()){
                 return segment;
             }
@@ -166,9 +167,9 @@ public class SweepLineStatus extends AVLTree<Segment> {
     }
 
     private Segment getRightNeighbour(Point point, Segment segment){
-        Segment s = new Segment(0, point.getY(), 1, point.getY());
-        Point p = getData().getIntersectionOfLine(s);
-        if(point.compareTo(p) > 0) { // Le segment est à droite du point
+        Line s = new Line(0, point.getY(), 1, point.getY());
+        Point p = s.getIntersection(getData());
+        if(point.compareTo(p) < 0) { // Le segment est à droite du point TODO: vérifier
             if( isLeaf()){
                 return getData();
             }
@@ -183,15 +184,15 @@ public class SweepLineStatus extends AVLTree<Segment> {
 
     public Segment getLeftNeighbour(Segment seg) {
         double sweepLineY =  IntersectionsFinder.getInstance().getSweepLineY();
-        Segment s = new Segment(0, sweepLineY, 1, sweepLineY);
-        Point p = seg.getIntersectionOfLine(s);
+        Line s = new Line(0, sweepLineY, 1, sweepLineY);
+        Point p = s.getIntersection(seg);
         return getLeftNeighbour(p, null);
     }
 
     public Segment getRightNeighbour(Segment seg) {
         double sweepLineY =  IntersectionsFinder.getInstance().getSweepLineY();
-        Segment s = new Segment(0, sweepLineY, 1, sweepLineY);
-        Point p = seg.getIntersectionOfLine(s);
+        Line s = new Line(0, sweepLineY, 1, sweepLineY);
+        Point p = s.getIntersection(seg);
         return getRightNeighbour(p, null);
     }
 

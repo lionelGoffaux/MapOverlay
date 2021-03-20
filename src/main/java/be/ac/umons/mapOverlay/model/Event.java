@@ -1,4 +1,7 @@
-package be.ac.umons.mapOverlay.model.map;
+package be.ac.umons.mapOverlay.model;
+
+import be.ac.umons.mapOverlay.model.geometry.Point;
+import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -14,7 +17,7 @@ public class Event implements Comparable<Event>{
 
     public Event(Point p, Segment s){
         point = p;
-        segments = new ArrayList<Segment>();
+        segments = new ArrayList<>();
         if(s != null) segments.add(s);
     }
 

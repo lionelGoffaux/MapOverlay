@@ -25,31 +25,39 @@ public class ButtonController implements EventHandler<ActionEvent> {
         fileChooser.setInitialDirectory(new File("cartes"));
     }
 
+    private void save(){
+        File saveFile = fileChooser.showSaveDialog(primaryStage);
+        if (saveFile != null){
+            try {
+                MapOutputFile mos = new MapOutputFile(saveFile);
+                mos.writeMap(intersectionsFinder.getMap());
+                mos.close();
+            } catch (IOException e) {
+                e.printStackTrace();//TODO: error message
+            }
+        }
+    }
+
+    private void open(){
+        File openedFile = fileChooser.showOpenDialog(primaryStage);
+        if (openedFile != null){
+            try {
+                MapInputFile mis = new MapInputFile(openedFile);
+                Map map = mis.readMap();
+                intersectionsFinder.setMap(map);
+                mis.close();
+            }catch (IOException e) {return;} //TODO: error message
+        }
+    }
+
     @Override
     public void handle(ActionEvent event) {
         switch (((Button) event.getSource()).getText()){
             case "save":
-                File saveFile = fileChooser.showSaveDialog(primaryStage);
-                if (saveFile != null){
-                    try {
-                        MapOutputFile mos = new MapOutputFile(saveFile);
-                        mos.writeMap(intersectionsFinder.getMap());
-                        mos.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();//TODO: error message
-                    }
-                }
+                save();
                 break;
             case "open":
-                File openedFile = fileChooser.showOpenDialog(primaryStage);
-                if (openedFile != null){
-                    try {
-                        MapInputFile mis = new MapInputFile(openedFile);
-                        Map map = mis.readMap();
-                        intersectionsFinder.setMap(map);
-                        mis.close();
-                    }catch (IOException e) {return;} //TODO: error message
-                }
+                open();
                 break;
             case "new":
                 intersectionsFinder.createNewMap();
