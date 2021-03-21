@@ -4,10 +4,9 @@ import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.utils.Utils;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SegmentTest extends IntersectionsFinderDependentTest {
 
@@ -26,45 +25,45 @@ class SegmentTest extends IntersectionsFinderDependentTest {
     public void parallelIntersectTest(){
         Segment segment1 = new Segment(1, 1, 2, 3);
         Segment segment2 = new Segment(2, 2, 3, 4);
-        assertNull(segment1.getIntersection(segment2));
+        Assertions.assertNull(segment1.getIntersection(segment2));
     }
 
     @Test
     public void noIntersectionTest(){
         Segment segment1 = new Segment(1, 1, 2, 2);
         Segment segment2 = new Segment(4, 2 ,5, 1);
-        assertNull(segment1.getIntersection(segment2));
+        Assertions.assertNull(segment1.getIntersection(segment2));
     }
 
     @Test
     public void intersectionTest(){
         Segment segment1 = new Segment(0, 0 , 1, 1);
         Segment segment2 = new Segment(0, 1, 1, 0);
-        assertEquals(new Point(.5, .5), segment1.getIntersection(segment2));
+        Assertions.assertEquals(new Point(.5, .5), segment1.getIntersection(segment2));
     }
 
     @Test
     public void extremityIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 1, 1);
         Segment segment2 = new Segment(1, 1, 2, 0);
-        assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
+        Assertions.assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
         segment1 = new Segment(0, 0, 2, 2);
         segment2 = new Segment(1, 1, 3, 7);
-        assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
+        Assertions.assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
     }
 
     @Test
     public void prolongationIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 1, 1);
         Segment segment2 = new Segment(1, 1, 2, 2);
-        assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
+        Assertions.assertEquals(new Point(1, 1), segment1.getIntersection(segment2));
     }
 
     @Test
     public void superpositionIntersectionTest(){
         Segment segment1 = new Segment(0, 0, 2, 2);
         Segment segment2 = new Segment(1, 1, 3, 3);
-        assertNull(segment1.getIntersection(segment2));
+        Assertions.assertNull(segment1.getIntersection(segment2));
     }
 
     @Test
@@ -73,8 +72,8 @@ class SegmentTest extends IntersectionsFinderDependentTest {
 
         Segment segment1 = new Segment(1, 2, 3, 0);
         Segment segment2 = new Segment(1, 0, 3, 2);
-        assertEquals(-1, segment1.compareTo(segment2));
-        assertEquals(1, segment2.compareTo(segment1));
+        Assertions.assertEquals(-1, segment1.compareTo(segment2));
+        Assertions.assertEquals(1, segment2.compareTo(segment1));
     }
 
     @Test
@@ -84,12 +83,12 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s3 = new Segment(0.5, 0.5, 3, 0.5);;
 
         setSweepLineY(0.5);
-        assertEquals(-1, s1.compareTo(s2));
-        assertEquals(-1, s1.compareTo(s3));
-        assertEquals(1, s2.compareTo(s1));
-        assertEquals(1, s3.compareTo(s1));
-        assertEquals(1, s3.compareTo(s2));
-        assertEquals(-1, s2.compareTo(s3));
+        Assertions.assertEquals(-1, s1.compareTo(s2));
+        Assertions.assertEquals(-1, s1.compareTo(s3));
+        Assertions.assertEquals(1, s2.compareTo(s1));
+        Assertions.assertEquals(1, s3.compareTo(s1));
+        Assertions.assertEquals(1, s3.compareTo(s2));
+        Assertions.assertEquals(-1, s2.compareTo(s3));
     }
 
     @Test
@@ -98,13 +97,13 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s2 = new Segment(1, 0, 0, 1);
 
         setSweepLineY(0.25);
-        assertEquals(-1, s1.compareTo(s2));
+        Assertions.assertEquals(-1, s1.compareTo(s2));
 
         setSweepLineY(0.5);
-        assertEquals(1, s1.compareTo(s2));
+        Assertions.assertEquals(1, s1.compareTo(s2));
 
         setSweepLineY(0.75);
-        assertEquals(1, s1.compareTo(s2));
+        Assertions.assertEquals(1, s1.compareTo(s2));
     }
 
     @Test
@@ -112,19 +111,19 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s = new Segment(1, 1, 3, 9);
 
         // endpoints
-        assertTrue(s.contains(new Point(1, 1)));
-        assertTrue(s.contains(new Point(3, 9)));
+        Assertions.assertTrue(s.contains(new Point(1, 1)));
+        Assertions.assertTrue(s.contains(new Point(3, 9)));
 
         // between endpoints
-        assertTrue(s.contains(new Point(2, 5)));
+        Assertions.assertTrue(s.contains(new Point(2, 5)));
 
         // before and after endpoints
-        assertFalse(s.contains(new Point(0, -3)));
-        assertFalse(s.contains(new Point(4, 13)));
+        Assertions.assertFalse(s.contains(new Point(0, -3)));
+        Assertions.assertFalse(s.contains(new Point(4, 13)));
 
         // below and above
-        assertFalse(s.contains(new Point(1.5, 2)));
-        assertFalse(s.contains(new Point(2.5, 8)));
+        Assertions.assertFalse(s.contains(new Point(1.5, 2)));
+        Assertions.assertFalse(s.contains(new Point(2.5, 8)));
     }
 
     @Test
@@ -132,19 +131,19 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s = new Segment(1, 2, 3, 0);
 
         // endpoints
-        assertTrue(s.contains(new Point(1, 2)));
-        assertTrue(s.contains(new Point(3, 0)));
+        Assertions.assertTrue(s.contains(new Point(1, 2)));
+        Assertions.assertTrue(s.contains(new Point(3, 0)));
 
         // between endpoints
-        assertTrue(s.contains(new Point(2, 1)));
+        Assertions.assertTrue(s.contains(new Point(2, 1)));
 
         // before and after endpoints
-        assertFalse(s.contains(new Point(4, -1)));
-        assertFalse(s.contains(new Point(-1, 4)));
+        Assertions.assertFalse(s.contains(new Point(4, -1)));
+        Assertions.assertFalse(s.contains(new Point(-1, 4)));
 
         // below and above
-        assertFalse(s.contains(new Point(0.5, 0.5)));
-        assertFalse(s.contains(new Point(2.5, 1.5)));
+        Assertions.assertFalse(s.contains(new Point(0.5, 0.5)));
+        Assertions.assertFalse(s.contains(new Point(2.5, 1.5)));
     }
 
     @Test
@@ -152,8 +151,8 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s1 = new Segment(1, 2, 4, 0);
         Segment s2 = new Segment(1, 1, 2, 5);
 
-        assertTrue(Utils.almostEqual(s1.a, -2));
-        assertTrue(Utils.almostEqual(s2.a, -4));
+        Assertions.assertTrue(Utils.almostEqual(s1.a, -2));
+        Assertions.assertTrue(Utils.almostEqual(s2.a, -4));
     }
 
     @Test
@@ -161,8 +160,8 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s1 = new Segment(1, 2, 4, 0);
         Segment s2 = new Segment(1, 1, 2, 5);
 
-        assertTrue(Utils.almostEqual(s1.b, -3));
-        assertTrue(Utils.almostEqual(s2.b, 1));
+        Assertions.assertTrue(Utils.almostEqual(s1.b, -3));
+        Assertions.assertTrue(Utils.almostEqual(s2.b, 1));
     }
 
     @Test
@@ -170,8 +169,8 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s1 = new Segment(1, 2, 4, 0);
         Segment s2 = new Segment(1, 1, 2, 5);
 
-        assertTrue(Utils.almostEqual(s1.c, -8));
-        assertTrue(Utils.almostEqual(s2.c, -3));
+        Assertions.assertTrue(Utils.almostEqual(s1.c, -8));
+        Assertions.assertTrue(Utils.almostEqual(s2.c, -3));
     }
 
     @Test
@@ -180,7 +179,7 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s2 = new Segment(1, 1, 2, 5);
 
         double det = Segment.getDet(s1, s2);
-        assertTrue(Utils.almostEqual(det, -14));
+        Assertions.assertTrue(Utils.almostEqual(det, -14));
     }
 
     @Test
@@ -189,7 +188,7 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s2 = new Segment(4, 7, 7, 5);
 
         double det = Segment.getDet(s1, s2);
-        assertTrue(Utils.almostEqual(det, 0));
+        Assertions.assertTrue(Utils.almostEqual(det, 0));
     }
 
     @Test
@@ -198,6 +197,6 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s2 = new Segment(7, -2, 10, -4);
 
         double det = Segment.getDet(s1, s2);
-        assertTrue(Utils.almostEqual(det, 0));
+        Assertions.assertTrue(Utils.almostEqual(det, 0));
     }
 }

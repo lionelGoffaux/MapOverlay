@@ -2,11 +2,10 @@ package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class EventTest {
 
@@ -16,12 +15,12 @@ public class EventTest {
         Event e2 = new Event(new Point(25, 2.6), new Segment(25, 2.6, 12, 12));
         Event e3 = new Event(new Point(12, 2.6));
 
-        assertEquals(e1, e2);
-        assertEquals(e2, e1);
-        assertNotEquals(e1, e3);
-        assertNotEquals(e2, e3);
-        assertNotEquals(e3, e1);
-        assertNotEquals(e3, e2);
+        Assertions.assertEquals(e1, e2);
+        Assertions.assertEquals(e2, e1);
+        Assertions.assertNotEquals(e1, e3);
+        Assertions.assertNotEquals(e2, e3);
+        Assertions.assertNotEquals(e3, e1);
+        Assertions.assertNotEquals(e3, e2);
     }
 
     @Test
@@ -30,12 +29,12 @@ public class EventTest {
         Event e2 = new Event(new Point(1, 2));
         Event e3 = new Event(new Point(4, 2));
 
-        assertEquals(-1, e1.compareTo(e2));
-        assertEquals(-1, e1.compareTo(e3));
-        assertEquals(-1, e2.compareTo(e3));
-        assertEquals(1, e3.compareTo(e2));
-        assertEquals(1, e3.compareTo(e1));
-        assertEquals(1, e2.compareTo(e1));
+        Assertions.assertEquals(-1, e1.compareTo(e2));
+        Assertions.assertEquals(-1, e1.compareTo(e3));
+        Assertions.assertEquals(-1, e2.compareTo(e3));
+        Assertions.assertEquals(1, e3.compareTo(e2));
+        Assertions.assertEquals(1, e3.compareTo(e1));
+        Assertions.assertEquals(1, e2.compareTo(e1));
     }
 
     @Test
@@ -49,19 +48,19 @@ public class EventTest {
 
         Event e = new Event(new Point(2, 4), s1);
 
-        assertEquals(1, e.getU().size());
+        Assertions.assertEquals(1, e.getU().size());
         segments.add(s1);
         e.updateSegments(segments);
-        assertEquals(1, e.getU().size());
+        Assertions.assertEquals(1, e.getU().size());
         segments.add(s2);
         e.updateSegments(segments);
-        assertEquals(1, e.getU().size());
+        Assertions.assertEquals(1, e.getU().size());
         segments.add(s3);
         e.updateSegments(segments);
-        assertEquals(1, e.getU().size());
+        Assertions.assertEquals(1, e.getU().size());
         segments.add(s4);
         e.updateSegments(segments);
-        assertEquals(2, e.getU().size());
+        Assertions.assertEquals(2, e.getU().size());
     }
 
     @Test
@@ -69,6 +68,6 @@ public class EventTest {
         Point p = new Point(12, 42);
         Event e = new Event(p);
 
-        assertEquals(p, e.getPoint());
+        Assertions.assertEquals(p, e.getPoint());
     }
 }

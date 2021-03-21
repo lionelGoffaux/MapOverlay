@@ -2,9 +2,8 @@ package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class EventQueueTest {
     
@@ -24,13 +23,13 @@ public class EventQueueTest {
         eventQueue.insert(e3);
         eventQueue.insert(e4);
 
-        assertEquals(e1, eventQueue.getNextEvent());
-        assertEquals(e2, eventQueue.getNextEvent());
-        assertEquals(e4, eventQueue.getNextEvent());
-        assertTrue(eventQueue.isEmpty());
+        Assertions.assertEquals(e1, eventQueue.getNextEvent());
+        Assertions.assertEquals(e2, eventQueue.getNextEvent());
+        Assertions.assertEquals(e4, eventQueue.getNextEvent());
+        Assertions.assertTrue(eventQueue.isEmpty());
 
-        assertTrue(e2.getU().contains(s1));
-        assertTrue(e2.getU().contains(s2));
+        Assertions.assertTrue(e2.getU().contains(s1));
+        Assertions.assertTrue(e2.getU().contains(s2));
     }
 
     @Test
@@ -41,26 +40,26 @@ public class EventQueueTest {
         EventQueue eventQueue = new EventQueue();
 
         eventQueue.insert(e1);
-        assertEquals(e1, eventQueue.getNextEvent());
-        assertTrue(eventQueue.isEmpty());
+        Assertions.assertEquals(e1, eventQueue.getNextEvent());
+        Assertions.assertTrue(eventQueue.isEmpty());
         eventQueue.insert(e1);
         eventQueue.insert(e2);
-        assertEquals(e1, eventQueue.getNextEvent());
-        assertEquals(e2, eventQueue.getNextEvent());
-        assertTrue(eventQueue.isEmpty());
+        Assertions.assertEquals(e1, eventQueue.getNextEvent());
+        Assertions.assertEquals(e2, eventQueue.getNextEvent());
+        Assertions.assertTrue(eventQueue.isEmpty());
         eventQueue.insert(e1);
         eventQueue.insert(e2);
         eventQueue.insert(e3);
-        assertEquals(e1, eventQueue.getNextEvent());
-        assertEquals(e2, eventQueue.getNextEvent());
-        assertEquals(e3, eventQueue.getNextEvent());
-        assertTrue(eventQueue.isEmpty());
+        Assertions.assertEquals(e1, eventQueue.getNextEvent());
+        Assertions.assertEquals(e2, eventQueue.getNextEvent());
+        Assertions.assertEquals(e3, eventQueue.getNextEvent());
+        Assertions.assertTrue(eventQueue.isEmpty());
         eventQueue.insert(e3);
         eventQueue.insert(e2);
         eventQueue.insert(e1);
-        assertEquals(e1, eventQueue.getNextEvent());
-        assertEquals(e2, eventQueue.getNextEvent());
-        assertEquals(e3, eventQueue.getNextEvent());
-        assertTrue(eventQueue.isEmpty());
+        Assertions.assertEquals(e1, eventQueue.getNextEvent());
+        Assertions.assertEquals(e2, eventQueue.getNextEvent());
+        Assertions.assertEquals(e3, eventQueue.getNextEvent());
+        Assertions.assertTrue(eventQueue.isEmpty());
     }
 }

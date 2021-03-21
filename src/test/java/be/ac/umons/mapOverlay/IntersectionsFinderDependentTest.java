@@ -15,5 +15,4 @@ public abstract class IntersectionsFinderDependentTest {
         Mockito.when(intersectionsFinder.getSweepLine()).thenReturn(new Line(0, value, 1, value));
     }
 
-
 }

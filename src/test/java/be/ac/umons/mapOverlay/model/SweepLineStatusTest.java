@@ -5,12 +5,11 @@ import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
@@ -32,17 +31,17 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Segment segment2 = new Segment(1,0 ,0,1);
         tree.insert(segment1);
         tree.insert(segment2);
-        assertEquals(segment2, tree.getData());
-        assertEquals(segment2, tree.getLeft().getData());
-        assertEquals(segment1, tree.getRight().getData());
+        Assertions.assertEquals(segment2, tree.getData());
+        Assertions.assertEquals(segment2, tree.getLeft().getData());
+        Assertions.assertEquals(segment1, tree.getRight().getData());
 
         setSweepLineY(.1);
         tree = new SweepLineStatus();
         tree.insert(segment1);
         tree.insert(segment2);
-        assertEquals(segment1, tree.getData());
-        assertEquals(segment1, tree.getLeft().getData());
-        assertEquals(segment2, tree.getRight().getData());
+        Assertions.assertEquals(segment1, tree.getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getData());
+        Assertions.assertEquals(segment2, tree.getRight().getData());
     }
 
     @Test
@@ -55,11 +54,11 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         tree.insert(segment1);
         tree.insert(segment2);
         tree.insert(segment3);
-        assertEquals(segment1, tree.getData());
-        assertEquals(segment1, tree.getLeft().getData());
-        assertEquals(segment3, tree.getRight().getData());
-        assertEquals(segment2, tree.getRight().getRight().getData());
-        assertEquals(segment3, tree.getRight().getLeft().getData());
+        Assertions.assertEquals(segment1, tree.getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getData());
+        Assertions.assertEquals(segment3, tree.getRight().getData());
+        Assertions.assertEquals(segment2, tree.getRight().getRight().getData());
+        Assertions.assertEquals(segment3, tree.getRight().getLeft().getData());
 
     }
 
@@ -75,13 +74,13 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         tree.insert(segment2);
         tree.insert(segment3);
         tree.insert(segment4);
-        assertEquals(segment3, tree.getData());
-        assertEquals(segment1, tree.getLeft().getData());
-        assertEquals(segment2, tree.getRight().getData());
-        assertEquals(segment4, tree.getRight().getRight().getData());
-        assertEquals(segment2, tree.getRight().getLeft().getData());
-        assertEquals(segment1, tree.getLeft().getLeft().getData());
-        assertEquals(segment3, tree.getLeft().getRight().getData());
+        Assertions.assertEquals(segment3, tree.getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getData());
+        Assertions.assertEquals(segment2, tree.getRight().getData());
+        Assertions.assertEquals(segment4, tree.getRight().getRight().getData());
+        Assertions.assertEquals(segment2, tree.getRight().getLeft().getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getLeft().getData());
+        Assertions.assertEquals(segment3, tree.getLeft().getRight().getData());
     }
 
     @Test
@@ -97,15 +96,15 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         tree.insert(segment3);
         tree.insert(segment4);
         tree.suppress(segment4);
-        assertEquals(segment3, tree.getData());
-        assertEquals(segment1, tree.getLeft().getData());
-        assertEquals(segment1, tree.getLeft().getLeft().getData());
-        assertEquals(segment3, tree.getLeft().getRight().getData());
-        assertEquals(segment2, tree.getRight().getData());
+        Assertions.assertEquals(segment3, tree.getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getLeft().getData());
+        Assertions.assertEquals(segment3, tree.getLeft().getRight().getData());
+        Assertions.assertEquals(segment2, tree.getRight().getData());
         tree.suppress(segment2);
-        assertEquals(segment1, tree.getData());
-        assertEquals(segment1, tree.getLeft().getData());
-        assertEquals(segment3, tree.getRight().getData());
+        Assertions.assertEquals(segment1, tree.getData());
+        Assertions.assertEquals(segment1, tree.getLeft().getData());
+        Assertions.assertEquals(segment3, tree.getRight().getData());
         tree.suppress(segment1);
         tree.suppress(segment3);
     }
@@ -119,14 +118,14 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Segment segment3 = new Segment(2, 4, 3, 1);
         Segment segment4 = new Segment(4, 3, 5, 1);
         tree.insert(segment1);
-        assertTrue(tree.isLeaf());
+        Assertions.assertTrue(tree.isLeaf());
         tree.insert(segment2);
-        assertTrue(tree.getRight().isLeaf());
+        Assertions.assertTrue(tree.getRight().isLeaf());
         tree.insert(segment3);
         tree.insert(segment4);
-        assertTrue(tree.getRight().getRight().isLeaf());
-        assertFalse(tree.isLeaf());
-        assertFalse(tree.getRight().isLeaf());
+        Assertions.assertTrue(tree.getRight().getRight().isLeaf());
+        Assertions.assertFalse(tree.isLeaf());
+        Assertions.assertFalse(tree.getRight().isLeaf());
     }
 
     @Test
@@ -138,9 +137,9 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         tree.insert(segment1);
         tree.suppress(segment2); // suppression when there is one node in the tree and we try to suppress a node which is not in the tree
         tree.suppress(segment1);
-        assertNull(tree.getData());
-        assertNull(tree.getLeft());
-        assertNull(tree.getRight());
+        Assertions.assertNull(tree.getData());
+        Assertions.assertNull(tree.getLeft());
+        Assertions.assertNull(tree.getRight());
     }
 
     @Test
@@ -168,10 +167,10 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 //        System.out.println(tree.getLeftNeighbour(p2));
 //        System.out.println("======Point 3========");
 //        System.out.println(tree.getLeftNeighbour(p3));
-        assertNull(tree.getLeftNeighbour(p0));
-        assertEquals(segment1, tree.getLeftNeighbour(p1));
-        assertEquals(segment2, tree.getLeftNeighbour(p2));
-        assertEquals(segment3, tree.getLeftNeighbour(p3));
+        Assertions.assertNull(tree.getLeftNeighbour(p0));
+        Assertions.assertEquals(segment1, tree.getLeftNeighbour(p1));
+        Assertions.assertEquals(segment2, tree.getLeftNeighbour(p2));
+        Assertions.assertEquals(segment3, tree.getLeftNeighbour(p3));
 
     }
 
@@ -200,10 +199,10 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 //        System.out.println(tree.getRightNeighbour(p2));
 //        System.out.println("======Point 3========");
 //        System.out.println(tree.getRightNeighbour(p3));
-        assertEquals(segment1, tree.getRightNeighbour(p0));
-        assertEquals(segment2, tree.getRightNeighbour(p1));
-        assertEquals(segment3, tree.getRightNeighbour(p2));
-        assertNull(tree.getRightNeighbour(p3));
+        Assertions.assertEquals(segment1, tree.getRightNeighbour(p0));
+        Assertions.assertEquals(segment2, tree.getRightNeighbour(p1));
+        Assertions.assertEquals(segment3, tree.getRightNeighbour(p2));
+        Assertions.assertNull(tree.getRightNeighbour(p3));
     }
 
     @Test
@@ -224,10 +223,10 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Segment s1 = new Segment(2, 6, 3, 2);
         Segment s2 = new Segment(5, 6, 4, 2);
         Segment s3 = new Segment(7, 5, 7, 1);
-        assertEquals(segment1, tree.getRightNeighbour(s0));
-        assertEquals(segment2, tree.getRightNeighbour(s1));
-        assertEquals(segment3, tree.getRightNeighbour(s2));
-        assertNull(tree.getRightNeighbour(s3));
+        Assertions.assertEquals(segment1, tree.getRightNeighbour(s0));
+        Assertions.assertEquals(segment2, tree.getRightNeighbour(s1));
+        Assertions.assertEquals(segment3, tree.getRightNeighbour(s2));
+        Assertions.assertNull(tree.getRightNeighbour(s3));
     }
 
     @Test
@@ -248,10 +247,10 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Segment s1 = new Segment(2, 6, 3, 2);
         Segment s2 = new Segment(5, 6, 4, 2);
         Segment s3 = new Segment(7, 5, 7, 1);
-        assertNull(tree.getLeftNeighbour(s0));
-        assertEquals(segment1, tree.getLeftNeighbour(s1));
-        assertEquals(segment2, tree.getLeftNeighbour(s2));
-        assertEquals(segment3, tree.getLeftNeighbour(s3));
+        Assertions.assertNull(tree.getLeftNeighbour(s0));
+        Assertions.assertEquals(segment1, tree.getLeftNeighbour(s1));
+        Assertions.assertEquals(segment2, tree.getLeftNeighbour(s2));
+        Assertions.assertEquals(segment3, tree.getLeftNeighbour(s3));
     }
 
     @Test
@@ -266,10 +265,10 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         tree.insert(segment3);
         tree.insert(segment4);
         ArrayList<Segment> list = tree.getLeaves();
-        assertTrue(list.contains(segment1));
-        assertTrue(list.contains(segment2));
-        assertTrue(list.contains(segment3));
-        assertTrue(list.contains(segment4));
+        Assertions.assertTrue(list.contains(segment1));
+        Assertions.assertTrue(list.contains(segment2));
+        Assertions.assertTrue(list.contains(segment3));
+        Assertions.assertTrue(list.contains(segment4));
     }
 
     @Test
@@ -293,11 +292,11 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Point p1 = new Point(3,3);
         Point p2 = new Point(2,4);
         Point p3 = new Point(5,3);
-        assertTrue(tree.getL(p0).contains(segment0));
-        assertTrue(tree.getL(p0).contains(segment1));
-        assertTrue(tree.getL(p1).contains(segment2));
-        assertTrue(tree.getL(p2).contains(segment3));
-        assertTrue(tree.getL(p3).contains(segment4));
+        Assertions.assertTrue(tree.getL(p0).contains(segment0));
+        Assertions.assertTrue(tree.getL(p0).contains(segment1));
+        Assertions.assertTrue(tree.getL(p1).contains(segment2));
+        Assertions.assertTrue(tree.getL(p2).contains(segment3));
+        Assertions.assertTrue(tree.getL(p3).contains(segment4));
     }
 
     @Test
@@ -310,10 +309,10 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Point p1 = new Point(1,1);
         Point p2 = new Point(1.75, 1.75);
         ArrayList<Segment> list = tree.getC(p1);
-        assertTrue(list.contains(segment0));
-        assertTrue(list.contains(segment1));
+        Assertions.assertTrue(list.contains(segment0));
+        Assertions.assertTrue(list.contains(segment1));
         list = tree.getC(p2);
-        assertTrue(list.contains(segment0));
-        assertFalse(list.contains(segment1));
+        Assertions.assertTrue(list.contains(segment0));
+        Assertions.assertFalse(list.contains(segment1));
     }
 }

@@ -1,8 +1,8 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.model.geometry.Segment;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class MapInputFileTest {
 
         MapInputFile mif = new MapInputFile("cartes/test.txt");
         Map map = mif.readMap();
-        assertEquals(expected, map.getSegments());
+        Assertions.assertEquals(expected, map.getSegments());
         mif.close();
     }
 }
