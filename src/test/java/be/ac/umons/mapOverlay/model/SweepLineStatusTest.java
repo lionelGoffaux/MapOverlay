@@ -1,31 +1,28 @@
 package be.ac.umons.mapOverlay.model;
 
+import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SweepLineStatusTest {
-    public IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
-    public MockedStatic<IntersectionsFinder> theMock = Mockito.mockStatic(IntersectionsFinder.class);
+class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @BeforeEach
     public void setup(){
-        theMock.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(.75);
+        intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
+        setSweepLineY(0.75);
     }
 
     @AfterEach
     public void finish(){
-        theMock.close();
+        intersectionsFinderMockedStatic.close();
     }
 
     @Test
@@ -39,7 +36,7 @@ class SweepLineStatusTest {
         assertEquals(segment2, tree.getLeft().getData());
         assertEquals(segment1, tree.getRight().getData());
 
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(.1);
+        setSweepLineY(.1);
         tree = new SweepLineStatus();
         tree.insert(segment1);
         tree.insert(segment2);
@@ -50,7 +47,7 @@ class SweepLineStatusTest {
 
     @Test
     public void insertTest(){
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
+        setSweepLineY(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -68,7 +65,7 @@ class SweepLineStatusTest {
 
     @Test
     public void insertWithRotationTest(){
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
+        setSweepLineY(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -89,7 +86,7 @@ class SweepLineStatusTest {
 
     @Test
     public void suppressionTest(){
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
+        setSweepLineY(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -115,7 +112,7 @@ class SweepLineStatusTest {
 
     @Test
     public void isLeafTest(){
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
+        setSweepLineY(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -134,7 +131,7 @@ class SweepLineStatusTest {
 
     @Test
     public void suppressionOneNodeTest(){
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(2.75);
+        setSweepLineY(2.75);
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -211,7 +208,7 @@ class SweepLineStatusTest {
 
     @Test
     public void getRightSegmentNeighbourTest() {
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(3.);
+        setSweepLineY(3.);
         SweepLineStatus tree = new SweepLineStatus();
         // point 0
         Segment segment1 = new Segment(1,6,2,2);
@@ -227,15 +224,15 @@ class SweepLineStatusTest {
         Segment s1 = new Segment(2, 6, 3, 2);
         Segment s2 = new Segment(5, 6, 4, 2);
         Segment s3 = new Segment(7, 5, 7, 1);
-        //assertEquals(segment1, tree.getRightNeighbour(s0));
-        //assertEquals(segment2, tree.getRightNeighbour(s1));
-        //assertEquals(segment3, tree.getRightNeighbour(s2));
+        assertEquals(segment1, tree.getRightNeighbour(s0));
+        assertEquals(segment2, tree.getRightNeighbour(s1));
+        assertEquals(segment3, tree.getRightNeighbour(s2));
         assertNull(tree.getRightNeighbour(s3));
     }
 
     @Test
     public void getLeftSegmentNeighbourTest() {
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(3.);
+        setSweepLineY(3.);
         SweepLineStatus tree = new SweepLineStatus();
         // point 0
         Segment segment1 = new Segment(1,6,2,2);

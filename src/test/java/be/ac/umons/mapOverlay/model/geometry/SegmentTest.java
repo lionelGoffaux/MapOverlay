@@ -1,24 +1,20 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
+import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
 import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
 import be.ac.umons.utils.Utils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SegmentTest {
-
-    public IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
-    public MockedStatic<IntersectionsFinder> intersectionsFinderMockedStatic = Mockito.mockStatic(IntersectionsFinder.class);
+class SegmentTest extends IntersectionsFinderDependentTest {
 
     @BeforeEach
     public void setup(){
         intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(.75);
+        setSweepLineY(0.75);
     }
 
     @AfterEach
@@ -73,7 +69,7 @@ class SegmentTest {
 
     @Test
     public void comparisonTest(){
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(1.75);
+        setSweepLineY(1.75);
 
         Segment segment1 = new Segment(1, 2, 3, 0);
         Segment segment2 = new Segment(1, 0, 3, 2);
@@ -87,7 +83,7 @@ class SegmentTest {
         Segment s2 = new Segment(0.5, 0.5, 2, 0.5);
         Segment s3 = new Segment(0.5, 0.5, 3, 0.5);;
 
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.5);
+        setSweepLineY(0.5);
         assertEquals(-1, s1.compareTo(s2));
         assertEquals(-1, s1.compareTo(s3));
         assertEquals(1, s2.compareTo(s1));
@@ -101,13 +97,13 @@ class SegmentTest {
         Segment s1 = new Segment(0,0,1,1);
         Segment s2 = new Segment(1, 0, 0, 1);
 
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.25);
+        setSweepLineY(0.25);
         assertEquals(-1, s1.compareTo(s2));
 
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.5);
+        setSweepLineY(0.5);
         assertEquals(1, s1.compareTo(s2));
 
-        Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(0.75);
+        setSweepLineY(0.75);
         assertEquals(1, s1.compareTo(s2));
     }
 

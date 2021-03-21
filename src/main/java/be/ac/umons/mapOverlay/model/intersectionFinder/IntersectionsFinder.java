@@ -2,6 +2,7 @@ package be.ac.umons.mapOverlay.model.intersectionFinder;
 
 import be.ac.umons.mapOverlay.model.EventQueue;
 import be.ac.umons.mapOverlay.model.SweepLineStatus;
+import be.ac.umons.mapOverlay.model.geometry.Line;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.map.*;
@@ -77,6 +78,11 @@ public class IntersectionsFinder extends Publisher {
 
     public double getSweepLineY() {
         return sweepLineY;
+    }
+
+    public Line getSweepLine() {
+        Line s = new Line(0, sweepLineY, 1, sweepLineY);
+        return s;
     }
 
     public Map getMap() {

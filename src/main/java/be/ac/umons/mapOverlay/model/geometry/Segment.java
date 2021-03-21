@@ -21,7 +21,7 @@ public class Segment extends Line {
         }
 
         Point intersection = super.getIntersection(other);
-        if (intersection == null || !contains(intersection) || !other.contains(intersection)) return null;
+        if (intersection == null || !contains(intersection)) return null;
         return intersection;
     }
 

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class TestMapInputFile {
+public class MapInputFileTest {
 
     @Test
     public void readMapTest() throws  IOException {
