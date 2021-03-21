@@ -1,7 +1,7 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.geometry.Line;
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.sdd2.AVLTree;
@@ -183,15 +183,13 @@ public class SweepLineStatus extends AVLTree<Segment> {
     }
 
     public Segment getLeftNeighbour(Segment seg) {
-        double sweepLineY =  IntersectionsFinder.getInstance().getSweepLineY();
-        Line s = new Line(0, sweepLineY, 1, sweepLineY);
+        Line s = IntersectionsFinder.getInstance().getSweepLine();
         Point p = s.getIntersection(seg);
         return getLeftNeighbour(p, null);
     }
 
     public Segment getRightNeighbour(Segment seg) {
-        double sweepLineY =  IntersectionsFinder.getInstance().getSweepLineY();
-        Line s = new Line(0, sweepLineY, 1, sweepLineY);
+        Line s = IntersectionsFinder.getInstance().getSweepLine();
         Point p = s.getIntersection(seg);
         return getRightNeighbour(p, null);
     }

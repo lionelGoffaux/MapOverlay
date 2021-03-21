@@ -2,7 +2,7 @@ package be.ac.umons.mapOverlay.view;
 
 import be.ac.umons.mapOverlay.controller.ButtonController;
 import be.ac.umons.mapOverlay.controller.MouseClickController;
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import be.ac.umons.utils.observer.Subscriber;
 import javafx.scene.layout.BorderPane;

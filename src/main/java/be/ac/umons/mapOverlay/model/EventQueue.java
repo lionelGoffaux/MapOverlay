@@ -4,11 +4,16 @@ import be.ac.umons.sdd2.AVLTree;
 
 public class EventQueue extends AVLTree<Event> {
 
+    public void insertEmpty(Event event) {
+        setData(event);
+        setLeft(new EventQueue());
+        setRight(new EventQueue());
+    }
+
     @Override
     public void insert(Event event) {
-        if (!isEmpty()) {
-            Event current = getData();
-            if (current.equals(event)) current.updateSegments(event.getU());
+        if(!isEmpty() && getData().equals(event)) {
+            getData().updateSegments(event.getU());
         }
         else super.insert(event);
     }

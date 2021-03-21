@@ -1,6 +1,6 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 
 public class Line implements Comparable<Segment>{
     protected final Point upperPoint, lowerPoint;
@@ -24,8 +24,9 @@ public class Line implements Comparable<Segment>{
 
         double commonX = (other.b*c - b* other.c)/det;
         double commonY = (-other.a*c + a*other.c)/det;
-
-        return new Point(commonX, commonY);
+        Point intersection =  new Point(commonX, commonY);
+        if (other.contains(intersection)) return intersection;
+        return null;
     }
 
     protected boolean contains(Point point) {
@@ -34,9 +35,7 @@ public class Line implements Comparable<Segment>{
 
     @Override
     public int compareTo(Segment o) {
-
-        double sweepLineY =  IntersectionsFinder.getInstance().getSweepLineY();
-        Line sweepLine = new Line(0, sweepLineY, 1, sweepLineY); // TODO: get SL
+        Line sweepLine = IntersectionsFinder.getInstance().getSweepLine();
 
         Point a = getIntersection(sweepLine);
         Point b = o.getIntersection(sweepLine);

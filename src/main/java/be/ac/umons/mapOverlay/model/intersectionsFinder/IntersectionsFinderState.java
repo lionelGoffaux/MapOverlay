@@ -1,8 +1,8 @@
-package be.ac.umons.mapOverlay.model.intersectionFinder;
+package be.ac.umons.mapOverlay.model.intersectionsFinder;
 
 import be.ac.umons.mapOverlay.model.map.Map;
 
-public interface IntersectionFinderState {
+public interface IntersectionsFinderState {
 
     void entry(IntersectionsFinder context);
     void start(IntersectionsFinder context);

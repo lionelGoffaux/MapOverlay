@@ -7,12 +7,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class MapOutputFile { // TODO: tests
+public class MapOutputFile {
 
     private final FileWriter fileWriter;
 
     public MapOutputFile(String path) throws IOException {
-        this(new FileWriter("path"));
+        this(new FileWriter(path));
     }
 
     public MapOutputFile(File file) throws IOException {

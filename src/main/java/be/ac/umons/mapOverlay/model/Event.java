@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Event implements Comparable<Event>{
+    // TODO: NotUpperException ?
 
     private final Point point;
     private final ArrayList<Segment> segments;
@@ -32,6 +33,13 @@ public class Event implements Comparable<Event>{
     @Override
     public int hashCode() {
         return Objects.hash(point);
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "point=" + point +
+                '}';
     }
 
     @Override

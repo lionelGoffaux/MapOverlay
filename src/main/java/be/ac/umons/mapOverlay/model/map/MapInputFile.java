@@ -12,11 +12,11 @@ public class MapInputFile {
     private final FileReader fileReader;
 
 
-    public MapInputFile(String path) throws FileNotFoundException {
+    public MapInputFile(String path) throws IOException {
         this(new FileReader(path));
     }
 
-    public MapInputFile(File file) throws  FileNotFoundException {
+    public MapInputFile(File file) throws  IOException {
         this(new FileReader(file));
     }
 

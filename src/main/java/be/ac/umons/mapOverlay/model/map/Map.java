@@ -4,6 +4,7 @@ import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Map {
     private ArrayList<Segment> segments = new ArrayList<>();
@@ -30,5 +31,13 @@ public class Map {
 
     public ArrayList<Segment> getSegments() {
         return segments;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Map map = (Map) o;
+        return segments.equals(map.segments);
     }
 }

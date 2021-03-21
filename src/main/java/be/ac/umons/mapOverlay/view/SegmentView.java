@@ -1,6 +1,6 @@
 package be.ac.umons.mapOverlay.view;
 
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.utils.observer.IntersectionsFinderEvent;
