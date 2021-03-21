@@ -1,6 +1,6 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 
 public class Line implements Comparable<Segment>{
     protected final Point upperPoint, lowerPoint;

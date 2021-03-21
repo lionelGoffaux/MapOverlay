@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model.intersectionFinder;
+package be.ac.umons.mapOverlay.model.intersectionsFinder;
 
 import be.ac.umons.mapOverlay.model.EventQueue;
 import be.ac.umons.mapOverlay.model.SweepLineStatus;
@@ -9,12 +9,12 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
 
-public class FindingState implements IntersectionFinderState{
+public class FindingState implements IntersectionsFinderState {
 
-    private static IntersectionFinderState instance;
+    private static IntersectionsFinderState instance;
 
     private FindingState(){}
-    public static IntersectionFinderState getInstance() {
+    public static IntersectionsFinderState getInstance() {
         if (instance == null) instance = new FindingState();
         return instance;
     }

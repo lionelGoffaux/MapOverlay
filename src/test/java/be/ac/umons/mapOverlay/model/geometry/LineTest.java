@@ -1,7 +1,7 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
 import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

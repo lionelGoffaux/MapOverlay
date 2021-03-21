@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model.intersectionFinder;
+package be.ac.umons.mapOverlay.model.intersectionsFinder;
 
 import be.ac.umons.mapOverlay.model.EventQueue;
 import be.ac.umons.mapOverlay.model.SweepLineStatus;
@@ -21,7 +21,7 @@ public class IntersectionsFinder extends Publisher {
     protected ArrayList<Point> intersections;
     protected Point newSegmentStart;
 
-    private IntersectionFinderState state;
+    private IntersectionsFinderState state;
 
     private IntersectionsFinder() {
         setState(EditionState.getInstance());
@@ -35,7 +35,7 @@ public class IntersectionsFinder extends Publisher {
 
     // TODO: get sweep line intersection
 
-    protected void setState(IntersectionFinderState state) {
+    protected void setState(IntersectionsFinderState state) {
         this.state = state;
         state.entry(this);
     }

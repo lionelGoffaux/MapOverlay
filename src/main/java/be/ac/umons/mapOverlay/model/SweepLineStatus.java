@@ -1,7 +1,7 @@
 package be.ac.umons.mapOverlay.model;
 
 import be.ac.umons.mapOverlay.model.geometry.Line;
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.sdd2.AVLTree;

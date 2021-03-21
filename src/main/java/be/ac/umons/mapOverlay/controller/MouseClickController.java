@@ -1,6 +1,6 @@
 package be.ac.umons.mapOverlay.controller;
 
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.view.IntersectionsFinderView;
 import be.ac.umons.mapOverlay.view.SegmentView;
 import javafx.event.EventHandler;

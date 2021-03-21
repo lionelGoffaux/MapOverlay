@@ -1,7 +1,7 @@
 package be.ac.umons.mapOverlay;
 
 import be.ac.umons.mapOverlay.model.geometry.Line;
-import be.ac.umons.mapOverlay.model.intersectionFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
