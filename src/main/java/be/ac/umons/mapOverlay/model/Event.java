@@ -36,6 +36,13 @@ public class Event implements Comparable<Event>{
     }
 
     @Override
+    public String toString() {
+        return "Event{" +
+                "point=" + point +
+                '}';
+    }
+
+    @Override
     public int compareTo(Event o) {
         return point.compareTo(o.point);
     }
