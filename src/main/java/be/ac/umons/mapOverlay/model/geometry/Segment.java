@@ -1,8 +1,10 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
+
 import java.util.ArrayList;
 
-public class Segment extends Line {
+public class Segment extends Line implements Comparable<Segment>{
 
     public Segment(double x1, double y1, double x2, double y2){
         this(new Point(x1, y1), new Point(x2, y2));
@@ -44,6 +46,28 @@ public class Segment extends Line {
         if (o == null || getClass() != o.getClass()) return false;
         Segment segment = (Segment) o;
         return upperPoint.equals(segment.upperPoint) && lowerPoint.equals(segment.lowerPoint);
+    }
+
+    @Override
+    public int compareTo(Segment o) {
+        Line sweepLine = IntersectionsFinder.getInstance().getSweepLine();
+
+        Point a = getIntersection(sweepLine);
+        Point b = o.getIntersection(sweepLine);
+
+        if (a==null) {
+            if(b==null)
+                return lowerPoint.compareX(o.lowerPoint);
+            else return 1;
+        }
+        else if (b==null) return -1;
+
+        if (a.equals(b)) {
+            a = lowerPoint;
+            b = o.lowerPoint;
+        }
+
+        return a.compareX(b);
     }
 
     public Point getUpperPoint() {
