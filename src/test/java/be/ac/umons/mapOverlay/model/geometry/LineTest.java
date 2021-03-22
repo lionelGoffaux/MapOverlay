@@ -31,36 +31,6 @@ public class LineTest extends IntersectionsFinderDependentTest {
     }
 
     @Test
-    public void horizontalSegmentOrder(){
-        Segment s1 = new Segment(0,0,1,1);
-        Segment s2 = new Segment(0.5, 0.5, 2, 0.5);
-        Segment s3 = new Segment(0.5, 0.5, 3, 0.5);;
-
-        setSweepLineY(0.5);
-        Assertions.assertEquals(-1, s1.compareTo(s2));
-        Assertions.assertEquals(-1, s1.compareTo(s3));
-        Assertions.assertEquals(1, s2.compareTo(s1));
-        Assertions.assertEquals(1, s3.compareTo(s1));
-        Assertions.assertEquals(1, s3.compareTo(s2));
-        Assertions.assertEquals(-1, s2.compareTo(s3));
-    }
-
-    @Test
-    public void orderReversedTest(){
-        Segment s1 = new Segment(0,0,1,1);
-        Segment s2 = new Segment(1, 0, 0, 1);
-
-        setSweepLineY(.25);
-        Assertions.assertEquals(-1, s1.compareTo(s2));
-
-        setSweepLineY(.5);
-        Assertions.assertEquals(1, s1.compareTo(s2));
-
-        setSweepLineY(.75);
-        Assertions.assertEquals(1, s1.compareTo(s2));
-    }
-
-    @Test
     public void positiveLineContainsTest() {
         Line s = new Line(1, 1, 3, 9);
 
