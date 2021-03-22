@@ -254,6 +254,19 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
     }
 
     @Test
+    public void debugGetLeftNeighbourTest(){
+        setSweepLineY(0.1770800627943485);
+        SweepLineStatus tree = new SweepLineStatus();
+        Segment segment1 = new Segment(0.4389324960753532, 0.1770800627943485, 0.5067503924646781, 0.5444270015698587);
+        Segment segment2 = new Segment(0.5128040831113269, 0.18768629441874563, 0.4369090788108505, 0.38460306233349517);
+        tree.insert(segment1);
+        setSweepLineY(0.18768629441874563);
+        tree.insert(segment2);
+        System.out.println(tree.getData());
+        Assertions.assertEquals(segment1, tree.getLeftNeighbour(segment2));
+    }
+
+    @Test
     public void getLeavesTest(){
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);

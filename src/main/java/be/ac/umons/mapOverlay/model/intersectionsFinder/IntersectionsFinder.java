@@ -129,7 +129,7 @@ public class IntersectionsFinder extends Publisher {
 
     protected void findNewEvent(Segment sl, Segment sr, Point point) {
         Point p = sl.getIntersection(sr);
-        if (p.compareTo(point) > 0) eventQueue.insert(new Event(p));
+        if (p!=null&&p.compareTo(point) > 0) eventQueue.insert(new Event(p));
     }
 
 }
