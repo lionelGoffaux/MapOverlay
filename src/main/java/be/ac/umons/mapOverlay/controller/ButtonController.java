@@ -68,6 +68,9 @@ public class ButtonController implements EventHandler<ActionEvent> {
             case "start":
                 intersectionsFinder.start();
                 break;
+            case "detect":
+                intersectionsFinder.findAll();
+                break;
             default:
                 System.out.println("ko");
                 break;

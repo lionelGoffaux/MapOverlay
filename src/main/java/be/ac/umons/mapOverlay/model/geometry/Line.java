@@ -25,10 +25,7 @@ public class Line{
 
         double commonX = (other.b*c - b* other.c)/det;
         double commonY = (-other.a*c + a*other.c)/det;
-        Point intersection =  new Point(commonX, commonY);
-//        if (other.contains(intersection))
-            return intersection;
-//        return null;
+        return new Point(commonX, commonY);
     }
 
     protected boolean contains(Point point) {
