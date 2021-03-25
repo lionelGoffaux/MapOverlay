@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.view;
+package be.ac.umons.mapOverlay.view.gui;
 
 import be.ac.umons.mapOverlay.controller.ButtonController;
 import be.ac.umons.mapOverlay.controller.MouseClickController;

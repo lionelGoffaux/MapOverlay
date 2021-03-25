@@ -94,7 +94,11 @@ public class IntersectionsFinder extends Publisher {
         return map.getSegments();
     }
 
-    protected void handleEventPoint( Event e){
+    public ArrayList<Point> getIntersections() {
+        return intersections;
+    }
+
+    protected void handleEventPoint(Event e){
         sweepLineY = e.getPoint().getY();
         ArrayList<Segment> u = e.getU();
         ArrayList<Segment>  l = status.getL(e.getPoint());

@@ -122,7 +122,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 "}";
     }
 
-    public ArrayList<Segment> getL(Point point) { // TODO: better solution?
+    public ArrayList<Segment> getL(Point point) { // TODO: refactor
         ArrayList<Segment> res = new ArrayList<>();
         for (Segment seg : getLeaves()){
             if(seg.getLowerPoint().equals(point)){
@@ -132,7 +132,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
         return res;
     }
 
-    public ArrayList<Segment> getC(Point point) { // TODO: better solution?
+    public ArrayList<Segment> getC(Point point) { // TODO: refactor
         ArrayList<Segment> res = new ArrayList<>();
         for (Segment seg : getLeaves()){
             if(seg.contains(point)){
@@ -149,7 +149,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
     private Segment getLeftNeighbour(Point point, Segment segment){
         Line s = new Line(0, point.getY(), 1, point.getY());
         Point p = s.getIntersection(getData());
-        if(p==null || point.compareTo(p) <= 0) { // Le segment est à droite du point TODO: vérifier , p==null
+        if(p==null || point.compareTo(p) <= 0) { // Le segment est à droite du point TODO: vérifier
             if( isLeaf()){
                 return segment;
             }
@@ -182,21 +182,21 @@ public class SweepLineStatus extends AVLTree<Segment> {
         }
     }
 
-    public Segment getLeftNeighbour(Segment seg) {
+    public Segment getLeftNeighbour(Segment seg) { // TODO: vérifier + tests
         Line s = IntersectionsFinder.getInstance().getSweepLine();
         Point p = s.getIntersection(seg);
         if(p==null) return null;
         return getLeftNeighbour(p, null);
     }
 
-    public Segment getRightNeighbour(Segment seg) {
+    public Segment getRightNeighbour(Segment seg) {  // TODO: vérifier
         Line s = IntersectionsFinder.getInstance().getSweepLine();
         Point p = s.getIntersection(seg);
         if(p==null) return null;
         return getRightNeighbour(p, null);
     }
 
-    public ArrayList<Segment> getLeaves() {
+    public ArrayList<Segment> getLeaves() { // TODO: refactor
         ArrayList<Segment> list = new ArrayList<>();
         if(isEmpty()){
             return list;

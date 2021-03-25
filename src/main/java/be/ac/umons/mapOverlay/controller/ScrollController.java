@@ -1,7 +1,7 @@
 package be.ac.umons.mapOverlay.controller;
 
-import be.ac.umons.mapOverlay.view.IntersectionsFinderView;
-import be.ac.umons.mapOverlay.view.SegmentView;
+import be.ac.umons.mapOverlay.view.gui.IntersectionsFinderView;
+import be.ac.umons.mapOverlay.view.gui.SegmentView;
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;
 

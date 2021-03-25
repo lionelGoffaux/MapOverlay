@@ -262,7 +262,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         tree.insert(segment1);
         setSweepLineY(0.18768629441874563);
         tree.insert(segment2);
-        Assertions.assertEquals(segment1, tqree.getLeftNeighbour(segment2));
+        Assertions.assertEquals(segment1, tree.getLeftNeighbour(segment2));
     }
 
     @Test

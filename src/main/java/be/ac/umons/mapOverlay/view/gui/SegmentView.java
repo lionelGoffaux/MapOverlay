@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.view;
+package be.ac.umons.mapOverlay.view.gui;
 
 import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
