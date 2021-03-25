@@ -51,9 +51,6 @@ public class Point implements Comparable<Point> {
 
     @Override
     public int compareTo(Point o) {
-        /*if (equals(o)) return 0; // TODO: refaire codition
-        else return isUpperThan(o)? 1: -1;*/
-
         if(equals(o)) return 0;
         if(compareY(o) != 0) return compareY(o);
         return compareX(o);

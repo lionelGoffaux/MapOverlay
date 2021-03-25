@@ -11,8 +11,9 @@ public abstract class IntersectionsFinderDependentTest {
 
 
     protected void setSweepLineY(double value){
+        Line sl = new Line(0, value, 1, value);
         Mockito.when(intersectionsFinder.getSweepLineY()).thenReturn(value);
-        Mockito.when(intersectionsFinder.getSweepLine()).thenReturn(new Line(0, value, 1, value));
+        Mockito.when(intersectionsFinder.getSweepLine()).thenReturn(sl);
     }
 
 }

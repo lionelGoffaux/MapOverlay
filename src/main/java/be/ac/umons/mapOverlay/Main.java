@@ -13,9 +13,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    // TODO: refactor model package
-    // TODO: refactor tests package
-    // TODO: tests EventQueue
+    // TODO: null pointer getleft (map WTF et Horizontal)
+    // TODO: j'ai l'impression que il a pas toutes les intersections (à verifier)
     // TODO: doc
 
     public static void main(String[] args) {

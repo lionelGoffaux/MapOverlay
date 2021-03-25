@@ -2,6 +2,7 @@ package be.ac.umons.mapOverlay.model.intersectionsFinder;
 
 import be.ac.umons.mapOverlay.model.Event;
 import be.ac.umons.mapOverlay.model.EventQueue;
+import be.ac.umons.mapOverlay.model.GetLCVisitor;
 import be.ac.umons.mapOverlay.model.SweepLineStatus;
 import be.ac.umons.mapOverlay.model.geometry.Line;
 import be.ac.umons.mapOverlay.model.geometry.Point;
@@ -33,8 +34,6 @@ public class IntersectionsFinder extends Publisher {
             instance = new IntersectionsFinder();
         return instance;
     }
-
-    // TODO: get sweep line intersection
 
     protected void setState(IntersectionsFinderState state) {
         this.state = state;
@@ -101,8 +100,14 @@ public class IntersectionsFinder extends Publisher {
     protected void handleEventPoint(Event e){
         sweepLineY = e.getPoint().getY();
         ArrayList<Segment> u = e.getU();
-        ArrayList<Segment>  l = status.getL(e.getPoint());
-        ArrayList<Segment>  c = status.getC(e.getPoint());
+        GetLCVisitor glcv = new GetLCVisitor(e.getPoint());
+        status.accept(glcv);
+
+        ArrayList<Segment>  l = glcv.getL();
+        ArrayList<Segment>  c = glcv.getC();
+
+        //ArrayList<Segment>  l = status.getL(e.getPoint());
+        //ArrayList<Segment>  c = status.getC(e.getPoint());
 
         if (u.size() + l.size() + c.size() > 1){
             intersections.add(e.getPoint());

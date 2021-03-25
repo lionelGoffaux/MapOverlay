@@ -104,6 +104,13 @@ public class SweepLineStatus extends AVLTree<Segment> {
             suppress(s);
         }
     }
+
+    public void accept(SweepLineStatusVisitor visitor){
+        if(isEmpty()) visitor.visitEmpty(this);
+        else if(isLeaf()) visitor.visitLeaf(this);
+        else visitor.visitNode(this);
+    }
+
     @Override
     public SweepLineStatus getLeft() {
         return (SweepLineStatus) super.getLeft();
