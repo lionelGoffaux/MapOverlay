@@ -51,7 +51,6 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
         else {
             node.getRight().accept(this);
         }
-        //System.out.println("===============NODE================");
     }
 
     @Override
@@ -61,7 +60,6 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
         //System.out.println("s = " + s);
         if(s.getLowerPoint().equals(p)) l.add(s);
         else if (s.contains(p)) c.add(s);
-        //System.out.println("===============LEAF================");
     }
 
     public ArrayList<Segment> getL() {

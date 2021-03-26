@@ -99,6 +99,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     protected void handleEventPoint(Event e){
+        //System.out.println("=============== EVENT ================");
         //System.out.println("e = " + e);
         sweepLineY = e.getPoint().getY();
         ArrayList<Segment> u = e.getU();
@@ -110,8 +111,10 @@ public class IntersectionsFinder extends Publisher {
         ArrayList<Segment>  l = glcv.getL();
         ArrayList<Segment>  c = glcv.getC();
 
-        //System.out.println("TEST");
+        //System.out.println("u.size() = " + u.size());
+        //System.out.println("l.size() = " + l.size());
         //System.out.println("c.size() = " + c.size());
+        //System.out.println("TEST");
         //if(c.size() >= 1) System.out.println("c.get(0) = " + c.get(0));
         //if(c.size() >= 2) System.out.println("c.get(1) = " + c.get(1));
         if (u.size() + l.size() + c.size() > 1){

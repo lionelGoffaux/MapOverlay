@@ -2,6 +2,7 @@ package be.ac.umons.mapOverlay.model.geometry;
 
 import static java.lang.Math.sqrt;
 import be.ac.umons.utils.Utils;
+import jdk.jshell.execution.Util;
 
 public class Point implements Comparable<Point> {
     private final double x, y;
@@ -40,12 +41,12 @@ public class Point implements Comparable<Point> {
     }
 
     public int compareX(Point o){
-        if (x==o.x) return 0;
+        if (Utils.almostEqual(x, o.x)) return 0;
         return x > o.x ? 1: -1;
     }
 
     public int compareY(Point o){
-        if (y==o.y) return 0;
+        if (Utils.almostEqual(y, o.y)) return 0;
         return y > o.y ? 1: -1;
     }
 
