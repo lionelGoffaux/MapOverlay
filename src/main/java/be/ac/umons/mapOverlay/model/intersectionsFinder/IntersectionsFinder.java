@@ -27,7 +27,7 @@ public class IntersectionsFinder extends Publisher {
 
     private IntersectionsFinderState state;
 
-    private IntersectionsFinder() {
+    protected IntersectionsFinder() {
         setState(EditionState.getInstance());
     }
 

@@ -1,6 +1,5 @@
 package be.ac.umons.mapOverlay.model.map;
 
-import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.io.File;
@@ -30,10 +29,6 @@ public class MapOutputFile {
     }
 
     private void writeSegment(Segment s) throws IOException {
-        /*Point upperPoint = s.getUpperPoint();
-        fileWriter.write(upperPoint.getX() + " " + upperPoint.getY() + " ");
-        Point lowerPoint = s.getLowerPoint();
-        fileWriter.write(lowerPoint.getX() + " " + lowerPoint.getY() + "\n");*/
         fileWriter.write(s + "\n");
     }
 

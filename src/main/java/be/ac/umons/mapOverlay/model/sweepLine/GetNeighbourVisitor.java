@@ -17,6 +17,7 @@ public abstract class GetNeighbourVisitor implements SweepLineStatusVisitor{
 
     public GetNeighbourVisitor(Segment s){
         p = sl.getIntersection(s);
+        if(p==null) s.getUpperPoint();
     }
 
     @Override
