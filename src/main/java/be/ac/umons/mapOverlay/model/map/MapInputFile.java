@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.model.geometry.Segment;
+import be.ac.umons.utils.Utils;
 
 import java.io.*;
 import java.util.Scanner;

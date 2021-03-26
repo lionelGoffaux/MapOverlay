@@ -3,8 +3,11 @@ package be.ac.umons.mapOverlay.model.intersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.map.Map;
+import be.ac.umons.mapOverlay.model.map.MapInputFile;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 public class IntersectionsFinderTest {
 
@@ -65,12 +68,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 0.5, 1, 0.5));
         intersectionsFinder.setMap(map);
         intersectionsFinder.start();
-        /*intersectionsFinder.stepForward();
-        intersectionsFinder.stepForward();
-
-        System.out.println("\n=============================================================================\n");
-        intersectionsFinder.stepForward();
-        System.out.println("\n=============================================================================\n");*/
 
         intersectionsFinder.findAll();
 
@@ -153,5 +150,24 @@ public class IntersectionsFinderTest {
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
         Point p =  intersectionsFinder.getIntersections().get(0);
         Assertions.assertEquals(new Point(0.5, 0.5), p);
+    }
+
+
+    @Test
+    public void debug() throws IOException {
+        IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
+        MapInputFile mif = new MapInputFile("cartes/apre.txt");
+        Map map = mif.readMap();
+        mif.close();
+
+        intersectionsFinder.setMap(map);
+        intersectionsFinder.start();
+
+        for (int i = 0; i < 10; i++){
+            intersectionsFinder.stepForward();
+        }
+
+        intersectionsFinder.status.print();
     }
 }
