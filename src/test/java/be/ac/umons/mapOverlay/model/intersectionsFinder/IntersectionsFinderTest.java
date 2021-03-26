@@ -11,6 +11,7 @@ public class IntersectionsFinderTest {
     @Test
     public void simpleIntersectionTest(){
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         Map map =  new Map();
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0, 1, 0.9, 0.1));
@@ -41,6 +42,7 @@ public class IntersectionsFinderTest {
     @Test
     public void multipleIntersectionTest(){
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         Map map =  new Map();
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0, 1, 1, 0));
@@ -57,12 +59,15 @@ public class IntersectionsFinderTest {
     @Test
     public void HorizontalIntersectionTest(){
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         Map map =  new Map();
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0, 0.5, 1, 0.5));
         intersectionsFinder.setMap(map);
         intersectionsFinder.start();
+
         intersectionsFinder.findAll();
+
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
         Point p =  intersectionsFinder.getIntersections().get(0);
@@ -72,6 +77,7 @@ public class IntersectionsFinderTest {
     @Test
     public void UpperIntersectionTest(){
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         Map map =  new Map();
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0, 1, 0.5, 0.5));
@@ -85,6 +91,7 @@ public class IntersectionsFinderTest {
 
 
         intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         map =  new Map();
         map.addSegment(new Segment(0.5, 0.5, 1, 1));
         map.addSegment(new Segment(0, 1, 1, 0));
@@ -100,6 +107,7 @@ public class IntersectionsFinderTest {
     @Test
     public void HorizontalUpperPointIntersectionTest(){
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         Map map =  new Map();
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0.5, 0.5, 1, 0.5));
@@ -112,6 +120,7 @@ public class IntersectionsFinderTest {
         Assertions.assertEquals(new Point(0.5, 0.5), p);
 
         intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         map =  new Map();
         map.addSegment(new Segment(0.5, 0.5, 1, 1));
         map.addSegment(new Segment(0., 0.5, 1, 0.5));
@@ -127,6 +136,7 @@ public class IntersectionsFinderTest {
     @Test
     public void endPointIntersectionTest(){
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
+        IntersectionsFinder.instance = intersectionsFinder;
         Map map =  new Map();
         map.addSegment(new Segment(0, 0, 0.5, 0.5));
         map.addSegment(new Segment(0, 1, 0.5, 0.5));

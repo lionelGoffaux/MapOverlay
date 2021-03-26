@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class IntersectionsFinder extends Publisher {
 
-    private static IntersectionsFinder instance;
+    protected static IntersectionsFinder instance;
     protected Map map = new Map();
     protected EventQueue eventQueue;
     protected SweepLineStatus status;
@@ -83,8 +83,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     public Line getSweepLine() {
-        Line s = new Line(0, sweepLineY, 1, sweepLineY);
-        return s;
+        return new Line(0, sweepLineY, 1, sweepLineY);
     }
 
     public Map getMap() {

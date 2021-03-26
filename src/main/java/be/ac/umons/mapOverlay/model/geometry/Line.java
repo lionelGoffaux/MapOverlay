@@ -28,6 +28,11 @@ public class Line{
         return new Point(commonX, commonY);
     }
 
+    @Override
+    public String toString() {
+        return upperPoint + " " + lowerPoint;
+    }
+
     protected boolean contains(Point point) {
         return Utils.almostEqual(a*point.getX() + b*point.getY(), c);
     }

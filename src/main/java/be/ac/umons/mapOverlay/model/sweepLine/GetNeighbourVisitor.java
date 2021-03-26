@@ -7,8 +7,8 @@ import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 
 public abstract class GetNeighbourVisitor implements SweepLineStatusVisitor{
 
-    protected final Point p;
-    protected final Line sl = IntersectionsFinder.getInstance().getSweepLine();
+    protected Point p;
+    protected final Line sl = IntersectionsFinder.getInstance().getSweepLine();;
     protected Segment neighbour = null;
 
     public GetNeighbourVisitor(Point p){
@@ -17,7 +17,7 @@ public abstract class GetNeighbourVisitor implements SweepLineStatusVisitor{
 
     public GetNeighbourVisitor(Segment s){
         p = sl.getIntersection(s);
-        if(p==null) s.getUpperPoint();
+        if (p==null) p = s.getUpperPoint();
     }
 
     @Override
