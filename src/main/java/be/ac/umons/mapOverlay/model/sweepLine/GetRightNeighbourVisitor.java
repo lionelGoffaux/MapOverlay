@@ -16,9 +16,12 @@ public class GetRightNeighbourVisitor extends GetNeighbourVisitor{
     public void visitNode(SweepLineStatus node) {
         if(p == null) return;
         Segment curr = node.getData();
+        //System.out.println("curr = " + curr);
         Point intersection = sl.getIntersection(curr);
+        //System.out.println("intersection = " + intersection);
+        if (intersection == null) intersection = curr.getUpperPoint();
 
-        if(intersection == null || p.compareX(intersection) < 0){
+        if(p.compareX(intersection) < 0){
             neighbour = curr;
             node.getLeft().accept(this);
         }

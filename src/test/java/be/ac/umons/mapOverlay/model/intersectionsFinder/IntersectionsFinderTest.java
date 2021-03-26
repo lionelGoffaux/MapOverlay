@@ -65,6 +65,12 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 0.5, 1, 0.5));
         intersectionsFinder.setMap(map);
         intersectionsFinder.start();
+        /*intersectionsFinder.stepForward();
+        intersectionsFinder.stepForward();
+
+        System.out.println("\n=============================================================================\n");
+        intersectionsFinder.stepForward();
+        System.out.println("\n=============================================================================\n");*/
 
         intersectionsFinder.findAll();
 

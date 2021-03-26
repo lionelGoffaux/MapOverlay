@@ -43,23 +43,35 @@ public class Segment extends Line implements Comparable<Segment>{
     @Override
     public int compareTo(Segment o) {
         Line sweepLine = IntersectionsFinder.getInstance().getSweepLine();
+        Point p1 = getIntersection(sweepLine);
+        Point p2 = o.getIntersection(sweepLine);
 
-        Point a = getIntersection(sweepLine);
-        Point b = o.getIntersection(sweepLine);
-
-        if (a==null) {
-            if(b==null)
-                return lowerPoint.compareX(o.lowerPoint);
-            else return 1;
+        if (p1==null) {
+            if(p2==null)
+                if(upperPoint.equals(o.upperPoint))
+                    return lowerPoint.compareX(o.lowerPoint);
+                else
+                    return upperPoint.compareX(o.upperPoint);
+            else {
+                if(upperPoint.equals(p2)){
+                    return 1;
+                }
+                else return upperPoint.compareX(p2);
+            }
         }
-        else if (b==null) return -1;
-
-        if (a.equals(b)) {
-            a = lowerPoint;
-            b = o.lowerPoint;
+        else if (p2==null) {
+            if(p1.equals(o.upperPoint)){
+                return -1;
+            }
+            else return upperPoint.compareX(o.upperPoint);
         }
 
-        return a.compareX(b);
+        if (p1.equals(p2)) {
+            p1 = lowerPoint;
+            p2 = o.lowerPoint;
+        }
+
+        return p1.compareX(p2);
     }
 
     public Point getUpperPoint() {
