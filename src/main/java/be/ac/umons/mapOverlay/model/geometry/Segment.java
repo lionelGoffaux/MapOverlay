@@ -34,10 +34,7 @@ public class Segment extends Line implements Comparable<Segment>{
 
     @Override
     public String toString() {
-        return "Segment{" +
-                "upperPoint=" + upperPoint +
-                ", lowerPoint=" + lowerPoint +
-                '}';
+        return upperPoint + " " + lowerPoint;
     }
 
     @Override

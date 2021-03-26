@@ -30,10 +30,11 @@ public class MapOutputFile {
     }
 
     private void writeSegment(Segment s) throws IOException {
-        Point upperPoint = s.getUpperPoint();
+        /*Point upperPoint = s.getUpperPoint();
         fileWriter.write(upperPoint.getX() + " " + upperPoint.getY() + " ");
         Point lowerPoint = s.getLowerPoint();
-        fileWriter.write(lowerPoint.getX() + " " + lowerPoint.getY() + "\n");
+        fileWriter.write(lowerPoint.getX() + " " + lowerPoint.getY() + "\n");*/
+        fileWriter.write(s + "\n");
     }
 
     public void close() throws IOException{
