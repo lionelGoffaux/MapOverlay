@@ -1,9 +1,6 @@
 package be.ac.umons.mapOverlay.model.intersectionsFinder;
 
-import be.ac.umons.mapOverlay.model.Event;
-import be.ac.umons.mapOverlay.model.EventQueue;
-import be.ac.umons.mapOverlay.model.GetLCVisitor;
-import be.ac.umons.mapOverlay.model.SweepLineStatus;
+import be.ac.umons.mapOverlay.model.*;
 import be.ac.umons.mapOverlay.model.geometry.Line;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
@@ -106,9 +103,6 @@ public class IntersectionsFinder extends Publisher {
         ArrayList<Segment>  l = glcv.getL();
         ArrayList<Segment>  c = glcv.getC();
 
-        //ArrayList<Segment>  l = status.getL(e.getPoint());
-        //ArrayList<Segment>  c = status.getC(e.getPoint());
-
         if (u.size() + l.size() + c.size() > 1){
             intersections.add(e.getPoint());
         }
@@ -122,16 +116,27 @@ public class IntersectionsFinder extends Publisher {
         ArrayList<Segment> uc = new ArrayList<Segment>(u);
         uc.addAll(c);
 
+        GetLeftNeighbourVisitor glnv;
+        GetRightNeighbourVisitor grnv;
+
         if(uc.isEmpty()){
-            Segment sl = status.getLeftNeighbour(e.getPoint());
-            Segment sr = status.getRightNeighbour(e.getPoint());
+            glnv = new GetLeftNeighbourVisitor(e.getPoint());
+            grnv = new GetRightNeighbourVisitor(e.getPoint());
+            status.accept(glnv);
+            status.accept(grnv);
+            Segment sl = glnv.getNeighbour(); //status.getLeftNeighbour(e.getPoint());
+            Segment sr = grnv.getNeighbour(); //status.getRightNeighbour(e.getPoint());
             if (sr != null && sl != null) findNewEvent(sl, sr, e.getPoint());
         } else {
             Segment sp = Segment.getLeftest(uc);
-            Segment sl = status.getLeftNeighbour(sp);
+            glnv = new GetLeftNeighbourVisitor(sp);
+            status.accept(glnv);
+            Segment sl = glnv.getNeighbour(); //status.getLeftNeighbour(sp);
             if (sl != null) findNewEvent(sl, sp, e.getPoint());
             Segment spp = Segment.getRightest(uc);
-            Segment sr = status.getRightNeighbour(spp);
+            grnv =  new GetRightNeighbourVisitor(spp);
+            status.accept(grnv);
+            Segment sr = grnv.getNeighbour(); //status.getRightNeighbour(spp);
             if (sr != null) findNewEvent(sr, spp, e.getPoint());
         }
     }

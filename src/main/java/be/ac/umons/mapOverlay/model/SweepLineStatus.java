@@ -129,30 +129,12 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 "}";
     }
 
-    public ArrayList<Segment> getL(Point point) { // TODO: refactor
-        ArrayList<Segment> res = new ArrayList<>();
-        for (Segment seg : getLeaves()){
-            if(seg.getLowerPoint().equals(point)){
-                res.add(seg);
-            }
-        }
-        return res;
-    }
-
-    public ArrayList<Segment> getC(Point point) { // TODO: refactor
-        ArrayList<Segment> res = new ArrayList<>();
-        for (Segment seg : getLeaves()){
-            if(seg.contains(point)){
-                res.add(seg);
-            }
-        }
-        return res;
-    }
-
+    @Deprecated //TODO: remove
     public Segment getLeftNeighbour(Point point) {
         return getLeftNeighbour(point, null);
     }
 
+    @Deprecated //TODO: remove
     private Segment getLeftNeighbour(Point point, Segment segment){
         Line s = new Line(0, point.getY(), 1, point.getY());
         Point p = s.getIntersection(getData());
@@ -169,10 +151,12 @@ public class SweepLineStatus extends AVLTree<Segment> {
         }
     }
 
+    @Deprecated //TODO: remove
     public Segment getRightNeighbour(Point point) {
         return getRightNeighbour(point, null);
     }
 
+    @Deprecated //TODO: remove
     private Segment getRightNeighbour(Point point, Segment segment){
         Line s = new Line(0, point.getY(), 1, point.getY());
         Point p = s.getIntersection(getData());
@@ -189,31 +173,20 @@ public class SweepLineStatus extends AVLTree<Segment> {
         }
     }
 
-    public Segment getLeftNeighbour(Segment seg) { // TODO: vérifier + tests
+    @Deprecated //TODO: remove
+    public Segment getLeftNeighbour(Segment seg) {
         Line s = IntersectionsFinder.getInstance().getSweepLine();
         Point p = s.getIntersection(seg);
         if(p==null) return null;
         return getLeftNeighbour(p, null);
     }
 
+    @Deprecated //TODO: remove
     public Segment getRightNeighbour(Segment seg) {  // TODO: vérifier
         Line s = IntersectionsFinder.getInstance().getSweepLine();
         Point p = s.getIntersection(seg);
         if(p==null) return null;
         return getRightNeighbour(p, null);
-    }
-
-    public ArrayList<Segment> getLeaves() { // TODO: refactor
-        ArrayList<Segment> list = new ArrayList<>();
-        if(isEmpty()){
-            return list;
-        } else if(isLeaf()){
-            list.add(getData());
-        } else{
-            list.addAll(getLeft().getLeaves());
-            list.addAll(getRight().getLeaves());
-        }
-        return list;
     }
 
 }

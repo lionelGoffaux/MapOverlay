@@ -142,7 +142,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Assertions.assertNull(tree.getRight());
     }
 
-    @Test
+    @Test // TODO: remove
     public void getLeftNeighbourTest() {
         SweepLineStatus tree = new SweepLineStatus();
         // point 0
@@ -174,7 +174,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     }
 
-    @Test
+    @Test // TODO: remove
     public void getRightNeighbourTest(){
         SweepLineStatus tree = new SweepLineStatus();
         // point 0
@@ -205,7 +205,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Assertions.assertNull(tree.getRightNeighbour(p3));
     }
 
-    @Test
+    @Test // TODO: remove
     public void getRightSegmentNeighbourTest() {
         setSweepLineY(3.);
         SweepLineStatus tree = new SweepLineStatus();
@@ -229,7 +229,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Assertions.assertNull(tree.getRightNeighbour(s3));
     }
 
-    @Test
+    @Test // TODO: remove
     public void getLeftSegmentNeighbourTest() {
         setSweepLineY(3.);
         SweepLineStatus tree = new SweepLineStatus();
@@ -253,7 +253,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Assertions.assertEquals(segment3, tree.getLeftNeighbour(s3));
     }
 
-    @Test
+    @Test // TODO: remove
     public void debugGetLeftNeighbourTest(){
         setSweepLineY(0.1770800627943485);
         SweepLineStatus tree = new SweepLineStatus();
@@ -263,68 +263,5 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         setSweepLineY(0.18768629441874563);
         tree.insert(segment2);
         Assertions.assertEquals(segment1, tree.getLeftNeighbour(segment2));
-    }
-
-    @Test
-    public void getLeavesTest(){
-        SweepLineStatus tree = new SweepLineStatus();
-        Segment segment1 = new Segment(1, 3, 2, 1);
-        Segment segment2 = new Segment(1, 1, 3, 3);
-        Segment segment3 = new Segment(2, 4, 3, 1);
-        Segment segment4 = new Segment(4, 3, 5, 1);
-        tree.insert(segment1);
-        tree.insert(segment2);
-        tree.insert(segment3);
-        tree.insert(segment4);
-        ArrayList<Segment> list = tree.getLeaves();
-        Assertions.assertTrue(list.contains(segment1));
-        Assertions.assertTrue(list.contains(segment2));
-        Assertions.assertTrue(list.contains(segment3));
-        Assertions.assertTrue(list.contains(segment4));
-    }
-
-    @Test
-    public void getLTest(){
-        SweepLineStatus tree = new SweepLineStatus();
-        Segment segment0 = new Segment(1, 7, 2, 1);
-        Segment segment1 = new Segment(1, 7, 2, 3);
-        Segment segment2 = new Segment(1, 1, 3, 3);
-        Segment segment3 = new Segment(2, 4, 3, 1);
-        Segment segment4 = new Segment(4, 3, 5, 3);
-        tree.insert(segment0);
-        tree.insert(segment1);
-        tree.insert(segment2);
-        tree.insert(segment3);
-        tree.insert(segment4);
-        /*Point p0 = new Point(2, 1);
-        Point p1 = new Point(1,1);
-        Point p2 = new Point(3,1);
-        Point p3 = new Point(5,1);*/
-        Point p0 = new Point(1, 7);
-        Point p1 = new Point(3,3);
-        Point p2 = new Point(2,4);
-        Point p3 = new Point(5,3);
-        Assertions.assertTrue(tree.getL(p0).contains(segment0));
-        Assertions.assertTrue(tree.getL(p0).contains(segment1));
-        Assertions.assertTrue(tree.getL(p1).contains(segment2));
-        Assertions.assertTrue(tree.getL(p2).contains(segment3));
-        Assertions.assertTrue(tree.getL(p3).contains(segment4));
-    }
-
-    @Test
-    public void getCTest() {
-        SweepLineStatus tree = new SweepLineStatus();
-        Segment segment0 = new Segment(0, 0, 2, 2);
-        Segment segment1 = new Segment(0, 2, 2, 0);
-        tree.insert(segment0);
-        tree.insert(segment1);
-        Point p1 = new Point(1,1);
-        Point p2 = new Point(1.75, 1.75);
-        ArrayList<Segment> list = tree.getC(p1);
-        Assertions.assertTrue(list.contains(segment0));
-        Assertions.assertTrue(list.contains(segment1));
-        list = tree.getC(p2);
-        Assertions.assertTrue(list.contains(segment0));
-        Assertions.assertFalse(list.contains(segment1));
     }
 }
