@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model;
+package be.ac.umons.mapOverlay.model.sweepLine;
 
 import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
 import be.ac.umons.mapOverlay.model.geometry.Point;
@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LeftNeighbourVisitorTest extends IntersectionsFinderDependentTest {
+public class RightNeighbourVisitorTest extends IntersectionsFinderDependentTest {
+
     @BeforeEach
     public void setup(){
         intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
@@ -22,7 +23,7 @@ public class LeftNeighbourVisitorTest extends IntersectionsFinderDependentTest {
     }
 
     @Test
-    public void getPointLeftNeighbourTest(){
+    public void getPointRightNeighbourTest(){
         SweepLineStatus tree = new SweepLineStatus();
 
         // point 0
@@ -33,34 +34,34 @@ public class LeftNeighbourVisitorTest extends IntersectionsFinderDependentTest {
         Segment segment3 = new Segment(5,5,6,1);
         // point 3
 
-        tree.insert(segment2);
-        tree.insert(segment3);
         tree.insert(segment1);
+        tree.insert(segment3);
+        tree.insert(segment2);
 
         Point p0 = new Point(0,3);
         Point p1 = new Point(3,3);
         Point p2 = new Point(5, 3);
         Point p3 = new Point(7, 3);
 
-        GetLeftNeighbourVisitor glnv = new GetLeftNeighbourVisitor(p0);
-        tree.accept(glnv);
-        Assertions.assertNull(glnv.getNeighbour());
+        GetRightNeighbourVisitor grnv = new GetRightNeighbourVisitor(p0);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment1, grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(p1);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment1, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(p1);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment2, grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(p2);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment2, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(p2);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment3, grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(p3);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment3, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(p3);
+        tree.accept(grnv);
+        Assertions.assertNull(grnv.getNeighbour());
     }
 
     @Test
-    public void getSegmentLeftNeighbourTest(){
+    public void getSegmentRightNeighbourTest(){
         SweepLineStatus tree = new SweepLineStatus();
 
         // point 0
@@ -72,8 +73,8 @@ public class LeftNeighbourVisitorTest extends IntersectionsFinderDependentTest {
         // point 3
 
         tree.insert(segment3);
-        tree.insert(segment1);
         tree.insert(segment2);
+        tree.insert(segment1);
 
         Segment s0 = new Segment(0, 6, 1, 2);
         Segment s1 = new Segment(2, 6, 3, 2);
@@ -81,25 +82,24 @@ public class LeftNeighbourVisitorTest extends IntersectionsFinderDependentTest {
         Segment s3 = new Segment(7, 5, 7, 1);
         Segment s4 = new Segment(10, 3, 7, 3);
 
-        GetLeftNeighbourVisitor glnv = new GetLeftNeighbourVisitor(s0);
-        tree.accept(glnv);
-        Assertions.assertNull(glnv.getNeighbour());
+        GetRightNeighbourVisitor grnv = new GetRightNeighbourVisitor(s0);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment1, grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(s1);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment1, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(s1);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment2, grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(s2);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment2, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(s2);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment3, grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(s3);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment3, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(s3);
+        tree.accept(grnv);
+        Assertions.assertNull(grnv.getNeighbour());
 
-        glnv = new GetLeftNeighbourVisitor(s4);
-        tree.accept(glnv);
-        Assertions.assertEquals(segment3, glnv.getNeighbour());
+        grnv = new GetRightNeighbourVisitor(s4);
+        tree.accept(grnv);
+        Assertions.assertNull(grnv.getNeighbour());
     }
-
 }

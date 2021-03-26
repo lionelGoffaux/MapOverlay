@@ -1,5 +1,7 @@
-package be.ac.umons.mapOverlay.model;
+package be.ac.umons.mapOverlay.model.event;
 
+import be.ac.umons.mapOverlay.model.event.Event;
+import be.ac.umons.mapOverlay.model.event.EventQueue;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import org.junit.jupiter.api.Assertions;

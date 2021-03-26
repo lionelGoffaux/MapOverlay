@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model;
+package be.ac.umons.mapOverlay.model.sweepLine;
 
 public interface SweepLineStatusVisitor {
     public void visitEmpty(SweepLineStatus empty);

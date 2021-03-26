@@ -1,15 +1,15 @@
-package be.ac.umons.mapOverlay.model;
+package be.ac.umons.mapOverlay.model.sweepLine;
 
 import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
+import be.ac.umons.mapOverlay.model.sweepLine.GetLCVisitor;
+import be.ac.umons.mapOverlay.model.sweepLine.SweepLineStatus;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 public class GetLCVisitorTest extends IntersectionsFinderDependentTest {
 

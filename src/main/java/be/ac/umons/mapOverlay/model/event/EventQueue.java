@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model;
+package be.ac.umons.mapOverlay.model.event;
 
 import be.ac.umons.sdd2.AVLTree;
 

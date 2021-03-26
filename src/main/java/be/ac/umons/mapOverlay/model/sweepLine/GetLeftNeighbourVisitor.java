@@ -1,4 +1,4 @@
-package be.ac.umons.mapOverlay.model;
+package be.ac.umons.mapOverlay.model.sweepLine;
 
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
