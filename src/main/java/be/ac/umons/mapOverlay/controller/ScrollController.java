@@ -14,7 +14,7 @@ public class ScrollController implements EventHandler<ScrollEvent>{
     }
 
     public void handle(ScrollEvent event) {
-        segmentView.changeScale(event.getDeltaY()*0.014);
+        segmentView.changeScale(event.getDeltaY()*0.014, event.getSceneX(), event.getSceneY());
         segmentView.drawMap();
     }
 }
