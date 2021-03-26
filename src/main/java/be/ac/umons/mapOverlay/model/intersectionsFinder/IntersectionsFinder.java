@@ -124,19 +124,19 @@ public class IntersectionsFinder extends Publisher {
             grnv = new GetRightNeighbourVisitor(e.getPoint());
             status.accept(glnv);
             status.accept(grnv);
-            Segment sl = glnv.getNeighbour(); //status.getLeftNeighbour(e.getPoint());
-            Segment sr = grnv.getNeighbour(); //status.getRightNeighbour(e.getPoint());
+            Segment sl = glnv.getNeighbour();
+            Segment sr = grnv.getNeighbour();
             if (sr != null && sl != null) findNewEvent(sl, sr, e.getPoint());
         } else {
             Segment sp = Segment.getLeftest(uc);
             glnv = new GetLeftNeighbourVisitor(sp);
             status.accept(glnv);
-            Segment sl = glnv.getNeighbour(); //status.getLeftNeighbour(sp);
+            Segment sl = glnv.getNeighbour();
             if (sl != null) findNewEvent(sl, sp, e.getPoint());
             Segment spp = Segment.getRightest(uc);
             grnv =  new GetRightNeighbourVisitor(spp);
             status.accept(grnv);
-            Segment sr = grnv.getNeighbour(); //status.getRightNeighbour(spp);
+            Segment sr = grnv.getNeighbour();
             if (sr != null) findNewEvent(sr, spp, e.getPoint());
         }
     }

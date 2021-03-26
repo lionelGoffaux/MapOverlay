@@ -1,8 +1,5 @@
 package be.ac.umons.mapOverlay.model;
 
-import be.ac.umons.mapOverlay.model.geometry.Line;
-import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
-import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.sdd2.AVLTree;
 
@@ -127,66 +124,6 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 "Data : " + getData() +
                 ", Height : " + getHeight() +
                 "}";
-    }
-
-    @Deprecated //TODO: remove
-    public Segment getLeftNeighbour(Point point) {
-        return getLeftNeighbour(point, null);
-    }
-
-    @Deprecated //TODO: remove
-    private Segment getLeftNeighbour(Point point, Segment segment){
-        Line s = new Line(0, point.getY(), 1, point.getY());
-        Point p = s.getIntersection(getData());
-        if(p==null || point.compareTo(p) <= 0) { // Le segment est à droite du point TODO: vérifier
-            if( isLeaf()){
-                return segment;
-            }
-            return getLeft().getLeftNeighbour(point, segment);
-        } else { // Le segment est à gauche du point
-            if(isLeaf()){
-                return getData();
-            }
-            return getRight().getLeftNeighbour(point, getData());
-        }
-    }
-
-    @Deprecated //TODO: remove
-    public Segment getRightNeighbour(Point point) {
-        return getRightNeighbour(point, null);
-    }
-
-    @Deprecated //TODO: remove
-    private Segment getRightNeighbour(Point point, Segment segment){
-        Line s = new Line(0, point.getY(), 1, point.getY());
-        Point p = s.getIntersection(getData());
-        if(p==null || point.compareTo(p) < 0) { // Le segment est à droite du point TODO: vérifier
-            if( isLeaf()){
-                return getData();
-            }
-            return getLeft().getRightNeighbour(point, getData());
-        } else { // Le segment est à gauche du point
-            if(isLeaf()){
-                return segment;
-            }
-            return getRight().getRightNeighbour(point, segment);
-        }
-    }
-
-    @Deprecated //TODO: remove
-    public Segment getLeftNeighbour(Segment seg) {
-        Line s = IntersectionsFinder.getInstance().getSweepLine();
-        Point p = s.getIntersection(seg);
-        if(p==null) return null;
-        return getLeftNeighbour(p, null);
-    }
-
-    @Deprecated //TODO: remove
-    public Segment getRightNeighbour(Segment seg) {  // TODO: vérifier
-        Line s = IntersectionsFinder.getInstance().getSweepLine();
-        Point p = s.getIntersection(seg);
-        if(p==null) return null;
-        return getRightNeighbour(p, null);
     }
 
 }
