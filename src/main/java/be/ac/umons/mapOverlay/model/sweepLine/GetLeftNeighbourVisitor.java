@@ -17,7 +17,7 @@ public class GetLeftNeighbourVisitor extends GetNeighbourVisitor{
     public void visitNode(SweepLineStatus node) {
         Segment curr = node.getData();
         Point intersection = sl.getIntersection(curr);
-        if(p==null || (intersection != null && p.compareX(intersection) > 0 )) {
+        if(intersection != null && p.compareX(intersection) > 0 ) {
             neighbour = curr;
             node.getRight().accept(this);
         }
@@ -29,6 +29,6 @@ public class GetLeftNeighbourVisitor extends GetNeighbourVisitor{
         Segment curr = leaf.getData();
         Point intersection = sl.getIntersection(curr);
 
-        if(p==null || (intersection != null && p.compareX(intersection) > 0 )) neighbour = curr;
+        if(intersection != null && p.compareX(intersection) > 0 ) neighbour = curr;
     }
 }

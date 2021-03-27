@@ -14,7 +14,6 @@ public class GetRightNeighbourVisitor extends GetNeighbourVisitor{
 
     @Override
     public void visitNode(SweepLineStatus node) {
-        if(p == null) return;
         Segment curr = node.getData();
         //System.out.println("curr = " + curr);
         Point intersection = sl.getIntersection(curr);
@@ -30,10 +29,10 @@ public class GetRightNeighbourVisitor extends GetNeighbourVisitor{
 
     @Override
     public void visitLeaf(SweepLineStatus leaf) {
-        if(p == null) return;
         Segment curr = leaf.getData();
         Point intersection = sl.getIntersection(curr);
+        if(intersection == null) intersection = curr.getUpperPoint();
 
-        if(intersection == null || p.compareX(intersection) < 0) neighbour = curr;
+        if(p.compareX(intersection) < 0) neighbour = curr;
     }
 }

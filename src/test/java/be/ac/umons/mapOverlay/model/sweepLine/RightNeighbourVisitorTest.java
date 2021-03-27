@@ -102,4 +102,27 @@ public class RightNeighbourVisitorTest extends IntersectionsFinderDependentTest 
         tree.accept(grnv);
         Assertions.assertNull(grnv.getNeighbour());
     }
+
+    @Test
+    public void getHorizontalRightNeighbourTest(){
+        SweepLineStatus tree = new SweepLineStatus();
+
+        Segment segment1 = new Segment(1,1,1,5);
+        //  point 0
+        Segment segment2 = new Segment(1,3,6,3);
+        Segment segment3 = new Segment(7, 0, 8, 5);
+
+        tree.insert(segment1);
+        tree.insert(segment2);
+
+        GetRightNeighbourVisitor grnv = new GetRightNeighbourVisitor(segment2);
+        tree.accept(grnv);
+        Assertions.assertNull(grnv.getNeighbour());
+
+        tree.insert(segment3);
+
+        grnv = new GetRightNeighbourVisitor(segment2);
+        tree.accept(grnv);
+        Assertions.assertEquals(segment3, grnv.getNeighbour());
+    }
 }

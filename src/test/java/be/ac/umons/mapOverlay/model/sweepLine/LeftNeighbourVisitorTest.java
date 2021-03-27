@@ -4,8 +4,6 @@ import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
-import be.ac.umons.mapOverlay.model.sweepLine.GetLeftNeighbourVisitor;
-import be.ac.umons.mapOverlay.model.sweepLine.SweepLineStatus;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,6 +57,39 @@ public class LeftNeighbourVisitorTest extends IntersectionsFinderDependentTest {
         glnv = new GetLeftNeighbourVisitor(p3);
         tree.accept(glnv);
         Assertions.assertEquals(segment3, glnv.getNeighbour());
+    }
+
+    @Test
+    public void getLeftHorizontalTest(){
+        SweepLineStatus tree = new SweepLineStatus();
+
+        // point 0
+        Segment s1 = new Segment(1, 0, 1, 5);
+        Segment s2 = new Segment(1, 3, 2, 3);
+        // point 1
+        // point 2
+        Segment s3 = new Segment(2, 3, 3, 5);
+
+        tree.insert(s1);
+        tree.insert(s3);
+        tree.insert(s2);
+
+        Point p0 = new Point(1, 3);
+        Point p1 = new Point(1.5, 3);
+        Point p2 = new Point(2, 3);
+
+        GetLeftNeighbourVisitor glnv = new GetLeftNeighbourVisitor(p0);
+        tree.accept(glnv);
+        Assertions.assertNull(glnv.getNeighbour());
+
+         glnv = new GetLeftNeighbourVisitor(p1);
+        tree.accept(glnv);
+        Assertions.assertEquals(s1, glnv.getNeighbour());
+
+        glnv = new GetLeftNeighbourVisitor(p2);
+        tree.accept(glnv);
+        Assertions.assertEquals(s1, glnv.getNeighbour());
+
     }
 
     @Test
