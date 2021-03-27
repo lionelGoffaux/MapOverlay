@@ -207,4 +207,29 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         double det = Segment.getDet(s1, s2);
         Assertions.assertTrue(Utils.almostEqual(det, 0));
     }
+
+    @Test
+    public void precisionTest(){
+        Segment s1 = new Segment(0.4389324960753532, 0.1770800627943485, 0.5067503924646781, 0.5444270015698587);
+        Segment s2 = new Segment(0.5128040831113269, 0.18768629441874563, 0.4369090788108505, 0.38460306233349517);
+
+        Point a = s1.getIntersection(s2);
+        Point b = s2.getIntersection(s1);
+
+        Assertions.assertEquals(a, b);
+        Assertions.assertTrue(s1.contains(a));
+        Assertions.assertTrue(s1.contains(b));
+        Assertions.assertTrue(s2.contains(a));
+        Assertions.assertTrue(s2.contains(b));
+
+        Line sl = new Line(b.getX()*0.99, a.getY(), a.getX(), a.getY());
+
+        Point c = s1.getIntersection(sl);
+        Point d = s2.getIntersection(sl);
+
+        Assertions.assertEquals(a, c);
+        Assertions.assertEquals(b, c);
+        Assertions.assertEquals(a, d);
+        Assertions.assertEquals(b, d);
+    }
 }

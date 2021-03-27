@@ -101,7 +101,7 @@ public class IntersectionsFinder extends Publisher {
     protected void handleEventPoint(Event e){
         //System.out.println("=============== EVENT ================");
         //System.out.println("e = " + e);
-        sweepLineY = e.getPoint().getY();
+
         ArrayList<Segment> u = e.getU();
         //System.out.println("===============LC================");
         GetLCVisitor glcv = new GetLCVisitor(e.getPoint());
@@ -125,6 +125,8 @@ public class IntersectionsFinder extends Publisher {
 
         status.suppressAll(l);
         status.suppressAll(c);
+
+        sweepLineY = e.getPoint().getY();
 
         status.insertAll(u);
         status.insertAll(c);

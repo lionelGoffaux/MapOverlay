@@ -139,4 +139,25 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Assertions.assertNull(tree.getRight());
     }
 
+    @Test
+    public void complexSuppressionTest(){
+        setSweepLineY(1);
+        SweepLineStatus tree = new SweepLineStatus();
+
+        Segment s1 = new Segment(1,1, 0, 2);
+        Segment s2 = new Segment(1, 1, 2, 2);
+        Segment s3 = new Segment(3, 0, 3, 2);
+
+        tree.insert(s3);
+        tree.insert(s2);
+        tree.insert(s1);
+        tree.suppress(s2);
+
+        Assertions.assertEquals(s1, tree.getData());
+        Assertions.assertEquals(s1, tree.getLeft().getData());
+        Assertions.assertTrue(tree.getLeft().isLeaf());
+        Assertions.assertEquals(s3, tree.getRight().getData());
+        Assertions.assertTrue(tree.getRight().isLeaf());
+    }
+
 }
