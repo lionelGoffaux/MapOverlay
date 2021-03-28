@@ -63,14 +63,17 @@ public class Segment extends Line implements Comparable<Segment>{
             if(p1.equals(o.upperPoint)){
                 return -1;
             }
-            else return upperPoint.compareX(o.upperPoint);
+            else  return p1.compareX(o.upperPoint);
         }
 
         if (p1.equals(p2)) {
-            p1 = lowerPoint;
-            p2 = o.lowerPoint;
+            double minY = lowerPoint.compareY(o.lowerPoint) > 0? o.lowerPoint.getY(): lowerPoint.getY();
+            Line sl = new Line(0, minY, 1, minY);
+            p1 = sl.getIntersection(this);
+            p2 = sl.getIntersection(o);
         }
-
+        //System.out.println("p1 = " + p1);
+        //System.out.println("p2 = " + p2);
         return p1.compareX(p2);
     }
 

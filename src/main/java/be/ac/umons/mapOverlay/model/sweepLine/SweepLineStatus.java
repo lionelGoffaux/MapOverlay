@@ -76,7 +76,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
                 setData(getLeft().getData());
                 setRight(getLeft().getRight());
                 setLeft(getLeft().getLeft());
-            } else if (d.compareTo(getData()) < 0) {
+            } else if (d.compareTo(getData()) <= 0) {
                 getLeft().suppress(d);
             } else if (d.compareTo(getData()) > 0) {
                 getRight().suppress(d);

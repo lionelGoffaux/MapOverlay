@@ -157,7 +157,7 @@ public class IntersectionsFinderTest {
     public void debug() throws IOException {
         IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
         IntersectionsFinder.instance = intersectionsFinder;
-        MapInputFile mif = new MapInputFile("cartes/apre.txt");
+        MapInputFile mif = new MapInputFile("cartes/problem1.txt");
         Map map = mif.readMap();
         mif.close();
 
