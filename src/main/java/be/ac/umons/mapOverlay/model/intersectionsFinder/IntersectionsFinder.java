@@ -153,4 +153,7 @@ public class IntersectionsFinder extends Publisher {
         if (p!=null&&p.compareTo(point) > 0) eventQueue.insert(new Event(p));
     }
 
+    public Point getEventPoint() {
+        return eventPoint;
+    }
 }

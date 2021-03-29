@@ -18,6 +18,7 @@ public class Segment extends Line implements Comparable<Segment>{
         if(this.upperPoint.equals(other.upperPoint) || this.upperPoint.equals(other.lowerPoint)){
             return new Point(this.upperPoint.getX(), this.upperPoint.getY());
         }
+
         if(this.lowerPoint.equals(other.upperPoint) || this.lowerPoint.equals(other.lowerPoint)){
             return new Point(this.lowerPoint.getX(), this.lowerPoint.getY());
         }
@@ -46,24 +47,18 @@ public class Segment extends Line implements Comparable<Segment>{
         Point p1 = getIntersection(sweepLine);
         Point p2 = o.getIntersection(sweepLine);
 
-        if (p1==null) {
-            if(p2==null)
-                if(upperPoint.equals(o.upperPoint))
-                    return lowerPoint.compareX(o.lowerPoint);
-                else
-                    return upperPoint.compareX(o.upperPoint);
-            else {
-                if(upperPoint.equals(p2)){
-                    return 1;
-                }
-                else return upperPoint.compareX(p2);
-            }
+        if(p1==null && p2==null) return upperPoint.compareX(o.upperPoint);
+
+        if(p1==null){
+            p1 = IntersectionsFinder.getInstance().getEventPoint();
+            if(p1.equals(p2)) return 1;
+            return p1.compareX(p2);
         }
-        else if (p2==null) {
-            if(p1.equals(o.upperPoint)){
-                return -1;
-            }
-            else  return p1.compareX(o.upperPoint);
+
+        if(p2==null) {
+            p2 = IntersectionsFinder.getInstance().getEventPoint();
+            if (p1.equals(p2)) return -1;
+            return p1.compareX(p2);
         }
 
         if (p1.equals(p2)) {
@@ -72,8 +67,6 @@ public class Segment extends Line implements Comparable<Segment>{
             p1 = sl.getIntersection(this);
             p2 = sl.getIntersection(o);
         }
-        //System.out.println("p1 = " + p1);
-        //System.out.println("p2 = " + p2);
         return p1.compareX(p2);
     }
 
