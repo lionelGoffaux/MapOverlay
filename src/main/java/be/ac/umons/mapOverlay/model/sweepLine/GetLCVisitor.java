@@ -21,15 +21,11 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
     public GetLCVisitor(Point p){
         this.p = p;
         sl = new Line(p.getX(), p.getY(), 1, p.getY());
-        //System.out.println("p = " + p);
-        //System.out.println("sl = " + sl);
     }
 
     @Override
     public void visitNode(SweepLineStatus node) {
-        //System.out.println("===============NODE================");
         Segment s = node.getData();
-        //System.out.println("s = " + s);
         Point intersection = s.getIntersection(sl);
         if (intersection == null){
             intersection = s.getUpperPoint();
@@ -39,7 +35,6 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
             }
         }
         int compare = intersection.compareX(p);
-        //System.out.println("compare = " + compare);
 
         if (compare == 0 ){
             node.getLeft().accept(this);
@@ -55,9 +50,7 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
 
     @Override
     public void visitLeaf(SweepLineStatus leaf) {
-        //System.out.println("===============LEAF================");
         Segment s = leaf.getData();
-        //System.out.println("s = " + s);
         if(s.getLowerPoint().equals(p)) l.add(s);
         else if (s.contains(p)) c.add(s);
     }

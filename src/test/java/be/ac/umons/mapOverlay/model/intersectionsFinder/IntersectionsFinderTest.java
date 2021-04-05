@@ -152,22 +152,4 @@ public class IntersectionsFinderTest {
         Assertions.assertEquals(new Point(0.5, 0.5), p);
     }
 
-
-    @Test
-    public void debug() throws IOException {
-        IntersectionsFinder intersectionsFinder = new IntersectionsFinder();
-        IntersectionsFinder.instance = intersectionsFinder;
-        MapInputFile mif = new MapInputFile("cartes/problem1.txt");
-        Map map = mif.readMap();
-        mif.close();
-
-        intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
-
-        for (int i = 0; i < 10; i++){
-            intersectionsFinder.stepForward();
-        }
-
-        intersectionsFinder.status.print();
-    }
 }

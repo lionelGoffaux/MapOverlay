@@ -23,7 +23,7 @@ public class IntersectionsFinderCli implements Subscriber {
 
     private void printIntersections() {
         for (Point i : intersectionsFinder.getIntersections()){
-            //System.out.println(i);
+            System.out.println(i);
         }
     }
 }
