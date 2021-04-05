@@ -7,7 +7,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 public class ButtonView extends VBox {
-    // TODO: command pattern ?
     Button[] buttons = {new Button("open"), new Button("new"), new Button("save"), new Button("start"),
             new Button("step"), new Button("detect")};
 

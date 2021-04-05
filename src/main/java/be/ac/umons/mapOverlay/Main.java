@@ -13,13 +13,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    // TODO: j'ai l'impression que il a pas toutes les intersections (à verifier)
     // TODO: doc
 
     public static void main(String[] args) {
-        if(args.length != 0){ //TODO: on garde?
+        if(args.length != 0){
             IntersectionsFinder intersectionsFinder = IntersectionsFinder.getInstance();
-            IntersectionsFinderCli intersectionsFinderCli = new IntersectionsFinderCli(intersectionsFinder);
+            new IntersectionsFinderCli(intersectionsFinder);
 
             try {
                 MapInputFile mif = new MapInputFile(args[0]);
@@ -39,7 +38,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage){ // TODO: clean controllers
+    public void start(Stage primaryStage){
         IntersectionsFinder intersectionsFinder = IntersectionsFinder.getInstance();
         IntersectionsFinderView intersectionsFinderView = new IntersectionsFinderView(intersectionsFinder);
 

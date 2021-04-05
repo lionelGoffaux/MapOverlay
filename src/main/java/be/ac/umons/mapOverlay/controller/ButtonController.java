@@ -33,7 +33,7 @@ public class ButtonController implements EventHandler<ActionEvent> {
                 mof.writeMap(intersectionsFinder.getMap());
                 mof.close();
             } catch (IOException e) {
-                e.printStackTrace();//TODO: error message
+                e.printStackTrace();
             }
         }
     }
@@ -46,7 +46,9 @@ public class ButtonController implements EventHandler<ActionEvent> {
                 Map map = mif.readMap();
                 intersectionsFinder.setMap(map);
                 mif.close();
-            }catch (IOException e) {return;} //TODO: error message
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
