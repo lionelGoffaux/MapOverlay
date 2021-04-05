@@ -18,6 +18,10 @@ public class EventQueue extends AVLTree<Event> {
         else super.insert(event);
     }
 
+    /***
+     * Retourne le prochain event à traiter.
+     * @return
+     */
     public Event getNextEvent() {
         return suppressMin();
     }

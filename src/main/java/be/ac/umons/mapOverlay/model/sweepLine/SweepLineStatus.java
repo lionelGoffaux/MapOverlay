@@ -37,7 +37,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
         }
     }
 
-    public void insertLeaf(Segment d){
+    private void insertLeaf(Segment d){
         if(this.getData().compareTo(d) < 0){
             this.setLeft(new SweepLineStatus(this.getData(), new SweepLineStatus(), new SweepLineStatus()));
             this.setRight(new SweepLineStatus(d, new SweepLineStatus(), new SweepLineStatus()));
@@ -57,7 +57,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
         setHeight(1);
     }
 
-    public boolean isLeaf(){
+    protected boolean isLeaf(){
         return getLeft().isEmpty() && getRight().isEmpty();
     }
 
@@ -102,6 +102,10 @@ public class SweepLineStatus extends AVLTree<Segment> {
         }
     }
 
+    /***
+     * Accepte un visiteur.
+     * @param visitor
+     */
     public void accept(SweepLineStatusVisitor visitor){
         if(isEmpty()) visitor.visitEmpty(this);
         else if(isLeaf()) visitor.visitLeaf(this);

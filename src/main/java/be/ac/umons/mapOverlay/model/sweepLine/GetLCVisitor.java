@@ -55,10 +55,18 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
         else if (s.contains(p)) c.add(s);
     }
 
+    /***
+     * Retourne les segments de la sweep line se terminant par le point.
+     * @return
+     */
     public ArrayList<Segment> getL() {
         return l;
     }
 
+    /***
+     * Retourne les segments de la sweep line passant par le point.
+     * @return
+     */
     public ArrayList<Segment> getC() {
         return c;
     }

@@ -10,10 +10,6 @@ public class MapOutputFile {
 
     private final FileWriter fileWriter;
 
-    public MapOutputFile(String path) throws IOException {
-        this(new FileWriter(path));
-    }
-
     public MapOutputFile(File file) throws IOException {
         this(new FileWriter(file));
     }
@@ -22,6 +18,11 @@ public class MapOutputFile {
         this.fileWriter = fileWriter;
     }
 
+    /***
+     * Ecrit une map dans un fichier.
+     * @param map
+     * @throws IOException
+     */
     public void writeMap(Map map) throws IOException {
         for(Segment s: map.getSegments()){
             writeSegment(s);

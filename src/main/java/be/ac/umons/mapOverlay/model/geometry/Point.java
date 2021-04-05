@@ -20,16 +20,13 @@ public class Point implements Comparable<Point> {
         this.y = y;
     }
 
+    /***
+     * Retourne si un point est avant dans l'ordre de passage de la sweep line.
+     * @param p
+     * @return
+     */
     public boolean isUpperThan(Point p){
         return compareTo(p) <= 0;
-    }
-
-    public double getNorm(){
-        return sqrt(x * x + y * y);
-    }
-
-    public double scalarProduct(Point other){
-        return this.x * other.x + this.y * other.y;
     }
 
     @Override
@@ -40,11 +37,21 @@ public class Point implements Comparable<Point> {
         return Utils.almostEqual(point.x, x) && Utils.almostEqual(point.y, y);
     }
 
+    /***
+     * compare à un autre point en fonction des X.
+     * @param o
+     * @return
+     */
     public int compareX(Point o){
         if (Utils.almostEqual(x, o.x)) return 0;
         return x > o.x ? 1: -1;
     }
 
+    /***
+     * compare à un autre point en fonction des Y.
+     * @param o
+     * @return
+     */
     public int compareY(Point o){
         if (Utils.almostEqual(y, o.y)) return 0;
         return y > o.y ? 1: -1;
@@ -55,12 +62,6 @@ public class Point implements Comparable<Point> {
         if(equals(o)) return 0;
         if(compareY(o) != 0) return compareY(o);
         return compareX(o);
-    }
-
-    public boolean isOriented(Point other){
-        if(this.equals(new Point(0,0)) || other.equals(new Point(0,0)))
-            return true;
-        return Utils.almostEqual((this.scalarProduct(other))/(this.getNorm()*other.getNorm()), 1.0);
     }
 
     @Override

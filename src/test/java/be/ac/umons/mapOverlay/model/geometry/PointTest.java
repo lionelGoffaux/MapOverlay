@@ -5,13 +5,6 @@ import org.junit.jupiter.api.Test;
 import static java.lang.Math.sqrt;
 
 class PointTest {
-    @Test
-    public void normTest(){
-        Point point = new Point(0, 1);
-        Assertions.assertEquals(0, Double.compare(point.getNorm(), 1));
-        point = new Point(1, 1);
-        Assertions.assertEquals(0, Double.compare(point.getNorm(), sqrt(2)));
-    }
 
 
     @Test
@@ -29,33 +22,6 @@ class PointTest {
         Assertions.assertFalse(point2.isUpperThan(point1));
     }
 
-    @Test
-    public void scalarProductTest(){
-        Point point1 = new Point(1, 2);
-        Point point2 = new Point(5, 3);
-        Assertions.assertEquals(0, Double.compare(point1.scalarProduct(point2), 11));
-    }
-
-    @Test
-    public void perpendicularVectorTest(){
-        Point point1 = new Point(1, 2);
-        Point point2 = new Point(2, -1);
-        Assertions.assertEquals(0, Double.compare(point1.scalarProduct(point2), 0));
-    }
-
-    @Test
-    public void orientationTest(){
-        Point point1 = new Point(0,0);
-        Point point2 = new Point(1,1);
-        Assertions.assertTrue(point1.isOriented(point2));
-        point1 = new Point(2,1);
-        point2 = new Point(1, .5);
-        Assertions.assertTrue(point1.isOriented(point2));
-        Assertions.assertTrue(point2.isOriented(point1));
-        point1 = new Point(1,2);
-        point2 = new Point(1, .5);
-        Assertions.assertFalse(point1.isOriented(point2));
-    }
 
     @Test
     public void comparisonTest(){

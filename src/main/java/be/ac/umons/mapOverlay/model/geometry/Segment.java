@@ -14,6 +14,11 @@ public class Segment extends Line implements Comparable<Segment>{
         super(p1, p2);
     }
 
+    /***
+     * Retourne l'intersection avec un autre segment.
+     * @param other
+     * @return
+     */
     public Point getIntersection(Segment other){
         if(this.upperPoint.equals(other.upperPoint) || this.upperPoint.equals(other.lowerPoint)){
             return new Point(this.upperPoint.getX(), this.upperPoint.getY());
@@ -70,14 +75,27 @@ public class Segment extends Line implements Comparable<Segment>{
         return p1.compareX(p2);
     }
 
+    /***
+     * Retourne le point au dessus dans l'ordre de passage de la sweep line.
+     * @return
+     */
     public Point getUpperPoint() {
         return upperPoint;
     }
 
+    /***
+     * Retourne le point en bas dans l'ordre de passage de la sweep line.
+     * @return
+     */
     public Point getLowerPoint() {
         return lowerPoint;
     }
 
+    /***
+     * Trouve le segment le plus à gauche dans la liste de segment.
+     * @param segments
+     * @return
+     */
     public static Segment getLeftest(ArrayList<Segment> segments){
         Segment l = null;
         for(Segment s: segments)
@@ -86,6 +104,11 @@ public class Segment extends Line implements Comparable<Segment>{
         return l;
     }
 
+    /***
+     * Trouve le segment le plus à droite dans la liste de segment.
+     * @param segments
+     * @return
+     */
     public static Segment getRightest(ArrayList<Segment> segments){
         Segment r = null;
         for(Segment s: segments)

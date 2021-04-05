@@ -12,7 +12,6 @@ public class MapInputFile {
     private final Scanner scanner;
     private final FileReader fileReader;
 
-
     public MapInputFile(String path) throws IOException {
         this(new FileReader(path));
     }
@@ -34,6 +33,10 @@ public class MapInputFile {
         return segment;
     }
 
+    /***
+     * Retourne la map contenue dans le fichier.
+     * @return
+     */
     public Map readMap(){
         Map map = new Map();
         while (scanner.hasNext()) {

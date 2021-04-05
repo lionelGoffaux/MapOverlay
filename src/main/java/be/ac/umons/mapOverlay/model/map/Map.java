@@ -10,10 +10,18 @@ public class Map {
     private ArrayList<Segment> segments = new ArrayList<>();
     private double maxX=0, maxY=0;
 
+    /***
+     * Retourne la valeur maximal en x dans tous les segments.
+     * @return
+     */
     public double getMaxX() {
         return maxX;
     }
 
+    /***
+     * Retourne la valeur maximal en y dans tous les segments.
+     * @return
+     */
     public double getMaxY() {
         return maxY;
     }

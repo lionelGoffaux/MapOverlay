@@ -19,6 +19,11 @@ public class Line{
         c = a * upperPoint.getX() + b * upperPoint.getY();
     }
 
+    /***
+     * Retourne le point d'intersection avec une autre ligne.
+     * @param other
+     * @return
+     */
     public Point getIntersection(Line other){
         double det = getDet(this, other);
         if(det==0) return null;
@@ -33,10 +38,21 @@ public class Line{
         return upperPoint + " " + lowerPoint;
     }
 
+    /***
+     * Retourne si un point est contenu dans la ligne.
+     * @param point
+     * @return
+     */
     protected boolean contains(Point point) {
         return Utils.almostEqual(a*point.getX() + b*point.getY(), c);
     }
 
+    /***
+     * Calcule le determinant entre deux segments.
+     * @param s1
+     * @param s2
+     * @return
+     */
     protected static double getDet(Line s1, Line s2){
         return s1.a*s2.b-s2.a*s1.b;
     }

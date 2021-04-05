@@ -25,6 +25,10 @@ public abstract class GetNeighbourVisitor implements SweepLineStatusVisitor{
 
     }
 
+    /***
+     * Retourne le voisin du point ou segment dans la sweep line.
+     * @return
+     */
     public Segment getNeighbour() {
         return neighbour;
     }

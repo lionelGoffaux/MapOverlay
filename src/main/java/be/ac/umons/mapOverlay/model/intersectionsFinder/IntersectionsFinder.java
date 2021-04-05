@@ -38,67 +38,116 @@ public class IntersectionsFinder extends Publisher {
         return instance;
     }
 
+    /***
+     * Change l'état de l'intersectionFinder.
+     * @param state
+     */
     protected void setState(IntersectionsFinderState state) {
         this.state = state;
         state.entry(this);
     }
 
 
+    /***
+     * Déclenche l'event start.
+     */
     public void start(){
         state.start(this);
         notifySubscribers(IntersectionsFinderEvent.START);
     }
 
+    /***
+     * Déclenche l'event stepForward.
+     */
     public void stepForward(){
         state.stepForward(this);
         notifySubscribers(IntersectionsFinderEvent.STEP_FORWARD);
     }
 
+    /***
+     * Déclenche l'event findAll.
+     */
     public void findAll(){
         state.findAll(this);
         notifySubscribers(IntersectionsFinderEvent.FIND_ALL);
     }
 
+    /***
+     * Déclenche l'event setMap.
+     */
     public void setMap(Map map) {
         state.setMap(this, map);
         notifySubscribers(IntersectionsFinderEvent.SET_MAP);
     }
 
+    /***
+     * Déclenche l'event startnewSegment.
+     */
     public void startNewSegment(double x, double y){
         state.startNewSegment(this, x, y);
         notifySubscribers(IntersectionsFinderEvent.START_NEW_SEGMENT);
     }
 
+    /***
+     * Déclenche l'event endNewSegment.
+     */
     public void endNewSegment(double x, double y) {
         state.endNewSegment(this, x, y);
         notifySubscribers(IntersectionsFinderEvent.END_NEW_SEGMENT);
     }
 
+    /***
+     * Déclenche l'event createNewMap.
+     */
     public void createNewMap() {
         state.newMap(this);
         notifySubscribers(IntersectionsFinderEvent.CREATE_NEW_MAP);
     }
 
+    /***
+     * Retourne la position en Y de la sweep line.
+     * @return
+     */
     public double getSweepLineY() {
         return sweepLineY;
     }
 
+    /***
+     * Retourne la sweep line.
+     * @return
+     */
     public Line getSweepLine() {
         return new Line(0, sweepLineY, 1, sweepLineY);
     }
 
+    /***
+     * Retourne la map.
+     * @return
+     */
     public Map getMap() {
         return map;
     }
 
+    /***
+     * Retourne la list des segments de la map.
+     * @return
+     */
     public ArrayList<Segment> getSegments(){
         return map.getSegments();
     }
 
+    /***
+     * Retourne la liste des intersections.
+     * @return
+     */
     public ArrayList<Point> getIntersections() {
         return intersections;
     }
 
+    /***
+     * Traite un event point pour trouver les intersection.
+     * @param e
+     */
     protected void handleEventPoint(Event e){
         ArrayList<Segment> u = e.getU();
         GetLCVisitor glcv = new GetLCVisitor(e.getPoint());
@@ -148,11 +197,21 @@ public class IntersectionsFinder extends Publisher {
         }
     }
 
+    /***
+     * Vérifie si un nouveau point d'event doit être ajouté.
+     * @param sl
+     * @param sr
+     * @param point
+     */
     protected void findNewEvent(Segment sl, Segment sr, Point point) {
         Point p = sl.getIntersection(sr);
         if (p!=null&&p.compareTo(point) > 0) eventQueue.insert(new Event(p));
     }
 
+    /***
+     * Retourne l'event point actuel.
+     * @return
+     */
     public Point getEventPoint() {
         return eventPoint;
     }
