@@ -12,7 +12,7 @@ public class LineTest extends IntersectionsFinderDependentTest {
     @BeforeEach
     public void setup(){
         intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
-        setSweepLineY(0.75);
+        setEventPoint(new Point(0, 0.75));
     }
 
     @AfterEach
@@ -22,7 +22,7 @@ public class LineTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void comparisonTest(){
-        setSweepLineY(1.75);
+        setEventPoint(new Point(0, 1.75));
 
         Segment segment1 = new Segment(1, 2, 3, 0);
         Segment segment2 = new Segment(1, 0, 3, 2);

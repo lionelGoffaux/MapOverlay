@@ -13,7 +13,7 @@ class SegmentTest extends IntersectionsFinderDependentTest {
     @BeforeEach
     public void setup(){
         intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
-        setSweepLineY(0.75);
+        setEventPoint(new Point(0, 0.75));
     }
 
     @AfterEach
@@ -68,7 +68,7 @@ class SegmentTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void orderTest(){
-        setSweepLineY(1.75);
+        setEventPoint(new Point(0, 1.75));
 
         Segment segment1 = new Segment(1, 2, 3, 0);
         Segment segment2 = new Segment(1, 0, 3, 2);
@@ -78,25 +78,17 @@ class SegmentTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void horizontalSegmentOrder(){
-        setSweepLineY(0.5);
         Segment s1 = new Segment(0,0,1,1);
         Segment s2 = new Segment(0.5, 0.5, 2, 0.5);
-        Segment s3 = new Segment(0.5, 0.5, 3, 0.5);
-        Segment s4 = new Segment(10, 0, 10, 1);
+        Segment s3 = new Segment(10, 0, 10, 1);
 
-        setSweepLineY(0.5);
+        setEventPoint(new Point(0.5, 0.5));
         Assertions.assertEquals(-1, s1.compareTo(s2));
-        Assertions.assertEquals(-1, s1.compareTo(s3));
         Assertions.assertEquals(1, s2.compareTo(s1));
+        Assertions.assertEquals(-1, s1.compareTo(s3));
+        Assertions.assertEquals(-1, s2.compareTo(s3));
         Assertions.assertEquals(1, s3.compareTo(s1));
         Assertions.assertEquals(1, s3.compareTo(s2));
-        Assertions.assertEquals(-1, s2.compareTo(s3));
-        Assertions.assertEquals(-1, s1.compareTo(s4));
-        Assertions.assertEquals(-1, s2.compareTo(s4));
-        Assertions.assertEquals(-1, s3.compareTo(s4));
-        Assertions.assertEquals(1, s4.compareTo(s1));
-        Assertions.assertEquals(1, s4.compareTo(s2));
-        Assertions.assertEquals(1, s4.compareTo(s3));
     }
 
     @Test
@@ -104,13 +96,13 @@ class SegmentTest extends IntersectionsFinderDependentTest {
         Segment s1 = new Segment(0,0,1,1);
         Segment s2 = new Segment(1, 0, 0, 1);
 
-        setSweepLineY(0.25);
+        setEventPoint(new Point(0.5, 0.25));
         Assertions.assertEquals(-1, s1.compareTo(s2));
 
-        setSweepLineY(0.5);
+        setEventPoint(new Point(0.5, 0.5));
         Assertions.assertEquals(1, s1.compareTo(s2));
 
-        setSweepLineY(0.75);
+        setEventPoint(new Point(0.5, 0.75));
         Assertions.assertEquals(1, s1.compareTo(s2));
     }
 

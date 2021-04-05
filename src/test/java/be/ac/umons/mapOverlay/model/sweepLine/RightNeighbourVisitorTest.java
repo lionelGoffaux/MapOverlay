@@ -14,7 +14,7 @@ public class RightNeighbourVisitorTest extends IntersectionsFinderDependentTest 
     @BeforeEach
     public void setup(){
         intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
-        setSweepLineY(3.);
+        setEventPoint(new Point(0., 3.));
     }
 
     @AfterEach
@@ -80,7 +80,6 @@ public class RightNeighbourVisitorTest extends IntersectionsFinderDependentTest 
         Segment s1 = new Segment(2, 6, 3, 2);
         Segment s2 = new Segment(5, 6, 4, 2);
         Segment s3 = new Segment(7, 5, 7, 1);
-        Segment s4 = new Segment(10, 3, 7, 3);
 
         GetRightNeighbourVisitor grnv = new GetRightNeighbourVisitor(s0);
         tree.accept(grnv);
@@ -97,15 +96,13 @@ public class RightNeighbourVisitorTest extends IntersectionsFinderDependentTest 
         grnv = new GetRightNeighbourVisitor(s3);
         tree.accept(grnv);
         Assertions.assertNull(grnv.getNeighbour());
-
-        grnv = new GetRightNeighbourVisitor(s4);
-        tree.accept(grnv);
-        Assertions.assertNull(grnv.getNeighbour());
     }
 
     @Test
     public void getHorizontalRightNeighbourTest(){
         SweepLineStatus tree = new SweepLineStatus();
+
+        setEventPoint(new Point(1,3));
 
         Segment segment1 = new Segment(1,1,1,5);
         //  point 0

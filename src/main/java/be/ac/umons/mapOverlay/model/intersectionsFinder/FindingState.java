@@ -45,7 +45,6 @@ public class FindingState implements IntersectionsFinderState {
     public void findAll(IntersectionsFinder context) {
         while (!context.eventQueue.isEmpty())
             context.handleEventPoint(context.eventQueue.getNextEvent());
-        System.out.println("context.intersections.size() = " + context.intersections.size());
     }
 
     @Override

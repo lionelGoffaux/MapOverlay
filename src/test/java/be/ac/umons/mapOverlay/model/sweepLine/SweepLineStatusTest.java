@@ -1,6 +1,7 @@
 package be.ac.umons.mapOverlay.model.sweepLine;
 
 import be.ac.umons.mapOverlay.IntersectionsFinderDependentTest;
+import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import org.junit.jupiter.api.AfterEach;
@@ -13,7 +14,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
     @BeforeEach
     public void setup(){
         intersectionsFinderMockedStatic.when(IntersectionsFinder::getInstance).thenReturn(intersectionsFinder);
-        setSweepLineY(0.75);
+        setEventPoint(new Point(0., 0.75));
     }
 
     @AfterEach
@@ -32,7 +33,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
         Assertions.assertEquals(segment2, tree.getLeft().getData());
         Assertions.assertEquals(segment1, tree.getRight().getData());
 
-        setSweepLineY(.1);
+        setEventPoint(new Point(0., 0.1));
         tree = new SweepLineStatus();
         tree.insert(segment1);
         tree.insert(segment2);
@@ -43,7 +44,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void insertTest(){
-        setSweepLineY(2.75);
+        setEventPoint(new Point(0., 2.75));
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -61,7 +62,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void insertWithRotationTest(){
-        setSweepLineY(2.75);
+        setEventPoint(new Point(0., 2.75));
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -82,7 +83,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void suppressionTest(){
-        setSweepLineY(2.75);
+        setEventPoint(new Point(0., 2.75));
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -108,7 +109,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void isLeafTest(){
-        setSweepLineY(2.75);
+        setEventPoint(new Point(0., 2.75));
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -127,7 +128,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void suppressionOneNodeTest(){
-        setSweepLineY(2.75);
+        setEventPoint(new Point(0., 2.75));
         SweepLineStatus tree = new SweepLineStatus();
         Segment segment1 = new Segment(1, 3, 2, 1);
         Segment segment2 = new Segment(1, 1, 3, 3);
@@ -141,7 +142,7 @@ class SweepLineStatusTest extends IntersectionsFinderDependentTest {
 
     @Test
     public void complexSuppressionTest(){
-        setSweepLineY(1);
+        setEventPoint(new Point(0., 1.));
         SweepLineStatus tree = new SweepLineStatus();
 
         Segment s1 = new Segment(1,1, 0, 2);
