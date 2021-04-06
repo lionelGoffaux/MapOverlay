@@ -43,17 +43,17 @@ public class Line{
      * @param point
      * @return
      */
-    protected boolean contains(Point point) {
+    public boolean contains(Point point) {
         return Utils.almostEqual(a*point.getX() + b*point.getY(), c);
     }
 
     /***
      * Calcule le determinant entre deux segments.
-     * @param s1
-     * @param s2
+     * @param l1
+     * @param l2
      * @return
      */
-    protected static double getDet(Line s1, Line s2){
-        return s1.a*s2.b-s2.a*s1.b;
+    public static double getDet(Line l1, Line l2){
+        return l1.a*l2.b-l2.a*l1.b;
     }
 }
