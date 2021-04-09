@@ -20,8 +20,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 1, 0.9, 0.1));
         intersectionsFinder.setMap(map);
 
-        intersectionsFinder.start();
-
         Assertions.assertTrue(intersectionsFinder.getIntersections().isEmpty());
 
         intersectionsFinder.stepForward();
@@ -51,7 +49,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 1, 1, 0));
         map.addSegment(new Segment(0.5, 0, 0.5, 1));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
         intersectionsFinder.findAll();
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
@@ -67,7 +64,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0, 0.5, 1, 0.5));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
 
         intersectionsFinder.findAll();
 
@@ -85,7 +81,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0, 1, 0.5, 0.5));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
         intersectionsFinder.findAll();
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
@@ -99,7 +94,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0.5, 0.5, 1, 1));
         map.addSegment(new Segment(0, 1, 1, 0));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
         intersectionsFinder.findAll();
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
@@ -115,7 +109,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 0, 1, 1));
         map.addSegment(new Segment(0.5, 0.5, 1, 0.5));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
         intersectionsFinder.findAll();
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
@@ -128,7 +121,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0.5, 0.5, 1, 1));
         map.addSegment(new Segment(0., 0.5, 1, 0.5));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
         intersectionsFinder.findAll();
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());
@@ -144,7 +136,6 @@ public class IntersectionsFinderTest {
         map.addSegment(new Segment(0, 0, 0.5, 0.5));
         map.addSegment(new Segment(0, 1, 0.5, 0.5));
         intersectionsFinder.setMap(map);
-        intersectionsFinder.start();
         intersectionsFinder.findAll();
 
         Assertions.assertEquals(1, intersectionsFinder.getIntersections().size());

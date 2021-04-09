@@ -27,7 +27,6 @@ public class Main extends Application {
                 mif.close();
                 long start = System.currentTimeMillis();
                 intersectionsFinder.setMap(map);
-                intersectionsFinder.start();
                 intersectionsFinder.findAll();
                 long stop = System.currentTimeMillis();
                 if(bench){

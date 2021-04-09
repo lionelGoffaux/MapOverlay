@@ -49,14 +49,6 @@ public class IntersectionsFinder extends Publisher {
 
 
     /***
-     * Déclenche l'event start.
-     */
-    public void start(){
-        state.start(this);
-        notifySubscribers(IntersectionsFinderEvent.START);
-    }
-
-    /***
      * Déclenche l'event stepForward.
      */
     public void stepForward(){

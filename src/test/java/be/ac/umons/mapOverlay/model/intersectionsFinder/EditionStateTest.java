@@ -23,14 +23,6 @@ public class EditionStateTest {
     }
 
     @Test
-    public void startTest(){
-        IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
-        editionState.start(intersectionsFinder);
-
-        Mockito.verify(intersectionsFinder, Mockito.times(1)).setState(FindingState.getInstance());
-    }
-
-    @Test
     public void setMapTest(){
         IntersectionsFinder intersectionsFinder = Mockito.mock(IntersectionsFinder.class);
         Map map = new Map();

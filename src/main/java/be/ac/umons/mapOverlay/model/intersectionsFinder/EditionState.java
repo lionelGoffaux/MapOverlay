@@ -23,11 +23,6 @@ public class EditionState implements IntersectionsFinderState {
     }
 
     @Override
-    public void start(IntersectionsFinder context) {
-        context.setState(FindingState.getInstance());
-    }
-
-    @Override
     public void stepForward(IntersectionsFinder context) {
         context.setState(FindingState.getInstance());
         FindingState.getInstance().stepForward(context);

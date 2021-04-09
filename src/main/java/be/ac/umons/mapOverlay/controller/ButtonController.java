@@ -67,9 +67,6 @@ public class ButtonController implements EventHandler<ActionEvent> {
             case "step":
                 intersectionsFinder.stepForward();
                 break;
-            case "start":
-                intersectionsFinder.start();
-                break;
             case "find all":
                 intersectionsFinder.findAll();
                 break;

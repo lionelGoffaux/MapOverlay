@@ -31,11 +31,6 @@ public class FindingState implements IntersectionsFinderState {
     }
 
     @Override
-    public void start(IntersectionsFinder context) {
-
-    }
-
-    @Override
     public void stepForward(IntersectionsFinder context) {
         if(!context.eventQueue.isEmpty())
             context.handleEventPoint(context.eventQueue.getNextEvent());

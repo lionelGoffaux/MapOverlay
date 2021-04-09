@@ -72,7 +72,6 @@ public class SegmentView extends Canvas { //TODO: refactor scale system
             case CREATE_NEW_MAP:
                 rescale();
 
-            case START:
             case STEP_FORWARD:
             case FIND_ALL:
                 drawMap();
