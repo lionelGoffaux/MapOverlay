@@ -20,7 +20,7 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
 
     public GetLCVisitor(Point p){
         this.p = p;
-        sl = new Line(p.getX(), p.getY(), 1, p.getY());
+        sl = new Line(p.getX(), p.getY(), p.getX()+10, p.getY());
     }
 
     @Override

@@ -70,7 +70,7 @@ public class ButtonController implements EventHandler<ActionEvent> {
             case "start":
                 intersectionsFinder.start();
                 break;
-            case "detect":
+            case "find all":
                 intersectionsFinder.findAll();
                 break;
             default:

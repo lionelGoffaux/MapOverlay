@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class ButtonView extends VBox {
     Button[] buttons = {new Button("open"), new Button("new"), new Button("save"), new Button("start"),
-            new Button("step"), new Button("detect")};
+            new Button("step"), new Button("find all")};
 
     public ButtonView() {
         super();
