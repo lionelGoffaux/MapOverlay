@@ -15,7 +15,7 @@ public class MapInputFileTest {
         expected.add(new Segment(1, 2, 3, 4));
         expected.add(new Segment(4, 3, 2, 1));
 
-        MapInputFile mif = new MapInputFile("cartes/test.txt");
+        MapInputFile mif = new MapInputFile("cartes/test3.txt");
         Map map = mif.readMap();
         Assertions.assertEquals(expected, map.getSegments());
         mif.close();

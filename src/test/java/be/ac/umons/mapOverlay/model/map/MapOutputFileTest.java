@@ -10,7 +10,7 @@ public class MapOutputFileTest {
 
     @Test
     public void MapOutputTest() throws IOException {
-        MapInputFile mif = new MapInputFile("cartes/test.txt");
+        MapInputFile mif = new MapInputFile("cartes/test1.txt");
         Map map1 = mif.readMap();
         mif.close();
 
