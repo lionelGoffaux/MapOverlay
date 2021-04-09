@@ -18,15 +18,23 @@ public class Main extends Application {
     public static void main(String[] args) {
         if(args.length != 0){
             IntersectionsFinder intersectionsFinder = IntersectionsFinder.getInstance();
-            new IntersectionsFinderCli(intersectionsFinder);
+            boolean bench = args.length==2 && args[1].equals("--bench");
+            if(!bench) new IntersectionsFinderCli(intersectionsFinder);
 
             try {
                 MapInputFile mif = new MapInputFile(args[0]);
                 Map map = mif.readMap();
                 mif.close();
+                long start = System.currentTimeMillis();
                 intersectionsFinder.setMap(map);
                 intersectionsFinder.start();
                 intersectionsFinder.findAll();
+                long stop = System.currentTimeMillis();
+                if(bench){
+                    System.out.println(map.getSegments().size()
+                            +","+ intersectionsFinder.getIntersections().size()
+                            +","+ (stop-start) );
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
