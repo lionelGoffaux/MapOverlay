@@ -1,14 +1,14 @@
 package be.ac.umons.mapOverlay.view.gui;
 
-import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
+import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class SegmentView extends Canvas { //TODO: refactor scale system
+public class SegmentView extends Canvas {
 
     private final IntersectionsFinder intersectionsFinder;
     private double scale = 1;
