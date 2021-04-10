@@ -7,7 +7,6 @@ import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 public class SegmentView extends Canvas { //TODO: refactor scale system
 
@@ -60,7 +59,7 @@ public class SegmentView extends Canvas { //TODO: refactor scale system
 
     }
 
-    public void changeScale(double delta, double mouseX, double mouseY){
+    public void changeScale(double delta){
         scale+=delta;
     }
 
