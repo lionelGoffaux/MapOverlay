@@ -1,6 +1,9 @@
 package be.ac.umons.mapOverlay;
 
-import be.ac.umons.mapOverlay.controller.*;
+import be.ac.umons.mapOverlay.controller.ButtonController;
+import be.ac.umons.mapOverlay.controller.MouseClickController;
+import be.ac.umons.mapOverlay.controller.ResizeController;
+import be.ac.umons.mapOverlay.controller.ScrollController;
 import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.mapOverlay.model.map.Map;
 import be.ac.umons.mapOverlay.model.map.MapInputFile;
