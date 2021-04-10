@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    // TODO: clean code + import
 
     public static void main(String[] args) {
         if(args.length != 0){
