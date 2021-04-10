@@ -1,6 +1,5 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
-import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.utils.Utils;
 
 public class Line{

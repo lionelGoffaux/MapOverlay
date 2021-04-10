@@ -4,7 +4,6 @@ import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Map {
     private ArrayList<Segment> segments = new ArrayList<>();

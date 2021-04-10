@@ -3,7 +3,9 @@ package be.ac.umons.mapOverlay.view.gui;
 import be.ac.umons.mapOverlay.controller.ButtonController;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class ButtonView extends VBox {

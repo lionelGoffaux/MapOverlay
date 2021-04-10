@@ -3,11 +3,8 @@ package be.ac.umons.mapOverlay.model.intersectionsFinder;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.map.Map;
-import be.ac.umons.mapOverlay.model.map.MapInputFile;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 public class IntersectionsFinderTest {
 

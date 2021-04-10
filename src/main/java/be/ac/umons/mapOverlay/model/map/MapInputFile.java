@@ -1,11 +1,12 @@
 package be.ac.umons.mapOverlay.model.map;
 
 import be.ac.umons.mapOverlay.model.geometry.Segment;
-import be.ac.umons.utils.Utils;
 
-import java.io.*;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class MapInputFile {
 

@@ -1,8 +1,6 @@
 package be.ac.umons.mapOverlay.model.geometry;
 
-import static java.lang.Math.sqrt;
 import be.ac.umons.utils.Utils;
-import jdk.jshell.execution.Util;
 
 public class Point implements Comparable<Point> {
     private final double x, y;
