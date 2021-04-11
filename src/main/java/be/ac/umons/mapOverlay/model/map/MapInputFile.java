@@ -30,8 +30,7 @@ public class MapInputFile {
     private Segment readSegment(){
         double x1 = scanner.nextDouble(), y1 = scanner.nextDouble();
         double x2 = scanner.nextDouble(), y2 = scanner.nextDouble();
-        Segment segment = new Segment(x1, y1, x2, y2);
-        return segment;
+        return new Segment(x1, y1, x2, y2);
     }
 
     /***

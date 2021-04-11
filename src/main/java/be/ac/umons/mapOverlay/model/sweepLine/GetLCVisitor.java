@@ -7,11 +7,11 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 import java.util.ArrayList;
 
 public class GetLCVisitor implements SweepLineStatusVisitor{
-    private ArrayList<Segment> l = new ArrayList<>();
-    private ArrayList<Segment> c = new ArrayList<>();
+    private final ArrayList<Segment> l = new ArrayList<>();
+    private final ArrayList<Segment> c = new ArrayList<>();
 
     private final Point p;
-    Line sl;
+    final Line sl;
 
     public GetLCVisitor(Point p){
         this.p = p;

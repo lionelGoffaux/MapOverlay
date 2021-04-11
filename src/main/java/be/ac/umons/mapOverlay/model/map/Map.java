@@ -6,7 +6,7 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 import java.util.ArrayList;
 
 public class Map {
-    private ArrayList<Segment> segments = new ArrayList<>();
+    private final ArrayList<Segment> segments = new ArrayList<>();
     private double maxX=0, maxY=0;
 
     /***
