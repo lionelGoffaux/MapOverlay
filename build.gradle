@@ -12,7 +12,7 @@ repositories {
     jcenter()
 }
 
-mainClassName = 'be.ac.umons.mapOverlay.Main'
+mainClassName = 'be.ac.umons.mapOverlay.Test'
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
@@ -32,6 +32,6 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'be.ac.umons.mapOverlay.Main'
+        attributes 'Main-Class': 'be.ac.umons.mapOverlay.Test'
     }
 }
