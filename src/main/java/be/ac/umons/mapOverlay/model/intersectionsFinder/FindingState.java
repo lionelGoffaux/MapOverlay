@@ -7,6 +7,9 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.map.Map;
 import be.ac.umons.mapOverlay.model.sweepLine.SweepLineStatus;
 
+/**
+ * État de recherche d'intersections.
+ */
 public class FindingState implements IntersectionsFinderState {
 
     private static IntersectionsFinderState instance;

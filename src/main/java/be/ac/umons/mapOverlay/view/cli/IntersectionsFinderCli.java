@@ -5,6 +5,9 @@ import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import be.ac.umons.utils.observer.Subscriber;
 
+/**
+ * Interface en ligne de commande.
+ */
 public class IntersectionsFinderCli implements Subscriber {
 
     private final IntersectionsFinder intersectionsFinder;

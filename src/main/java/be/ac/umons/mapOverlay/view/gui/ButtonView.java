@@ -8,6 +8,9 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+/**
+ * Vue contenant les boutons.
+ */
 public class ButtonView extends VBox {
     final Button[] buttons = {new Button("open"), new Button("new"), new Button("save"),
             new Button("step"), new Button("find all")};

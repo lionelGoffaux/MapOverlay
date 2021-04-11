@@ -3,6 +3,9 @@ package be.ac.umons.mapOverlay.model.sweepLine;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 
+/**
+ * Classe visiteur permettant d'obtenir le voisin gauche d'un segment ou d'un point dans la SweepLineStatus.
+ */
 public class GetLeftNeighbourVisitor extends GetNeighbourVisitor{
 
     public GetLeftNeighbourVisitor(Point p) {

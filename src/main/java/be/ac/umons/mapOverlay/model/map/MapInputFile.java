@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * Classe qui lit les fichiers de carte.
+ */
 public class MapInputFile {
 
     private final Scanner scanner;

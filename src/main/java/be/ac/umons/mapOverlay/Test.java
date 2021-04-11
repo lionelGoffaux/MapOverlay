@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Lanceur de l'application.
+ */
 public class Test extends Application {
 
     public static void main(String[] args) {

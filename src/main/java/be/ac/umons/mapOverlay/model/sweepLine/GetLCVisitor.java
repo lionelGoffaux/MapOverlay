@@ -6,6 +6,9 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
 
+/**
+ * Classe de construction d'ensemble de L et C.
+ */
 public class GetLCVisitor implements SweepLineStatusVisitor{
     private final ArrayList<Segment> l = new ArrayList<>();
     private final ArrayList<Segment> c = new ArrayList<>();

@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Classe qui écrit les fichiers de carte.
+ */
 public class MapOutputFile {
 
     private final FileWriter fileWriter;

@@ -5,6 +5,9 @@ import be.ac.umons.mapOverlay.view.gui.SegmentView;
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;
 
+/**
+ * Classe qui gère les évènements liés au scroll de souris.
+ */
 public class ScrollController implements EventHandler<ScrollEvent>{
 
     private final SegmentView segmentView;

@@ -2,6 +2,9 @@ package be.ac.umons.utils;
 
 import static java.lang.Math.abs;
 
+/**
+ * Classe Utils
+ */
 public class Utils {
     /**
      * Vérifie l'égalité de deux doubles

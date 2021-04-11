@@ -5,6 +5,9 @@ import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 
+/**
+ * Classe visiteur permettant d'obtenir les voisins d'un segment ou d'un point.
+ */
 public abstract class GetNeighbourVisitor implements SweepLineStatusVisitor{
 
     protected Point p;

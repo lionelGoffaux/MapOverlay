@@ -2,6 +2,9 @@ package be.ac.umons.mapOverlay.model.geometry;
 
 import be.ac.umons.utils.Utils;
 
+/**
+ * Classe représentant un point.
+ */
 public class Point implements Comparable<Point> {
     private final double x, y;
 

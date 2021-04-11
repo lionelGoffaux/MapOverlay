@@ -15,6 +15,9 @@ import be.ac.umons.utils.observer.Publisher;
 
 import java.util.ArrayList;
 
+/**
+ * Classe contenant les algorithmes de détection d'intersections.
+ */
 public class IntersectionsFinder extends Publisher {
 
     protected static IntersectionsFinder instance;
@@ -32,13 +35,17 @@ public class IntersectionsFinder extends Publisher {
         setState(EditionState.getInstance());
     }
 
+    /**
+     * Retourne l'instance d'IntersectionFinder
+     * @return
+     */
     public static IntersectionsFinder getInstance(){
         if(instance==null)
             instance = new IntersectionsFinder();
         return instance;
     }
 
-    /***
+    /**
      * Change l'état de l'intersectionFinder.
      * @param state
      */
@@ -47,8 +54,7 @@ public class IntersectionsFinder extends Publisher {
         state.entry(this);
     }
 
-
-    /***
+    /**
      * Déclenche l'event stepForward.
      */
     public void stepForward(){
@@ -56,7 +62,7 @@ public class IntersectionsFinder extends Publisher {
         notifySubscribers(IntersectionsFinderEvent.STEP_FORWARD);
     }
 
-    /***
+    /**
      * Déclenche l'event findAll.
      */
     public void findAll(){
@@ -64,7 +70,7 @@ public class IntersectionsFinder extends Publisher {
         notifySubscribers(IntersectionsFinderEvent.FIND_ALL);
     }
 
-    /***
+    /**
      * Déclenche l'event setMap.
      */
     public void setMap(Map map) {
@@ -72,7 +78,7 @@ public class IntersectionsFinder extends Publisher {
         notifySubscribers(IntersectionsFinderEvent.SET_MAP);
     }
 
-    /***
+    /**
      * Déclenche l'event startNewSegment.
      */
     public void startNewSegment(double x, double y){
@@ -80,7 +86,7 @@ public class IntersectionsFinder extends Publisher {
         notifySubscribers(IntersectionsFinderEvent.START_NEW_SEGMENT);
     }
 
-    /***
+    /**
      * Déclenche l'event endNewSegment.
      */
     public void endNewSegment(double x, double y) {
@@ -88,7 +94,7 @@ public class IntersectionsFinder extends Publisher {
         notifySubscribers(IntersectionsFinderEvent.END_NEW_SEGMENT);
     }
 
-    /***
+    /**
      * Déclenche l'event createNewMap.
      */
     public void createNewMap() {
@@ -96,7 +102,7 @@ public class IntersectionsFinder extends Publisher {
         notifySubscribers(IntersectionsFinderEvent.CREATE_NEW_MAP);
     }
 
-    /***
+    /**
      * Retourne la position en Y de la sweep line.
      * @return
      */
@@ -104,7 +110,7 @@ public class IntersectionsFinder extends Publisher {
         return sweepLineY;
     }
 
-    /***
+    /**
      * Retourne la sweep line.
      * @return
      */
@@ -112,7 +118,7 @@ public class IntersectionsFinder extends Publisher {
         return new Line(0, sweepLineY, 1, sweepLineY);
     }
 
-    /***
+    /**
      * Retourne la map.
      * @return
      */
@@ -120,7 +126,7 @@ public class IntersectionsFinder extends Publisher {
         return map;
     }
 
-    /***
+    /**
      * Retourne la list des segments de la map.
      * @return
      */
@@ -128,7 +134,7 @@ public class IntersectionsFinder extends Publisher {
         return map.getSegments();
     }
 
-    /***
+    /**
      * Retourne la liste des intersections.
      * @return
      */
@@ -136,7 +142,7 @@ public class IntersectionsFinder extends Publisher {
         return intersections;
     }
 
-    /***
+    /**
      * Traite un event point pour trouver les intersections.
      * @param e
      */
@@ -189,7 +195,7 @@ public class IntersectionsFinder extends Publisher {
         }
     }
 
-    /***
+    /**
      * Vérifie si un nouveau point d'event doit être ajouté.
      * @param sl
      * @param sr
@@ -200,7 +206,7 @@ public class IntersectionsFinder extends Publisher {
         if (p!=null&&p.compareTo(point) > 0) eventQueue.insert(new Event(p));
     }
 
-    /***
+    /**
      * Retourne l'event point actuel.
      * @return
      */

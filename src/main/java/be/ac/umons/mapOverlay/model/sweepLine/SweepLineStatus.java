@@ -5,6 +5,9 @@ import be.ac.umons.sdd2.AVLTree;
 
 import java.util.ArrayList;
 
+/**
+ * Structure de donnée contenant les segments interceptant la sweep line.
+ */
 public class SweepLineStatus extends AVLTree<Segment> {
 
     public SweepLineStatus(){

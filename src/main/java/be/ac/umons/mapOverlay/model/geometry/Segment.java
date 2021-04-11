@@ -4,6 +4,9 @@ import be.ac.umons.mapOverlay.model.intersectionsFinder.IntersectionsFinder;
 
 import java.util.ArrayList;
 
+/**
+ * Classe représentant un segment.
+ */
 public class Segment extends Line implements Comparable<Segment>{
 
     public Segment(double x1, double y1, double x2, double y2){

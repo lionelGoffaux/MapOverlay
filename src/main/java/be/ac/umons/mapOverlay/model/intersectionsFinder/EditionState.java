@@ -6,6 +6,9 @@ import be.ac.umons.mapOverlay.model.map.Map;
 
 import java.util.ArrayList;
 
+/**
+ * État d'édition de carte.
+ */
 public class EditionState implements IntersectionsFinderState {
 
     private static IntersectionsFinderState instance;

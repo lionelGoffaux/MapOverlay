@@ -5,6 +5,9 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 
 import java.util.ArrayList;
 
+/**
+ * Classe représentant une carte contenant des segments.
+ */
 public class Map {
     private final ArrayList<Segment> segments = new ArrayList<>();
     private double maxX=0, maxY=0;

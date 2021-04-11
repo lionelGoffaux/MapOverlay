@@ -3,6 +3,9 @@ package be.ac.umons.mapOverlay.model.sweepLine;
 import be.ac.umons.mapOverlay.model.geometry.Point;
 import be.ac.umons.mapOverlay.model.geometry.Segment;
 
+/**
+ * Classe visiteur permettant d'obtenir le voisin droite d'un segment ou d'un point dans la SweepLineStatus.
+ */
 public class GetRightNeighbourVisitor extends GetNeighbourVisitor{
     public GetRightNeighbourVisitor(Point p) {
         super(p);

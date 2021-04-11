@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Classe qui effectue les actions liées aux boutons.
+ */
 public class ButtonController implements EventHandler<ActionEvent> {
 
     private final Stage primaryStage;

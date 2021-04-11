@@ -7,6 +7,9 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Classe qui effectue les actions liées à la souris.
+ */
 public class MouseClickController implements EventHandler<MouseEvent> {
 
     protected final IntersectionsFinder intersectionsFinder;

@@ -2,6 +2,9 @@ package be.ac.umons.mapOverlay.model.intersectionsFinder;
 
 import be.ac.umons.mapOverlay.model.map.Map;
 
+/**
+ * Interface d'état.
+ */
 public interface IntersectionsFinderState {
 
     /**

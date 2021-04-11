@@ -2,6 +2,9 @@ package be.ac.umons.mapOverlay.model.geometry;
 
 import be.ac.umons.utils.Utils;
 
+/**
+ * Classe représentant une ligne.
+ */
 public class Line{
     protected final Point upperPoint, lowerPoint;
     protected final double a, b, c;

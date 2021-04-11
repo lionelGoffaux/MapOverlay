@@ -8,6 +8,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+/**
+ * Vue contant la carte.
+ */
 public class SegmentView extends Canvas {
 
     private final IntersectionsFinder intersectionsFinder;

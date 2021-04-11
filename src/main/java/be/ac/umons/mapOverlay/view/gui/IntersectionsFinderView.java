@@ -7,6 +7,9 @@ import be.ac.umons.utils.observer.IntersectionsFinderEvent;
 import be.ac.umons.utils.observer.Subscriber;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * Panel contanant les deux vues.
+ */
 public class IntersectionsFinderView extends BorderPane implements Subscriber {
 
     private final SegmentView segmentView;

@@ -2,6 +2,9 @@ package be.ac.umons.mapOverlay.model.event;
 
 import be.ac.umons.sdd2.AVLTree;
 
+/**
+ * Structure de donnée contenant les points d'évènements.
+ */
 public class EventQueue extends AVLTree<Event> {
 
     public void insertEmpty(Event event) {

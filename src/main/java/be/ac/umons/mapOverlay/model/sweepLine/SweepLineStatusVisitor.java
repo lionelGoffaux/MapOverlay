@@ -1,5 +1,8 @@
 package be.ac.umons.mapOverlay.model.sweepLine;
 
+/**
+ * Interface visiteur de sweep line.
+ */
 public interface SweepLineStatusVisitor {
     /***
      * Méthode appelée lors de la visite d'un noeud vide.

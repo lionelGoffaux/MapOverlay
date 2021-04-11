@@ -6,6 +6,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 
+/**
+ * Classe qui gère le changement de taille de la fenêtre.
+ */
 public class ResizeController implements ChangeListener<Number> {
 
     private final SegmentView segmentView;

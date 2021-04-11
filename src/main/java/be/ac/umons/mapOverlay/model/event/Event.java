@@ -6,6 +6,9 @@ import be.ac.umons.mapOverlay.model.geometry.Segment;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Classe représentant les points d'évènements.
+ */
 public class Event implements Comparable<Event>{
 
     private final Point point;
