@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public abstract class Publisher {
     private final ArrayList<Subscriber> subscribers = new ArrayList<Subscriber>();
 
+    /**
+     * Ajoute un subscriber.
+     * @param sub
+     */
     public void subscribe(Subscriber sub){
         subscribers.add(sub);
     }
