@@ -31,6 +31,10 @@ public class SweepLineStatus extends AVLTree<Segment> {
         equilibrate();
     }
 
+    /**
+     * Insert une liste de segments dans la SweepLineStatus.
+     * @param segments
+     */
     public void insertAll(ArrayList<Segment> segments){
         for(Segment s: segments){
             insert(s);
@@ -95,7 +99,10 @@ public class SweepLineStatus extends AVLTree<Segment> {
         }
     }
 
-
+    /**
+     * Supprime de la SweepLineStatus tous les segments de la liste donnée en paramètre
+     * @param segments
+     */
     public void suppressAll(ArrayList<Segment> segments){
         for (Segment s: segments) {
             suppress(s);

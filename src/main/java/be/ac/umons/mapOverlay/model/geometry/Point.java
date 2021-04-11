@@ -5,17 +5,25 @@ import be.ac.umons.utils.Utils;
 public class Point implements Comparable<Point> {
     private final double x, y;
 
+    public Point(double x, double y){
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * Retourne la coordonnée en X du point.
+     * @return
+     */
     public double getX() {
         return x;
     }
 
+    /**
+     * Retourne la coordonnée en Y du point.
+     * @return
+     */
     public double getY() {
         return y;
-    }
-
-    public Point(double x, double y){
-        this.x = x;
-        this.y = y;
     }
 
     /***

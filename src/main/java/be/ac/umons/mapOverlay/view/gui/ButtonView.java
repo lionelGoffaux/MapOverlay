@@ -22,6 +22,10 @@ public class ButtonView extends VBox {
         setSpacing(10);
     }
 
+    /**
+     * Attribue le controller à chaque Bouton.
+     * @param buttonController
+     */
     public void setButtonController(ButtonController buttonController){
         for (Button button: buttons){
             button.setPrefWidth(80);

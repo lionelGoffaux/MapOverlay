@@ -18,7 +18,7 @@ public class MapOutputFile {
         this.fileWriter = fileWriter;
     }
 
-    /***
+    /**
      * Ecrit une map dans un fichier.
      * @param map
      * @throws IOException
@@ -33,6 +33,10 @@ public class MapOutputFile {
         fileWriter.write(s + "\n");
     }
 
+    /**
+     * Ferme le fichier contenant la carte.
+     * @throws IOException
+     */
     public void close() throws IOException{
         this.fileWriter.close();
     }

@@ -46,6 +46,10 @@ public class MapInputFile {
         return map;
     }
 
+    /**
+     * Ferme le fichier contenant la carte.
+     * @throws IOException
+     */
     public void close() throws IOException {
         this.fileReader.close();
     }

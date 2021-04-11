@@ -13,14 +13,14 @@ public class GetLCVisitor implements SweepLineStatusVisitor{
     private final Point p;
     Line sl;
 
-    @Override
-    public void visitEmpty(SweepLineStatus empty) {
-
-    }
-
     public GetLCVisitor(Point p){
         this.p = p;
         sl = new Line(p.getX(), p.getY(), p.getX()+10, p.getY());
+    }
+
+    @Override
+    public void visitEmpty(SweepLineStatus empty) {
+
     }
 
     @Override

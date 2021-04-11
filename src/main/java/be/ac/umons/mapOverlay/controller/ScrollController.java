@@ -13,6 +13,7 @@ public class ScrollController implements EventHandler<ScrollEvent>{
         this.segmentView = intersectionsFinderView.getSegmentView();
     }
 
+    @Override
     public void handle(ScrollEvent event) {
         segmentView.changeScale(event.getDeltaY()*0.014);
         segmentView.drawMap();

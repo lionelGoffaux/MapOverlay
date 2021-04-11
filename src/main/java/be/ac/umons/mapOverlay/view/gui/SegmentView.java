@@ -18,8 +18,13 @@ public class SegmentView extends Canvas {
         this.intersectionsFinder = intersectionsFinder;
     }
 
-    public double scale(double x){
-        return x/scale;
+    /**
+     * Retourne la véritable coordonnée du point dans le plan.
+     * @param val
+     * @return
+     */
+    public double scale(double val){
+        return val/scale;
     }
 
     private void rescale(){
@@ -30,8 +35,9 @@ public class SegmentView extends Canvas {
         scale = getHeight()/(maxX*1.2);
     }
 
-
-
+    /**
+     * Dessine les segments et intersections sur la fenêtre
+     */
     public void drawMap(){
         GraphicsContext context = getGraphicsContext2D();
         context.setLineWidth(3.0);
@@ -59,11 +65,18 @@ public class SegmentView extends Canvas {
 
     }
 
+    /**
+     * Modifie le scale de la carte.
+     * @param delta
+     */
     public void changeScale(double delta){
         scale+=delta;
     }
 
-
+    /**
+     * Met à jour la carte.
+     * @param e
+     */
     public void update(IntersectionsFinderEvent e){
         switch (e){
             case END_NEW_SEGMENT:

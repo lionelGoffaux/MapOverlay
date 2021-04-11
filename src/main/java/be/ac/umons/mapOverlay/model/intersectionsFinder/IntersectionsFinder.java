@@ -73,7 +73,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     /***
-     * Déclenche l'event startnewSegment.
+     * Déclenche l'event startNewSegment.
      */
     public void startNewSegment(double x, double y){
         state.startNewSegment(this, x, y);
@@ -137,7 +137,7 @@ public class IntersectionsFinder extends Publisher {
     }
 
     /***
-     * Traite un event point pour trouver les intersection.
+     * Traite un event point pour trouver les intersections.
      * @param e
      */
     protected void handleEventPoint(Event e){

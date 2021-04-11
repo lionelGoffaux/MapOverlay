@@ -20,15 +20,27 @@ public class IntersectionsFinderView extends BorderPane implements Subscriber {
         setRight(buttonView);
     }
 
+    /**
+     * Attribue le mouseClickController au segmentView
+     * @param mouseClickController
+     */
     public void setMouseController(MouseClickController mouseClickController){
         segmentView.setOnMousePressed(mouseClickController);
         segmentView.setOnMouseReleased(mouseClickController);
     }
 
+    /**
+     * Attribue le buttonClickController au buttonView
+     * @param buttonController
+     */
     public void setButtonController(ButtonController buttonController){
         buttonView.setButtonController(buttonController);
     }
 
+    /**
+     * retourne le segmentView
+     * @return
+     */
     public SegmentView getSegmentView() {
         return segmentView;
     }

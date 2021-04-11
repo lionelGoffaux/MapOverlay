@@ -25,6 +25,10 @@ public class Map {
         return maxY;
     }
 
+    /**
+     * Ajoute un segment à la carte.
+     * @param segment
+     */
     public void addSegment(Segment segment){
         segments.add(segment);
         Point upper = segment.getUpperPoint(), lower = segment.getLowerPoint();
@@ -36,6 +40,10 @@ public class Map {
         if(y2>maxY) maxY=y2;
     }
 
+    /**
+     * Retourne la liste des segments présent sur la carte.
+     * @return
+     */
     public ArrayList<Segment> getSegments() {
         return segments;
     }

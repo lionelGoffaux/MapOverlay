@@ -46,7 +46,7 @@ public class Event implements Comparable<Event>{
         return point.compareTo(o.point);
     }
 
-    /***
+    /**
      * Ajoute tous les nouveaux segments qui ne sont pas déjà dans l'event.
      * @param newSegments
      */
@@ -61,7 +61,7 @@ public class Event implements Comparable<Event>{
     }
 
     /***
-     * Retourne la list des segments qui commence à ce point d'event.
+     * Retourne la liste des segments qui commence à ce point d'event.
      * @return
      */
     public ArrayList<Segment> getU() {

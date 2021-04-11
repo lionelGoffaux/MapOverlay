@@ -1,5 +1,5 @@
 package be.ac.umons.utils.observer;
 
 public interface Subscriber {
-    public void update(IntersectionsFinderEvent e);
+    void update(IntersectionsFinderEvent e);
 }
