@@ -161,7 +161,7 @@ public class IntersectionsFinder extends Publisher {
         status.insertAll(u);
         status.insertAll(c);
 
-        ArrayList<Segment> uc = new ArrayList<Segment>(u);
+        ArrayList<Segment> uc = new ArrayList<>(u);
         uc.addAll(c);
 
         GetLeftNeighbourVisitor glnv;
