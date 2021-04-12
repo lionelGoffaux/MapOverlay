@@ -23,8 +23,8 @@ public class Line{
 
     /***
      * Retourne le point d'intersection avec une autre ligne.
-     * @param other
-     * @return
+     * @param other une autre ligne.
+     * @return le point d'intersection s'il existe, null s'il n'existe pas.
      */
     public Point getIntersection(Line other){
         double det = getDet(this, other);
@@ -42,8 +42,8 @@ public class Line{
 
     /***
      * Retourne si un point est contenu dans la ligne.
-     * @param point
-     * @return
+     * @param point le point a tester.
+     * @return vrai si le point est contenu dans la droite, faux sinon.
      */
     public boolean contains(Point point) {
         return Utils.almostEqual(a*point.getX() + b*point.getY(), c);
@@ -51,9 +51,9 @@ public class Line{
 
     /***
      * Calcule le determinant entre deux segments.
-     * @param l1
-     * @param l2
-     * @return
+     * @param l1 une droite
+     * @param l2 une droite
+     * @return le déterminant des deux droite.
      */
     public static double getDet(Line l1, Line l2){
         return l1.a*l2.b-l2.a*l1.b;

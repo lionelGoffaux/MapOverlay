@@ -37,7 +37,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne l'instance d'IntersectionFinder
-     * @return
+     * @return l'instance d'IntersectionsFinder.
      */
     public static IntersectionsFinder getInstance(){
         if(instance==null)
@@ -47,7 +47,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Change l'état de l'intersectionFinder.
-     * @param state
+     * @param state l'état dans lequel on veut passer.
      */
     protected void setState(IntersectionsFinderState state) {
         this.state = state;
@@ -72,6 +72,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Déclenche l'event setMap.
+     * @param map la carte.
      */
     public void setMap(Map map) {
         state.setMap(this, map);
@@ -80,6 +81,8 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Déclenche l'event startNewSegment.
+     * @param x coordonnée en x.
+     * @param y coordonnée en y.
      */
     public void startNewSegment(double x, double y){
         state.startNewSegment(this, x, y);
@@ -88,6 +91,8 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Déclenche l'event endNewSegment.
+     * @param x coordonnée en x.
+     * @param y coordonnée en y.
      */
     public void endNewSegment(double x, double y) {
         state.endNewSegment(this, x, y);
@@ -104,7 +109,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne la position en Y de la sweep line.
-     * @return
+     * @return la position en Y de la sweep line.
      */
     public double getSweepLineY() {
         return sweepLineY;
@@ -112,7 +117,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne la sweep line.
-     * @return
+     * @return la sweep line.
      */
     public Line getSweepLine() {
         return new Line(0, sweepLineY, 1, sweepLineY);
@@ -120,7 +125,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne la map.
-     * @return
+     * @return la carte.
      */
     public Map getMap() {
         return map;
@@ -128,7 +133,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne la list des segments de la map.
-     * @return
+     * @return la liste des segments qui sont dans la carte.
      */
     public ArrayList<Segment> getSegments(){
         return map.getSegments();
@@ -136,7 +141,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne la liste des intersections.
-     * @return
+     * @return la liste des intersections.
      */
     public ArrayList<Point> getIntersections() {
         return intersections;
@@ -144,7 +149,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Traite un event point pour trouver les intersections.
-     * @param e
+     * @param e un event.
      */
     protected void handleEventPoint(Event e){
         ArrayList<Segment> u = e.getU();
@@ -197,9 +202,9 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Vérifie si un nouveau point d'event doit être ajouté.
-     * @param sl
-     * @param sr
-     * @param point
+     * @param sl un segment.
+     * @param sr un segment.
+     * @param point un point.
      */
     protected void findNewEvent(Segment sl, Segment sr, Point point) {
         Point p = sl.getIntersection(sr);
@@ -208,7 +213,7 @@ public class IntersectionsFinder extends Publisher {
 
     /**
      * Retourne l'event point actuel.
-     * @return
+     * @return l'event point actuel.
      */
     public Point getEventPoint() {
         return eventPoint;

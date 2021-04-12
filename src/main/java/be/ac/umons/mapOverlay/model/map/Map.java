@@ -14,7 +14,7 @@ public class Map {
 
     /***
      * Retourne la valeur maximal en x dans tous les segments.
-     * @return
+     * @return la valeur maximal en x dans tous les segments.
      */
     public double getMaxX() {
         return maxX;
@@ -22,7 +22,7 @@ public class Map {
 
     /***
      * Retourne la valeur maximal en y dans tous les segments.
-     * @return
+     * @return la valeur maximal en y dans tous les segments.
      */
     public double getMaxY() {
         return maxY;
@@ -30,7 +30,7 @@ public class Map {
 
     /**
      * Ajoute un segment à la carte.
-     * @param segment
+     * @param segment un segment.
      */
     public void addSegment(Segment segment){
         segments.add(segment);
@@ -45,7 +45,7 @@ public class Map {
 
     /**
      * Retourne la liste des segments présent sur la carte.
-     * @return
+     * @return la liste des segments qui composent la carte.
      */
     public ArrayList<Segment> getSegments() {
         return segments;

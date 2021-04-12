@@ -51,7 +51,7 @@ public class Event implements Comparable<Event>{
 
     /**
      * Ajoute tous les nouveaux segments qui ne sont pas déjà dans l'event.
-     * @param newSegments
+     * @param newSegments Une liste de segment
      */
     public void updateSegments(ArrayList<Segment> newSegments){
         for(Segment s : newSegments){
@@ -59,13 +59,17 @@ public class Event implements Comparable<Event>{
         }
     }
 
+    /**
+     * Retourne le Point d'événement.
+     * @return le point d'événement.
+     */
     public Point getPoint() {
         return point;
     }
 
     /***
      * Retourne la liste des segments qui commence à ce point d'event.
-     * @return
+     * @return la liste des segments ayant le Point point comme borne supérieure.
      */
     public ArrayList<Segment> getU() {
         return segments;

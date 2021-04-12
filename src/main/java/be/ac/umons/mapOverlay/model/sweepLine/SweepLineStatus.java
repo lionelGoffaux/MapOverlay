@@ -36,7 +36,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
 
     /**
      * Insert une liste de segments dans la SweepLineStatus.
-     * @param segments
+     * @param segments une liste de segments.
      */
     public void insertAll(ArrayList<Segment> segments){
         for(Segment s: segments){
@@ -104,7 +104,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
 
     /**
      * Supprime de la SweepLineStatus tous les segments de la liste donnée en paramètre
-     * @param segments
+     * @param segments une liste de segments.
      */
     public void suppressAll(ArrayList<Segment> segments){
         for (Segment s: segments) {
@@ -114,7 +114,7 @@ public class SweepLineStatus extends AVLTree<Segment> {
 
     /***
      * Accepte un visiteur.
-     * @param visitor
+     * @param visitor un visiteur.
      */
     public void accept(SweepLineStatusVisitor visitor){
         if(isEmpty()) visitor.visitEmpty(this);

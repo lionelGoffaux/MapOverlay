@@ -8,7 +8,7 @@ import be.ac.umons.utils.observer.Subscriber;
 import javafx.scene.layout.BorderPane;
 
 /**
- * Panel contanant les deux vues.
+ * Panel contenant les deux vues.
  */
 public class IntersectionsFinderView extends BorderPane implements Subscriber {
 
@@ -24,8 +24,8 @@ public class IntersectionsFinderView extends BorderPane implements Subscriber {
     }
 
     /**
-     * Attribue le mouseClickController au segmentView
-     * @param mouseClickController
+     * Attribue le mouseClickController au segmentView.
+     * @param mouseClickController le controller.
      */
     public void setMouseController(MouseClickController mouseClickController){
         segmentView.setOnMousePressed(mouseClickController);
@@ -33,16 +33,16 @@ public class IntersectionsFinderView extends BorderPane implements Subscriber {
     }
 
     /**
-     * Attribue le buttonClickController au buttonView
-     * @param buttonController
+     * Attribue le buttonClickController au buttonView.
+     * @param buttonController le controller.
      */
     public void setButtonController(ButtonController buttonController){
         buttonView.setButtonController(buttonController);
     }
 
     /**
-     * retourne le segmentView
-     * @return
+     * retourne le segmentView.
+     * @return le segmentView.
      */
     public SegmentView getSegmentView() {
         return segmentView;

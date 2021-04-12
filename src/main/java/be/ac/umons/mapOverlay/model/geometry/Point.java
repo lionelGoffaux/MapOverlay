@@ -15,7 +15,7 @@ public class Point implements Comparable<Point> {
 
     /**
      * Retourne la coordonnée en X du point.
-     * @return
+     * @return la coordonnée en X
      */
     public double getX() {
         return x;
@@ -23,7 +23,7 @@ public class Point implements Comparable<Point> {
 
     /**
      * Retourne la coordonnée en Y du point.
-     * @return
+     * @return la coordonnée en Y.
      */
     public double getY() {
         return y;
@@ -31,8 +31,8 @@ public class Point implements Comparable<Point> {
 
     /***
      * Retourne si un point est avant dans l'ordre de passage de la sweep line.
-     * @param p
-     * @return
+     * @param p le point à comparer.
+     * @return vrai si p est en dessous, faux sinon.
      */
     public boolean isUpperThan(Point p){
         return compareTo(p) <= 0;
@@ -48,8 +48,8 @@ public class Point implements Comparable<Point> {
 
     /***
      * compare à un autre point en fonction des X.
-     * @param o
-     * @return
+     * @param o le point à comparer
+     * @return 0 si les x sont égaux, -1 si o est à gauche, 1 sinon.
      */
     public int compareX(Point o){
         if (Utils.almostEqual(x, o.x)) return 0;
@@ -58,8 +58,8 @@ public class Point implements Comparable<Point> {
 
     /***
      * compare à un autre point en fonction des Y.
-     * @param o
-     * @return
+     * @param o le point à comparer.
+     * @return 0 si les y sont égaux, -1 si o est en haut, 1 sinon.
      */
     public int compareY(Point o){
         if (Utils.almostEqual(y, o.y)) return 0;

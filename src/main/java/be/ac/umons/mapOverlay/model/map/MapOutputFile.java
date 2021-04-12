@@ -22,9 +22,9 @@ public class MapOutputFile {
     }
 
     /**
-     * Ecrit une map dans un fichier.
-     * @param map
-     * @throws IOException
+     * Écrit une map dans un fichier.
+     * @param map une carte.
+     * @throws IOException lorsque le fichier n'est pas trouvé.
      */
     public void writeMap(Map map) throws IOException {
         for(Segment s: map.getSegments()){
@@ -38,7 +38,7 @@ public class MapOutputFile {
 
     /**
      * Ferme le fichier contenant la carte.
-     * @throws IOException
+     * @throws IOException lorsque le fichier n'est pas trouvé.
      */
     public void close() throws IOException{
         this.fileWriter.close();

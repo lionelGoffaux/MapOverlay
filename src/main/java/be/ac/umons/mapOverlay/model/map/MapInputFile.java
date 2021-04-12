@@ -38,7 +38,7 @@ public class MapInputFile {
 
     /***
      * Retourne la map contenue dans le fichier.
-     * @return
+     * @return la carte.
      */
     public Map readMap(){
         Map map = new Map();
@@ -50,7 +50,7 @@ public class MapInputFile {
 
     /**
      * Ferme le fichier contenant la carte.
-     * @throws IOException
+     * @throws IOException lorsque le fichier n'est pas trouvé.
      */
     public void close() throws IOException {
         this.fileReader.close();

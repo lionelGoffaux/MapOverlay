@@ -23,7 +23,7 @@ public class EventQueue extends AVLTree<Event> {
 
     /***
      * Retourne le prochain event à traiter.
-     * @return
+     * @return l'événement suivant.
      */
     public Event getNextEvent() {
         return suppressMin();

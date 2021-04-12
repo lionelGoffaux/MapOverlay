@@ -10,7 +10,7 @@ public abstract class Publisher {
 
     /**
      * Ajoute un subscriber.
-     * @param sub
+     * @param sub un abonné.
      */
     public void subscribe(Subscriber sub){
         subscribers.add(sub);

@@ -23,8 +23,8 @@ public class SegmentView extends Canvas {
 
     /**
      * Retourne la véritable coordonnée du point dans le plan.
-     * @param val
-     * @return
+     * @param val une coordonnée.
+     * @return la veritable coordonnée.
      */
     public double scale(double val){
         return val/scale;
@@ -70,7 +70,7 @@ public class SegmentView extends Canvas {
 
     /**
      * Modifie le scale de la carte.
-     * @param delta
+     * @param delta le changement.
      */
     public void changeScale(double delta){
         scale+=delta;
@@ -78,7 +78,7 @@ public class SegmentView extends Canvas {
 
     /**
      * Met à jour la carte.
-     * @param e
+     * @param e une événement.
      */
     public void update(IntersectionsFinderEvent e){
         switch (e){

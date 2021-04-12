@@ -27,7 +27,7 @@ public class ButtonView extends VBox {
 
     /**
      * Attribue le controller à chaque Bouton.
-     * @param buttonController
+     * @param buttonController le controller.
      */
     public void setButtonController(ButtonController buttonController){
         for (Button button: buttons){

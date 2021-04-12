@@ -6,7 +6,7 @@ package be.ac.umons.utils.observer;
 public interface Subscriber {
     /**
      * Notifie les subscriber qu'une modification à eu lieu.
-     * @param e
+     * @param e un événement.
      */
     void update(IntersectionsFinderEvent e);
 }
